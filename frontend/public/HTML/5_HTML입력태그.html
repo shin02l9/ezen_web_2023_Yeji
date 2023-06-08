@@ -34,8 +34,12 @@
 	 		3. readonly="readonly"		: 읽기모드 (수정불가)
 	 		4. disabled="disabled"		: 사용금지 모드
 	 		5. autofocus="autofocus" 	: 포커스(커서) 이동
-	 		6. maxlength="숫자 넣기"		: 입력가능한 최대 갯수
+	 		6. maxlength="숫자입력"		: 입력가능한 최대 갯수
 	 		7. multiple="multiple"		: 첨부파일이 여러개 가능하게 함
+	 		8. placeholder="텍스트입력"	: 가이드라인 텍스트
+	 		9. <legend> 제목 </legend>	: 그룹제목 입력하기
+	 		10. <fieldset></fieldset>	: 그룹 만들기
+	 		11. <hr/>					: 구분선 삽입	
 	 		
 	 		<select> </select>			: 목록상자
 	 			<option></option>		: 목록안에 항목들
@@ -45,10 +49,14 @@
 	 		
 	  -->
 	  <form>
-		  입력상자 	: <input value="유재석" readonly="readonly">								<br/>
-		  텍스트 		: <input type ="text" value="인사과" disabled="disabled">  				<br/>
-		  패스워드	: <input type ="password" autofocus="autofocus">  						<br/>
-		  이메일		: <input type ="email" maxlength="5">  									<br/>
+	  	  <fieldset>
+	  	  	  <legend> 그룹제목 </legend>
+		  	  <input type="text" placeholder="자기소개">											<br/>
+			  입력상자 	: <input value="유재석" readonly="readonly">								<br/>
+			  텍스트 		: <input type ="text" value="인사과" disabled="disabled">  				<br/>
+			  패스워드	: <input type ="password" autofocus="autofocus">  						<br/>
+			  이메일		: <input type ="email" maxlength="5">  									<br/>
+		  </fieldset>
 		  
 		  원형체크버튼 : <input type ="radio" name="comfirm"> 예 				
 		  			  <input type ="radio" name="comfirm"> 아니오 							<br/>
@@ -59,6 +67,8 @@
 		  첨부파일	: <input type ="file">
 		    		  <input type ="file" multiple="multiple">								<br/>
 		    		  	  
+		    <hr/>
+		    		  	 
 		  색상 		: <input type="color">					<br/>
 		  날짜		: <input type="date"> 					<br/>
 		  날짜/시간	: <input type="datetime-local">			<br/>
@@ -79,7 +89,6 @@
 		  
 		  <textarea rows="10" cols="10"></textarea>			<br/>
 	  </form>
-	  
 	  
 </html>
 
