@@ -21,8 +21,7 @@
 
 .box3{
 	border: solid 2px red;
-	/* 둥근 모서리 */
-	border-radius: 5px;
+	border-radius: 5px; /* 둥근 모서리 */
 	box-shadow: 5px 5px 5px orange;
 	/* 안쪽 여백 */
 	padding: 10px;
@@ -37,7 +36,7 @@
 	/* 안쪽 오른쪽 여백 */
 	padding-right: 20px;
 	/* 안쪽 하단 여백 */
-	padding-top: 20px;
+	padding-bottom: 20px;
 	/* 안쪽 왼쪽 여백 */
 	padding-left: 50px;
 	
