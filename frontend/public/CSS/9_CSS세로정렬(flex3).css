@@ -6,7 +6,8 @@
 	border: 1px solid red;
 }
 
-/* flex-wrap: wrap; 자식요소의 크기가 부모요소보다 커졌을때 자동으로 줄바꿈처리 */
+/* flex-wrap: wrap; 자식요소의 크기가 부모요소보다 커졌을때 자동으로 줄바꿈처리 
+	그래서 안쓰면 막 구역 밖으로 빠져나오고 난리 남...*/
 .flexbox1{flex-wrap: wrap; align-items: flex-start;} /* 윗변 정렬 */
 .flexbox2{align-items: center;}						 /* 가운데 정렬 */
 .flexbox3{align-items: flex-end;}					 /* 밑변 정렬 */
