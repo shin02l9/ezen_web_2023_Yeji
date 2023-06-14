@@ -82,12 +82,13 @@ a{ /* 모든 a 태그에 적용 */
 	display: flex;
 	width: 1200px;
 	padding: 5px 5px;
-	justify-content: space-between;
+	justify-content: space-around;
 }
 
 .main_bottom_sup_img{
 	background-color: white;
-	margin: 20px 10px;
+	margin: 35px 10px;
+	line-height: 200%;
 }
 
 .main_bottom_sup_img img{
@@ -106,7 +107,7 @@ a{ /* 모든 a 태그에 적용 */
    width:1200px;
    margin: 0 auto;
    display: flex;
-   justify-content: flex-start;
+       justify-content: space-around;
    color: white;
    padding-top: 40px;
 }
