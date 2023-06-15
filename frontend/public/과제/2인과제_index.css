@@ -23,6 +23,9 @@ li{list-style-type: none;}
    margin-right: 3px;
 }
 
+.hd_logo_the a{
+	color: #3F62BA;
+}
 /* 헤더메뉴 */
 .hd_menu{
    
