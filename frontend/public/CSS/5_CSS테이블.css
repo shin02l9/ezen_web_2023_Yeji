@@ -17,7 +17,7 @@
 }
 
 .fee_table{
-	border-collapse: collapse; /* 테두리 병합 */ 
+	border-collapse: collapse; /* 각자의 테두리를 병합해서 하나로 보이게 */ 
 }
 
 .fee_table th{ /* 해당 class명의 th요소 선택 */
