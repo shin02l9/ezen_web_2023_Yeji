@@ -1,0 +1,6 @@
+@charset "UTF-8";
+
+/* -------------- 공통부문 기본값제거 -------------- */
+*{padding: 0px; margin: 0px;}
+li{list-style-type: none;}
+a{color: black; text-decoration: none;}
