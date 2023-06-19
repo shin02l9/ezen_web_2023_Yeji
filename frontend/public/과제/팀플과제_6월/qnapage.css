@@ -255,20 +255,22 @@ a{color: black; text-decoration: none;}
 /* -------------- QnA 페이지 끝 (김찬희) -------------- */
 
 /* -------------- 푸터 (이성호) -------------- */
+
 .ft_top_menu{display: flex;}
 .line{padding: 0px 10px;}/* | 사이 여백 */
 
-
-#footer{ 
-	border-top: 1px solid #dbdbdb; 
-	margin-top: 30px;
+#footer{
+   border-top: 1px solid #dbdbdb;
+   margin-top: 30px;
+   
 }
 
 /*푸터 상단 시작*/
 .ft_top{
    width: 1200px; margin: 0 auto;
-   display: flex; justify-content: space-between;
+   display: flex; 
    padding: 50px;
+      /*위에 태두리*/
 }
 
 /*푸터 중단 시작*/
@@ -284,6 +286,10 @@ a{color: black; text-decoration: none;}
    justify-content: space-between;
 }
 
+.content_ft_in  p{
+   font-size: 3px;
+   color: white;
+}
 
 
 .ft_content_icon{
@@ -296,6 +302,10 @@ a{color: black; text-decoration: none;}
     
 }
 
+.ft_content_icon:hover{
+   background-color : #3D3D3D;
+}
+
 .content_ft h2{font-size: 20px;}
 
 /*푸터 하단 시작 */
@@ -304,5 +314,16 @@ a{color: black; text-decoration: none;}
    display: flex; justify-content: space-between;
    padding: 50px;
    color : #999999;
+}
+
+.ft_bottom p{
+   font-size: 3px;
+}
+ 
+.ft_bottom_p_color a{ 
+
+   background-color: #363d47;
+   color: white;
+}
 
 /* -------------- 푸터 끝 (이성호) -------------- */
