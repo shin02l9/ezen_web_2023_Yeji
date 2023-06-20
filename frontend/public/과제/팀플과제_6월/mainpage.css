@@ -14,6 +14,10 @@ a{color: black; text-decoration: none;}
    align-items: center;
 }
 
+#warp a:hover {
+   color: #C6C1BB;
+}
+
 .top_header_clear{
    width: 100%;
    height: 15px;
@@ -25,7 +29,6 @@ a{color: black; text-decoration: none;}
    justify-content: space-between;
    text-align: center;
    font-size: 10px;
-   color: #000000;
    width: 100%;
    margin: 10px 10px 10px 10px;
 }
@@ -36,14 +39,70 @@ a{color: black; text-decoration: none;}
 
 .top_header_left{
    margin-left: 10px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
 }
+
+.top_header_left_sub{
+   position: relative;
+}
+
+.top_header_left_sub_drop{
+   top: 30px;
+   left: -20px;
+   border: 1px solid #EBEAE6;
+   display: none;  /* 서브메뉴 숨김  */
+   position: absolute;
+   width: 140px;
+   height: 15px;
+   text-align: center;
+   padding: 5px;
+   
+}
+
+.top_header_left_sub:hover .top_header_left_sub_drop{
+   display: block;
+}
+
+   
 
 .top_header_right{
    margin-right: 30px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   font-size: 10px;
 }
+
 
 .top_header_right select{
    border: none;
+
+}
+
+.top_header_right_drop{
+   position: relative; /* 부모요소에 상대위치 */
+   
+}
+
+.top_header_right_drop_sub{
+   top: 25px;
+   left: -25px;
+   border: 1px solid #EBEAE6;
+   display: none;  /* 서브메뉴 숨김  */
+   position: absolute;
+   text-align: left;
+   line-height: 250%;
+   width: 70px;
+   height: 150px;
+   padding: 10px 10px;
+   text-decoration: underline;
+}
+
+
+.top_header_right_drop:hover .top_header_right_drop_sub{
+   display: block;
 }
 
 .top_header_margin{
@@ -90,11 +149,12 @@ a{color: black; text-decoration: none;}
 
 #low_header{
    width: 1200px;
-   height: 30px;
+   height: 35px;
+   margin: 0 auto;
    padding-bottom: 30px;
 }
 
-#low_header ul{
+.low_header_product{
    width: 1150px;
    height: 30px;
    display: flex;
@@ -104,28 +164,85 @@ a{color: black; text-decoration: none;}
    margin-right: 50px;
 }
 
-#low_header li{
-   display: inline-block;
-   justify-content: space-between;
-}
+
 
 .low_header_drop{
-   display: inline-block;
-   margin-left: 35px;
    position: relative; /* 부모요소에 상대위치 */
-
 }
 
 .low_header_drop_sub{
+   top: 40px;
+   left: -10px;
+   border-right : 1px solid #EBEAE6;
+   border-bottom: 1px solid #EBEAE6;
+   border-left: 1px solid #EBEAE6;
+   color: #EBEAE6;
    display: none;  /* 서브메뉴 숨김  */
    position: absolute;
-   top: 20px; 
-   width: 80px;
+   font-size: 12px;
+   line-height: 200%;
+   width: 110px;
+   height: 90px;
+   padding: 10px 10px;
+   text-decoration: underline;
+   background-color: white;
 }
+
 
 .low_header_drop:hover .low_header_drop_sub{
    display: block;
 }
+
+
+/* 사이드바 시작 */
+#sidebar{
+
+}
+
+#sidebar img{
+   width: 33px;
+}
+
+
+
+.sidebar_sub{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   line-height: 220%;
+   position: fixed;
+   right: 30px;
+   top: 25%;
+   font-size: 14px;
+   
+}
+
+.sidebar_drop{
+   position: relative;
+
+}
+
+.sidebar_drop_sub{
+   top: 10px;
+   left: -70px;
+   background-color: #333333;
+   display: none;  /* 서브메뉴 숨김  */
+   position: absolute;
+   font-size: 12px;
+   text-align: center;
+   vertical-align: center;
+   padding: 0px 10px;
+   
+}
+
+.sidebar_drop_sub a{
+   color: white;
+}
+
+.sidebar_drop:hover .sidebar_drop_sub{
+   display: block;
+}
+
 
 
 /* -------------- 헤더 끝 (오창현) -------------- */
@@ -150,16 +267,18 @@ a{color: black; text-decoration: none;}
 /* ---- 메인페이지 내용 ----  */
 .mainpage_note{
    font-size: 17px;
-    font-weight: bold;
-    text-align: center;
-    padding: 100px 0px 50px 0px;
-    justify-content: center;
+   font-weight: bold;
+   text-align: center;
+   padding: 100px 0px 50px 0px;
+   justify-content: center;
 }
 .mainpage_note h3{
    font-family: 'Noto Serif','NanumGothic','Open Sans','PT Sans','malgun gothic','돋움',Dotum,Helvetica,'Apple SD Gothic Neo',Sans-serif;
-    font-size: 17px;
-    font-weight: 400;
-    padding-bottom: 20px;}
+   font-size: 17px;
+   font-weight: 400;
+   padding-bottom: 20px;
+ }
+ 
 .mainpage_note img{
    width:15px;
  }
@@ -171,45 +290,52 @@ a{color: black; text-decoration: none;}
    display: flex;
    justify-content: space-between;
    margin:0 auto;
-   }
+}
+
 .mainpage_item{
    padding-bottom: 60px;
 }
 .mainpage_item img{
    width: 280px;
-    }
+}
+
 .mainpage_item_name{
    border-bottom: 1px solid #f0f0f0;
    font-size: 12px;
    color:#7a7a7a;
    padding: 10px 0 8px 0;
-    margin: 0 0 8px 0;
-}    
+   margin: 0 0 8px 0;
+}  
+  
 .mainpage_item_description{
    font-size: 12px;
    color:#c3c3c3;
    padding: 1px 0;
 }
+
 .mainpage_item_price_p{
    font-size: 12px;
-    color: #7a7a7a;
-    text-decoration: line-through;   
+   color: #7a7a7a;
+   text-decoration: line-through;   
 }
 
 .mainpage_item_price_last{
    font-size: 12px;
-    color: #7a7a7a;
+   color: #7a7a7a;
 }
+
 .mainpage_item_price_disc_h{
    font-size: 14px;
-    color: #474a9b;
-    font-weight: bold;
-}    
+   color: #474a9b;
+   font-weight: bold;
+} 
+   
 .mainpage_item_icon{   
-padding: 8px 0 0 0;
+	padding: 8px 0 0 0;
 }
+
 .mainpage_item_icon img{
-   width: 50px; 
+    width: 50px; 
 }
     
 
