@@ -44,7 +44,7 @@ function 추가함수(){ // 함수 start
 
 DOM 객체
 1. document.querySelector(".className") : 해당 class 명을 가진 DOM객체 호출
-2. DOM객제.value : 입력된 데이터 대입/호출 [input, textarea 등]
+2. DOM객체.value : 입력된 데이터 대입/호출 [input, textarea 등]
 3. DOM객체.inner : 마크업 사이에 HTML형식 문자열 대입/호출[div, span, td, ul 등등]
 
 배열
