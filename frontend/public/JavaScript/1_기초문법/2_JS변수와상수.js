@@ -86,7 +86,7 @@ const 상수1 = 10
 console.log( 상수1 )
 //3. 상수 수정
 상수1 = 20
-console.iog( 상수1 ) // 오류 발생 : Assignment to constant variable.
+console.log( 상수1 ) // 오류 발생 : Assignment to constant variable.
 //4. 상수의 연산
 const 상수2 = 상수1 + 20; console.log ( 상수2 )
 //5. 입력받은 값을 상수에 저장
