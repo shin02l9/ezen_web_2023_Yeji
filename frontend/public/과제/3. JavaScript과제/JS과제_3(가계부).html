@@ -36,26 +36,28 @@
 	
 		<h2 class="header"> 가 계 부 </h2>
 	
-		<div class="date_content"> <!-- 날짜 구역 시작 -->
+		<div class="date_content"> <!-- 1. 등록 : 날짜 구역 시작 -->
 			<ul>
 				<li> 날짜 : <input class="date" type="date" /> </li>
-				<li> 항목 : <input class="item" type="text" /> </li>
-				<li> 금액 : <input class="price" type="text" /> </li>
-				<span> <button onclick="추가함수()"> 추가하기</button> </span>
+				<li> 항목 : <input class="item" type="text" placeholder="항목"/> </li>
+				<li> 금액 : <input class="price" type="text" placeholder="금액"/> </li>
+				<span> <button onclick="추가()"> 추가하기</button> </span>
 			</ul>
-		</div> <!-- 날짜 구역 끝 -->
+		</div> <!-- 1. 등록 : 날짜 구역 끝 -->
 		
 		<div class="list"> <!-- 가계부 테이블 구역 시작 -->
 			<table class="list_table">
+				<!-- 추가할때마다 고정인 테이블 (소제목 고정이라 반복문 x)-->
 				<tr>
 					<th>날짜</th> <th>항목</th> <th>금액</th> <th>비고</th>
 				</tr>
+				<!-- 추가될 데이터가 올 자리 (반복문 써야함) -->
 				<tr>
-					<td> </td> <td> </td> <td> </td> <td> <button onclick="삭제함수()">삭제</button></td>
+					<td> </td> <td> </td> <td> </td> <td> <button> 삭제</button> </td>
 				</tr>
 			</table>
-			<div class="sum"> <!-- 테이블 최하단 총합계 -->
-				총합계 :
+			<div class="sum"> <!-- 테이블 밖 하단 총합계 -->
+				
 			</div> 
 		</div> <!-- 가계부 테이블 구역 끝 -->
 	

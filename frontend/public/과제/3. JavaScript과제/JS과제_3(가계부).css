@@ -51,13 +51,12 @@ li{list-style-type: none;}
 /* -------------- 테이블 구역 -------------- */
 
 .list_table{
-	border: none;
+	border: solid 0.5px #A9A8AA;
 	background-color: #ECEEED;
 	display: flex;
 	justify-content: space-between;
 	padding: 20px 20px;
 }
-
 
 
 
@@ -73,6 +72,12 @@ li{list-style-type: none;}
 	background-color: #A9A8AA;
 	border: none;
 	font-weight: bold; 
+	width: 40px; height: 25px;
+}
+
+.list_table th, .list_table td{
+	width: 150px;
+	text-align: center;
 }
 
 .list_table button:hover { color: white; background-color: #292C32; }
