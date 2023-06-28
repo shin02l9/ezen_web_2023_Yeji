@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+/* -------------- 공통부문 기본값제거 -------------- */
+*{padding: 0px; margin: 0px;}
+li{list-style-type: none;}
+*:focus { outline: none;}
+
+
+/* -------------- 전체 레이아웃 배치 -------------- */
+
+.wrap{
+	display: flex;
+	width: 1200px;
+	margin: 0 auto;
+	margin-top: 100px;
+}
+
+.write, .list, .view{
+	border: solid 0.5px #eeeeee;
+	width: 400px;
+	padding: 10px 10px;
+}
+
+/* -------------- 글쓰기 페이지 -------------- */
+.write{
+	display: flex;
+	flex-direction: column;
+}
+
+h3{
+	margin: 10px 10px;
+	border-left: solid 5px #A0BCC7;
+	padding-left: 10px;
+}
+
+.write_body{
+	height: 100px;
+	margin-bottom: 10px;
+	
+}
+
+.write button{
+	font-weight: bold; 
+	font-size: 15x;
+	background-color: #A0BCC7;
+	height: 30px;
+	border: none;
+}
+
+.write button:hover {
+	background-color: #3F5E69;
+	color: white;
+	font-weight: bold; 
+
+}

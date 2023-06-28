@@ -1,27 +1,24 @@
- console.log ('JS 실행')
+console.log ('JS 실행')
  
 // 모든 함수에 접근할 수 있는 배열을 선언함 ! ( member 객체 여러개를 저장하는 선언 )
 let 회원리스트 = []
 
 // 요구사항 1. 등록함수 만들기 [ 실행 조건 : 회원가입 버튼을 클릭 했을때 ]
  function 등록(){ //회원가입 함수 시작
- 	console.log (' 등록함수 실행 ')
  	//1. 입력값 가져오기
  		//1. document.querySelector('.class')
  		//2. document.querySelector('#id')
  	let mid = document.querySelector('#mid').value
  	let mpwd = document.querySelector('#mpwd').value
- 	console.log (mid)
- 	console.log (mpwd)
  	
  		//유효성 검사 1
  		if( mid == '' || mpwd == ''){
-			alret('[회원가입실패] 회원 정보를 모두 입력해주세요.')
+			alert('[회원가입실패] 회원 정보를 모두 입력해주세요.')
 			return;
 		 }
 		//유효성 검사 2
 		if( mid.length < 8 || mpwd.length < 8){
-			alret('[회원가입실패] 8글자 이상 입력해주세요.')
+			alert('[회원가입실패] 8글자 이상 입력해주세요.')
 			return;
 		 }
  	
@@ -32,7 +29,6 @@ let 회원리스트 = []
 	// 함수 밖에 전역변수를 만들어서 저장하자 !! 객체 여러개 ( 배열 ) = 전역변수
 	// * { } 안에서 선언된 객체를 전역 배열에 저장한다.
 	회원리스트.push(member) ; 
-	console.log (회원리스트)	
 	
 	/* 입력칸 안에 내용 초기화 */
 	document.querySelector('#mid').value = ''
