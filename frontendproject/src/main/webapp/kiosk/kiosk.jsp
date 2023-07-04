@@ -15,15 +15,11 @@
 	<div class="kioskwrap"> <!-- 키오스크 시작 -->
 		<div> <!-- 헤더 : 광고이미지/카테고리 출력 구역 -->
 			<!-- 광고이미지 구역-->
-			<img class="himg" src="../img/header_img1.png"/>
+			<img class="himg" src="../img/himg1.png"/>
 			
 			<!-- 카테고리 구역-->
 			<ul class="categorymenu">
-				<li class="categoryselect"> 신제품(new) </li>
-				<li> 프리미엄 </li>
-				<li> 와퍼&주니어 </li>
-				<li> 치킨&슈림프버거 </li>
-				<li> 올데이킹&킹모닝 </li>
+				<!-- 내용 JS로 출력 -->
 			</ul>
 		</div> <!-- 헤더 끝 -->
 		
@@ -41,85 +37,6 @@
 				</div>
 				<!-- 제품 1개 end -->
 				
-				<!-- 제품 1개 기준 -->
-				<div class="product"> 
-					<img src="../img/헬로디아블로와퍼.png"/> <!-- 제품이미지 -->
-					<div class="pinfo">
-						<div class="pname"> 헬로 디아블로 와퍼  </div> <!-- 제품이름 -->
-						<div class="pprice"> 15,000원  </div> <!-- 제품가격 -->
-					</div>
-				</div>
-				<!-- 제품 1개 end -->
-				
-				<!-- 제품 1개 기준 -->
-				<div class="product"> 
-					<img src="../img/헬로디아블로와퍼.png"/> <!-- 제품이미지 -->
-					<div class="pinfo">
-						<div class="pname"> 헬로 디아블로 와퍼  </div> <!-- 제품이름 -->
-						<div class="pprice"> 15,000원  </div> <!-- 제품가격 -->
-					</div>
-				</div>
-				<!-- 제품 1개 end -->
-				
-				<!-- 제품 1개 기준 -->
-				<div class="product"> 
-					<img src="../img/헬로디아블로와퍼.png"/> <!-- 제품이미지 -->
-					<div class="pinfo">
-						<div class="pname"> 헬로 디아블로 와퍼  </div> <!-- 제품이름 -->
-						<div class="pprice"> 15,000원  </div> <!-- 제품가격 -->
-					</div>
-				</div>
-				<!-- 제품 1개 end -->
-				
-				<!-- 제품 1개 기준 -->
-				<div class="product"> 
-					<img src="../img/헬로디아블로와퍼.png"/> <!-- 제품이미지 -->
-					<div class="pinfo">
-						<div class="pname"> 헬로 디아블로 와퍼  </div> <!-- 제품이름 -->
-						<div class="pprice"> 15,000원  </div> <!-- 제품가격 -->
-					</div>
-				</div>
-				<!-- 제품 1개 end -->
-				
-				<!-- 제품 1개 기준 -->
-				<div class="product"> 
-					<img src="../img/헬로디아블로와퍼.png"/> <!-- 제품이미지 -->
-					<div class="pinfo">
-						<div class="pname"> 헬로 디아블로 와퍼  </div> <!-- 제품이름 -->
-						<div class="pprice"> 15,000원  </div> <!-- 제품가격 -->
-					</div>
-				</div>
-				<!-- 제품 1개 end -->
-				
-				<!-- 제품 1개 기준 -->
-				<div class="product"> 
-					<img src="../img/헬로디아블로와퍼.png"/> <!-- 제품이미지 -->
-					<div class="pinfo">
-						<div class="pname"> 헬로 디아블로 와퍼  </div> <!-- 제품이름 -->
-						<div class="pprice"> 15,000원  </div> <!-- 제품가격 -->
-					</div>
-				</div>
-				<!-- 제품 1개 end -->
-				
-				<!-- 제품 1개 기준 -->
-				<div class="product"> 
-					<img src="../img/헬로디아블로와퍼.png"/> <!-- 제품이미지 -->
-					<div class="pinfo">
-						<div class="pname"> 헬로 디아블로 와퍼  </div> <!-- 제품이름 -->
-						<div class="pprice"> 15,000원  </div> <!-- 제품가격 -->
-					</div>
-				</div>
-				<!-- 제품 1개 end -->
-				
-				<!-- 제품 1개 기준 -->
-				<div class="product"> 
-					<img src="../img/헬로디아블로와퍼.png"/> <!-- 제품이미지 -->
-					<div class="pinfo">
-						<div class="pname"> 헬로 디아블로 와퍼  </div> <!-- 제품이름 -->
-						<div class="pprice"> 15,000원  </div> <!-- 제품가격 -->
-					</div>
-				</div>
-				<!-- 제품 1개 end -->
 				
 				
 			</div> <!-- 제품구역  end -->
@@ -144,8 +61,10 @@
 				</div> <!-- 선택정보구역 end -->
 				
 				<div class="cartbtn"> <!-- 버튼구역 -->
-			
-					
+
+					<button class="cencelbtn"> 취소하기 </button>
+					<button class="orderbtn"> 결제하기 </button>
+
 				</div> <!-- 버튼구역 end -->
 				
 				
