@@ -13,7 +13,7 @@
 		
 	3. 이벤트
 		이벤트명
-		1. DONContentLoaded : HTML이 완전히 열렸을때 [모두 로드되었을때] 실해되는 이벤트
+		1. DONContentLoaded : HTML이 완전히 열렸을때 [모두 로드되었을때] 실행되는 이벤트
 		2. window.onload	: 해당 객체가 호출되었을때 
 		3. click			: 해당 객체를 클릭 했을때
 		4. keyup			: 해당 객체에서 키보드를 누르고 떼어있을때

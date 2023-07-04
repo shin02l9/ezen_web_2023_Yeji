@@ -56,7 +56,9 @@
 	 			100 -> 0.1초
 	 			10 -> 0.01초
 	 			1 -> 0.001초
- 		2. clearInterval() : 
+ 		2. clearInterval() : 해당 타이머 정지
+ 			let timerId = setInterval( ()=>{} , 밀리초 );
+			clearInterval( timerId )
  */
  
  
