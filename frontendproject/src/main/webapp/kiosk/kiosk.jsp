@@ -126,8 +126,30 @@
 			
 			<div class="cartbox"> <!-- 장바구니구역 -->
 			
-			</div> <!-- 장바구니구역 end -->
+				<div class="cartcontent"> <!-- 선택정보구역 -->
+					<div class="carttop"> <!-- 선택 제품개수/가격 출력 구역 -->
+						<div> 카트 <span class="ccount">3</span> </div>
+						<div> 총 주문금액 <span class="ctotal"> 31,000원<span></span> </div>
+					</div>
+					<div class="cartbottom">
+					
+						<!-- 장바구니내 제품 1개  -->
+						<div class="citem">
+							<div class="iname"> 더블비프 불고기버거 </div> <!-- 제품이름  -->
+							<div class="iprice"> 12,000원 </div> <!-- 제품가격 -->
+							<span class="icencel"> x </span> <!-- 취소 버튼 -->
+						</div>
+
+					</div>
+				</div> <!-- 선택정보구역 end -->
+				
+				<div class="cartbtn"> <!-- 버튼구역 -->
 			
+					
+				</div> <!-- 버튼구역 end -->
+				
+				
+			</div> <!-- 장바구니구역 end -->
 		</div> <!-- 본문 끝 -->
 	</div> <!-- 키오스크 끝 -->
 	

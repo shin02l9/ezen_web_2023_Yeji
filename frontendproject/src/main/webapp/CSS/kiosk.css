@@ -54,17 +54,66 @@
 
 
 /* 장바구니 출력 구역 */
-.cartbox{ height: 250px; }
+.cartbox{
+	height: 250px; 
+	background-color: #eeeeee;
+}
+
+/* 장바구니 상단 부분 */
+.carttop{
+	display: flex;
+	justify-content: space-between;
+	padding: 20px 50px;
+}
+
+/* 장바구니 내 제품수 원형 */
+.ccount{
+	background-color: red;
+	border-radius: 15px;
+	font-size: 13px;
+	display: inline-block; /* inline-block : 사이즈적용 o, 한줄차지x */
+	width: 30px;
+	text-align: center;
+	color: white;
+	margin-left: 5px;
+}
+
+/* 장바구니 내 제품 총금액 */
+.ctotal{ color: red; }
 
 
 
+/* 장바구니 내 제품 출력 구역 */
+.cartbottom{
+	/* 플렉스는 자식요소의 크기를 자동으로 줄인다. -> 이를 방지하려면 최소값 사이즈 주기 ! */
+	display: flex;
+	overflow-x: scroll;
+}
+
+/* 장바구니 내 제품 1개 */
+.citem{
+	width: 25%; min-width: 25%;/* 플랙스로 줄어드는 사이즈를 방지하기위해 최소사이즈 설정함 !  */
+	background-color: white;
+	padding: 10px;
+	margin: 5px 10px 20px 10px;
+}
 
 
+.citem{
+	position: relative;
+}
 
+.icencel{
+	position: absolute;
+	top: 5px;
+	right: 10px;
+}
 
+.iname{
+	width: 80%; height: 70px;
+	
+}
 
-
-
-
-
-
+.iprice{
+	color: red;
+}
