@@ -8,9 +8,20 @@ let categoryList = ['신제품(new)','프리미엄','와퍼&주니어','치킨&�
 //3. 제품 여러개를 저장하는 배열
 	// 서로 다른 유형들의 데이터를 여러개 저장할때는 = 객체 {}
 	// 동일한 유형들의 데이터를 여러개 저장할때는 = 배열 []
-let burgerList = [  { name : '헬로디아블로와퍼', price : 9500,  img : '헬로디아블로와퍼.png', 	category : 0 },
-					{ name : '헬로릴리트와퍼', 	 price : 12500, img : '헬로릴리트와퍼.png',  	category : 0 },
-					{ name : '치킨킹', 		 price : 8000,  img : '치킨킹.png', 			category : 3 } ]
+let burgerList = [  { name : '헬로디아블로와퍼', 		price : 10500, img : '헬로디아블로와퍼.png', 		category : 0 },
+					{ name : '헬로릴리트와퍼', 			price : 11500, img : '헬로릴리트와퍼.png',  		category : 0 },
+					{ name : '헬로이나리우스와퍼',		price : 11000, img : '헬로이나리우스와퍼.png',	 	category : 0 },
+					{ name : '더블비프불고기버거', 		price : 9500,  img : '더블비프불고기버거.png', 		category : 1 },
+					{ name : '몬스터X', 				price : 9500,  img : '몬스터X.png', 				category : 1 },
+					{ name : '몬스터와퍼', 			price : 9000,  img : '몬스터와퍼.png', 			category : 2 },
+					{ name : '블랙바비큐와퍼', 			price : 8500,  img : '블랙바비큐와퍼.png', 			category : 2 },
+					{ name : '블랙바비큐콰트로치즈와퍼',  price : 9000,  img : '블랙바비큐콰트로치즈와퍼.png', 	category : 2 },
+					{ name : '통새우와퍼',  			price : 8000,  img : '통새우와퍼.png', 			category : 2 },
+					{ name : '치킨킹', 				price : 7000,  img : '치킨킹.png', 				category : 3 },
+					{ name : '치킨킹BLT', 			price : 7500,  img : '치킨킹BLT.png', 			category : 3 },
+					{ name : '오믈렛킹모닝', 			price : 6000,  img : '오믈렛킹모닝.png', 			category : 4 },
+					{ name : '오믈렛킹모닝BLT', 		price : 6500,  img : '오믈렛킹모닝BLT.png', 		category : 4 }
+				 ]
 //4. 장바구니 배열 / 선택된 버거들이 저장되는 배열
 	// 버거객체를 담을 것인지 인덱스를 담을 것인지 선택하기 ! 
 let cartList = [ ]
