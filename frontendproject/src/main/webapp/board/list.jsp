@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 	<!-- 뷰포트 : 반응형 동작 코드 -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Insert title here</title>
+	<title>list</title>
 	<!-- 부트스트랩에서 만든 CSS 호출 -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
