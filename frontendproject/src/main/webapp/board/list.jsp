@@ -50,10 +50,6 @@
 			</thead>
 			<tbody class="tcontent">
 				<!-- boardPrint() 가 innerHTML 넣는 구역 -->
-				<tr> <!-- 게시물1 행 -->
-					<td> 1 </td> <td> 안녕하세요. </td> <td> 유재석 </td> <td> 2023-07-06 </td>
-					<td> 312 </td> <td> 5 </td> 
-				</tr>
 			</tbody>
 			<tfoot>
 				<tr class="table-dark"> <td colspan="6"> total : 3 </td></tr>

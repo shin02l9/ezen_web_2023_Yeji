@@ -59,11 +59,12 @@ function onWrite(){ // f s
 	if( boardList == null ){ boardList=[] } // 쿠키가 없다면 빈 배열 생성하기
 		// 마지막 인덱스의 게시물에 해당하는 게시물 번호에 +1 더한 수 
 	let no = boardList.length == 0 ? 1 :  boardList[boardList.length-1].no +1
-		/*
-			삼항 연산자 안쓰고 하려면
-			선생님깃 확인하기
-		
-		
+		/* 삼항 연산자 안쓰고 하려면 !!!
+				if( boardList.length == 0 ){ // 만약에 배열의 길이가 0 이면 // 게시물 0개 
+					no = 1  // 첫 게시물에 게시물번호 1 설정 
+				}else{
+					no = boardList[boardList.length-1].no + 1 // 마지막 게시물번호 +1
+				}
 		*/
 	
 				//2. 입력받은 값이 여러개면 객체화 (밖에 2번인데 3-2로 옮긴것...)
