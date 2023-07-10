@@ -1,5 +1,7 @@
 console.log ( 'calender JS 실행' )
 
+// 전역배열
+let contents = [] // 여러개의 일정 객체를 저장하는 배열
 
 //0. 현재 연도/월 [초기값]
 	// new Date()			: 현재 날짜/시간 반환해주는 클래스
@@ -15,8 +17,8 @@ let month = new Date().getMonth()+1; // 현재 월 [0~11] 그래서 +1하는것 
 console.log ( year )
 console.log ( month )
 
-//1. 현재 연도/월 기준으로 달력 출력 하는 함수 
-calPrint();
+//1. 현재 연도/월 기준으로 달력 출력 하는 함수 ---------------------------------------------------------------------
+calPrint()
 closeModal()
 function calPrint(){
 	console.log ( 'calPrint 함수 출력' )
@@ -48,13 +50,34 @@ function calPrint(){
 		
 		// ***** 현재 달력 마지막일까지 일수 출력 
 		for( let day = 1 ; day <= eDay ; day++){
-			html+=`<div onclick="openModal()"> ${day} </div>`
+			html += `<div onclick="openModal(${day})"> 
+					${day} 
+					${ contentPrint(`${year}-${month}-${day}`) }
+					</div>`
+					//만약에 현재 날짜와 일정 목록에 등록된 일정에 날짜와 같으면 출력
 		}
 	//3. 대입
 	calender.innerHTML = html;
 }
 
-//2. 버튼을 클릭했을때 현재 월 변화해주는 함수 
+//6. 일정 출력함수 [ 실행조건 : 현재 날짜와 동일한 일정 날짜 찾아서 출력 ]---------------------------------------------------------------------
+	// 인수란 함수안으로 들어오는 값이나 코드를 말하는 것인데 
+	// 반환은 함수가 끝나고 호출했던곳으로 돌아가는 것을 말한다.
+function contentPrint(date){
+	console.log (date)
+	console.log ('일정출력함수')
+	let html = ``;
+	for( let i = 0; i<contents.length; i++){
+		if( date == contents[i].date ){
+			html += `<span class="content" style="background-color:${contents[i].color}">
+						${contents[i].content}
+						</span>`
+		}
+	}
+	return html;
+}
+
+//2. 버튼을 클릭했을때 현재 월 변화해주는 함수 ---------------------------------------------------------------------
 function onNext(n){ // 함수 하나 만들어서 인수로 구분 !! (0)은 이전달, (1)은 다음달
 	console.log(n)
 	//1. 버튼 식별 후 월 증감
@@ -71,20 +94,38 @@ function onNext(n){ // 함수 하나 만들어서 인수로 구분 !! (0)은 이
 }
 
 
-//3. 모달[팝업] 열기 [ 실행조건 : 날짜를 클릭 했을때 ]
-function openModal(){
+//3. 모달[팝업] 열기 [ 실행조건 : 날짜를 클릭 했을때 ]---------------------------------------------------------------------
+function openModal(day){
+	console.log ('openModal 함수 실행')
 	document.querySelector('.modalwrap').style.display = 'flex';
-	
+	document.querySelector('.date').innerHTML = `${year}-${month}-${day}`;
 }
 
-//4. 모달[팝업] 닫기 [ 실행조건 : 닫기를 클릭 했을때 ]
-function closeModal(){
-	document.querySelector('.modalwrap').style.display = 'none';
+//4. 모달[팝업] 닫기 [ 실행조건 : 닫기를 클릭 했을때 ]---------------------------------------------------------------------
+function closeModal(){document.querySelector('.modalwrap').style.display = 'none';}
+
+
+// 5. 일정 등록 버튼 클릭했을떄 [ 실행조건 : 등록버튼을 클릭했을때 ]---------------------------------------------------------------------
+
+function onWrite(){
+	// 1. 입력받은 값 호출 
+	let color = document.querySelector('.color');
+	let contentInput = document.querySelector('.contentInput');
+	let date = document.querySelector('.date');
+	// 2. 가공 [ 1.유효성검사 , 2.객체화 ] 
+	let object = {
+		color : color.value,
+		content : contentInput.value ,
+		date : date.innerHTML
+	}
+	// 3. 저장 
+	contents.push( object );	
+	// 4. 비워주기
+	color.value= ''; contentInput.value=''; 
+	// 5. 모달닫기
+	closeModal()
+	calPrint()
 }
-
-
-
-
 
 
 

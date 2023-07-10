@@ -18,7 +18,7 @@
 			<h3 class="caldate">  </h3> <!-- 현재/월 표시 구역 -->
 			<button onclick="onNext(1)" type="button"> ▶ </button> <!-- 다음달 버튼 -->
 		</div>
-		<div class="calender"> <!-- 날짜 표시구역 -->
+		<div class="calender"> <!-- 날짜 및 일정 표시구역 -->
 			<!-- calPrint() 함수로 출력 -->
 		</div>
 	</div> <!-- 캘린더 전체 구역 end -->
@@ -26,11 +26,13 @@
 	<div class="modalwrap"> <!-- 모달 전체 구역 -->
 		<div class="modal"> <!-- 모달 상자 -->
 			<h3> 일정 추가 </h3>
-			<textarea rows="5" cols="10"></textarea>
+			<input class="color" type="color"/>
+			<div class="date"></div>
+			<textarea class="contentInput" rows="5" cols="10"></textarea>
 			
-			<div class="modalbtn">
-				<button> 일정등록 </button>
-				<button onclick="closeModal()" > 닫기 </button>
+			<div class="modalbtns">
+				<button onclick="onWrite()" type="button"> 일정등록 </button>
+				<button onclick="closeModal()" type="button"> 닫기 </button>
 			</div>
 		</div>
 	</div>

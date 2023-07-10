@@ -72,7 +72,16 @@
 	border-radius: 30px;
 }
 
-
+/* 일정출력 */
+.content{
+	margin: 3px; padding: 3px;
+	font-size: 10px;
+	display: block; /* span 태그의 기본값은 inline 이라서 가로 사이즈 적용이 안된다. */
+	/* 만약에 해당 구역보다 내용물(텍스트)가 더 커지면 ... 으로 표시해서 잘라야한다. */
+	overflow: hidden; /* 넘치면 넘치는 부분 숨기기 */
+	white-space: nowrap; /* 만약에 텍스트가 커지면 자동 줄바꿈을 해제 */
+	text-overflow: ellipsis; /* 생략이라는 뜻으로   ... << 이 점들을 표시해줌 */
+}
 
 
 
