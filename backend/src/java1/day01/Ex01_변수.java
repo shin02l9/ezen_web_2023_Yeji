@@ -1,6 +1,6 @@
 package java1.day01;// 현재 클래스가 위치한 패키지명(폴더경로)
 
-public class Ex1_변수 { //class start
+public class Ex01_변수 { //class start
 	
 	//main + 컨트롤 + 스페이스바 + 엔터 [자동완성]
 	public static void main(String[] args) { // main start 모든 실행코드는 메인 함수 안에 !!
@@ -34,4 +34,5 @@ public class Ex1_변수 { //class start
  	변수명 	: 메모리 번지 대신에 식별용으로 사용되는 메모리 이름 [카멜표기법 권장]
  	=		: 오른쪽에 데이터를 왼쪽에 대입시킨다.
  	데이터	: 변수에 저장할 데이터
+ 	
  */
