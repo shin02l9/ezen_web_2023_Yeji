@@ -13,7 +13,25 @@ public class Level1_7 {
 		String output = "";
 		
 		/* 문제풀이 위치 */
+		System.out.println("회원명:"); String 문자열 = scanner.next(); 
+		System.out.println("상태:"); boolean 논리 = scanner.nextBoolean(); 
+		System.out.println("회원번호:"); byte 바이트 = scanner.nextByte(); 
+		System.out.println("성별:"); char 문자 = scanner.next().charAt(0);
+		System.out.println("나이:"); short 쇼트 = scanner.nextShort(); 
+		System.out.println("포인트:"); int 인트 = scanner.nextInt(); 
+		System.out.println("예금액:"); long 롱 = scanner.nextLong(); 
+		System.out.println("키:");float 플롯 = scanner.nextFloat(); 
+		System.out.println("몸무게:"); double 더블 = scanner.nextDouble(); 
 		
+		System.out.println("회원명:" + 문자열);
+		System.out.println("상태:" + 논리);
+		System.out.println("회원번호:" + 바이트);
+		System.out.println("성별:" + 문자);
+		System.out.println("나이:" + 쇼트);
+		System.out.println("포인트:" + 인트);
+		System.out.println("예금액:" + 롱);
+		System.out.println("키:" + 플롯);
+		System.out.println("몸무게:" + 더블);
 
 		/* ----------- */
 	}

@@ -9,7 +9,7 @@ public class Level1_4 {
 		System.out.println(" >> answer time : " + LocalDateTime.now() +" >> \n" );
 		
 		/* 문제풀이 위치 */
-		String answer= "";
+		String answer= "          ,r\'\"7 \n r`-_   ,\'  ,/ \n  \\. \". L_r\' \n    `~\\/ \n       |\n       |";
 		System.out.println( answer );
 		/* ----------- */
 	}

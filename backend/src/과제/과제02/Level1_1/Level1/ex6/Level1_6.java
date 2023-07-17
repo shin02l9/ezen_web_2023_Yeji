@@ -13,6 +13,13 @@ public class Level1_6 {
 		double value5 = 3.123123123;	
 		
 		/* 문제풀이 위치 */
+		
+		byte value01 = (byte)value1; System.out.println("byte <- short :" + value01);
+		short value02 = (short)value2; 	System.out.println("short <- int :" + value02);
+		int value03 = (int)value3;  System.out.println("int <- long :" + value03);
+		long value04 = (long)value4; System.out.println("long <- float :" + value04);
+		float value05 = (float)value5;  System.out.println("float <- double :" + value05);
+		
 
 		/* ----------- */
 	}

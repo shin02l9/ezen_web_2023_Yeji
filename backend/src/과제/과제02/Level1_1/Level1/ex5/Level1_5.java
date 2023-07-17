@@ -12,6 +12,16 @@ public class Level1_5 {
 		float value5 = 3.123123123F;
 		
 		/* 문제풀이 위치 */
+		
+//		- 허용 범위 순서
+//			byte -> short -> int -> long -> float -> double 
+			
+			short value01 = value1; System.out.println("byte -> short :" + value01);
+			int value02 = value2; 	System.out.println("short -> int :" + value02);
+			long value03 = value3;  System.out.println("int -> long :" + value03);
+			float value04 = value4; System.out.println("long -> float :" + value04);
+			double value05 = value5;  System.out.println("float -> double :" + value05);
+		
 	
 		/* ----------- */
 	}
