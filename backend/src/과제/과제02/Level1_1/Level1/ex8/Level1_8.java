@@ -16,6 +16,52 @@ public class Level1_8 {
 		String output = "";
 		
 		/* 문제풀이 위치 */
+		int 번호 = 1;
+		System.out.println("["+ 번호 +"]" + "작성자 : "); 	String 작성자 = scanner.next();
+		scanner.nextLine();
+		System.out.println("["+ 번호 +"]" + "내용 : "); String 내용 = scanner.nextLine();
+		System.out.println(header);
+		System.out.println(번호++ + "\t" + 작성자 +"\t" + 내용 +"\t");
+		System.out.println(footer);
+		번호 = 1;
+		System.out.println("["+ 번호 +"]" + "작성자 : "); 	String 작성자2 = scanner.next();
+		scanner.nextLine();
+		System.out.println("["+ 번호 +"]" + "내용 : "); String 내용2 = scanner.nextLine();
+		System.out.println(header);
+		System.out.println(번호++ + "\t" + 작성자 +"\t" + 내용 +"\t");
+		System.out.println(번호++ + "\t" + 작성자2 +"\t" + 내용2 +"\t");
+		System.out.println(footer);
+		번호 = 1;
+		System.out.println("["+ 번호 +"]" + "작성자 : "); 	String 작성자3 = scanner.next();
+		scanner.nextLine();
+		System.out.println("["+ 번호 +"]" + "내용 : "); String 내용3 = scanner.nextLine();
+		System.out.println(header);
+		System.out.println(번호++ + "\t" + 작성자 +"\t" + 내용 +"\t");
+		System.out.println(번호++ + "\t" + 작성자2 +"\t" + 내용2 +"\t");
+		System.out.println(번호++ + "\t" + 작성자3 +"\t" + 내용3 +"\t");
+		System.out.println(footer);
+		번호 = 1;
+		System.out.println("["+ 번호 +"]" + "작성자 : "); 	String 작성자4 = scanner.next();
+		scanner.nextLine();
+		System.out.println("["+ 번호 +"]" + "내용 : "); String 내용4 = scanner.nextLine();
+		System.out.println(header);
+		System.out.println(번호++ + "\t" + 작성자 +"\t" + 내용 +"\t");
+		System.out.println(번호++ + "\t" + 작성자2 +"\t" + 내용2 +"\t");
+		System.out.println(번호++ + "\t" + 작성자3 +"\t" + 내용3 +"\t");
+		System.out.println(번호++ + "\t" + 작성자4 +"\t" + 내용4 +"\t");
+		System.out.println(footer);
+		번호 = 1;
+		System.out.println("["+ 번호 +"]" + "작성자 : "); 	String 작성자5 = scanner.next();
+		scanner.nextLine();
+		System.out.println("["+ 번호 +"]" + "내용 : "); String 내용5 = scanner.nextLine();
+		System.out.println(header);
+		System.out.println(번호++ + "\t" + 작성자 +"\t" + 내용 +"\t");
+		System.out.println(번호++ + "\t" + 작성자2 +"\t" + 내용2 +"\t");
+		System.out.println(번호++ + "\t" + 작성자3 +"\t" + 내용3 +"\t");
+		System.out.println(번호++ + "\t" + 작성자4 +"\t" + 내용4 +"\t");
+		System.out.println(번호++ + "\t" + 작성자5 +"\t" + 내용5 +"\t");
+		System.out.println(footer);
+		
 		
 		/* ----------- */
 	}
