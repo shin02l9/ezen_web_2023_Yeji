@@ -45,7 +45,7 @@ public class Ex01_조건문 { //class s
 		}
 			
 		
-		// 5. [p.115] 난수를 생성할대 사용하는 함수  [Math.random()]
+		// 5. [p.115] 난수를 생성할때 사용하는 함수  [Math.random()]
 		System.out.println( Math.random() ); // 0<= ~  < 1.0
 		System.out.println( Math.random()*6 ); // 0<= ~  < 6.0
 		System.out.println( (int)(Math.random()*6) ); // 0<= ~  < 6 [ int로 강제형변환을 해서 소수점 삭제 ]

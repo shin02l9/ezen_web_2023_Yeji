@@ -1,4 +1,4 @@
-package 과제.과제02.Level1_1.Level1;
+package 과제.과제02.Level1;
 
 import java.util.Scanner;
 
