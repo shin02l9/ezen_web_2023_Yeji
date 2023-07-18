@@ -14,7 +14,9 @@ public class Level3_5 {
 		String authNumber = "";
 		
 		/* 문제풀이 위치 */
-		
+		int n = (int)(Math.random()*999999) +1;
+		authNumber = String.valueOf(n);
+		System.out.println(" 본인확인 인증번호 : " + authNumber );
 		/* ----------- */
 
 	}

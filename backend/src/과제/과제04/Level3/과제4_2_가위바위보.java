@@ -13,12 +13,53 @@ public class 과제4_2_가위바위보 {
 		int 컴퓨터;
 		int 게임수 = 0; 
 		int 플레이어승리수 = 0 ; int 컴퓨터승리수 = 0 ;
-		
+			
+		/* 문제풀이 위치 */
 		while(true) {
 			
 			System.out.println("\n\n--------------[[ 가위바위보 게임 ]] ----------- ");
 			System.out.print(" >>>>>>>  가위[0] 바위[1] 보[2] 종료[3] 중 선택 : ");
 			플레이어 = scanner.nextInt();
+			Random random = new Random();
+			컴퓨터 = random.nextInt(3);
+			
+			
+			if ( 플레이어 == 3 ) {
+				System.out.println("[게임종료] 게임횟수 : "+게임수+"회");
+				if( 플레이어승리수 > 컴퓨터승리수) {
+					System.out.println("[최종승리자] 플레이어 "+플레이어승리수+"승"); 
+				} else {System.out.println("[최종승리자] 컴퓨터 "+컴퓨터승리수+"승");}
+				break;
+			}
+			if ( 컴퓨터 == 0 ) {
+				System.out.println("컴퓨터 : " + 컴퓨터);
+			} else if ( 컴퓨터 == 1 ) {
+				System.out.println("컴퓨터 : " + 컴퓨터);
+			} else {System.out.println("컴퓨터 : " + 컴퓨터);}
+			
+			if ( 컴퓨터 == 0 && 플레이어 == 1 ) {
+				System.out.println("플레이어 : "+ 플레이어); 
+				System.out.println("<< 플레이어 승 >> ");
+				플레이어승리수++; 게임수++;
+			} else if ( 컴퓨터 == 1 && 플레이어 == 2 ) {
+				System.out.println("플레이어 : "+ 플레이어); 
+				System.out.println("<< 플레이어 승 >> ");
+				플레이어승리수++; 게임수++;
+			} else if ( 컴퓨터 == 2 && 플레이어 == 0 ) {
+				System.out.println("플레이어 : "+ 플레이어); 
+				System.out.println("<< 플레이어 승 >> ");
+				플레이어승리수++; 게임수++;
+			} else if ( 컴퓨터 == 플레이어) {
+				System.out.println("플레이어 : "+ 플레이어); 
+				System.out.println("<< 무승부 >>");
+				게임수++;
+			} else { 
+				System.out.println("플레이어 : "+ 플레이어); 
+				System.out.println("<< 컴퓨터 승 >> ");
+				컴퓨터승리수++; 게임수++;
+			}
+			
+			/* ----------- */
 			/*
 		 	주제 : 가위바위보 만들기 
 		 		입력 조건 
@@ -32,10 +73,6 @@ public class 과제4_2_가위바위보 {
 		 			1. 매 게임 마다 승리자 출력 
 		 			2. 게임종료시 게임수 와 최종승리자 출력[ 가장 많이 이긴 플레이어 호출 
 			 */
-			/* 문제풀이 위치 */
-			
-			
-			/* ----------- */
 			
 		}
 	}  

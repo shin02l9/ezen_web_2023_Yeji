@@ -11,11 +11,18 @@ public class Level3_4 {
 		Scanner scanner = new Scanner(System.in);
 	
 		/* 문제풀이 위치 */
-	
+		while( true ) { //while s
+			System.out.print("\n"+"input : ");
+			int input = scanner.nextInt();
+			for ( int i = 1 ; i<= input; i++) {
+				System.out.print("■ ");
+			} // for e
+		} // while e
+	}
 		/* ----------- */
 
-	}
 }
+
 /* 
 	[문제] 그림과 같이 계속입력한 수에 따라 누적으로 저장되어 저장된 수 만큼 '■' 를 출력하시오.
 	[조건] 

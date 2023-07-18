@@ -12,7 +12,18 @@ public class Level3_2 {
 		
 		
 		/* 문제풀이 위치 */
-		
+		for( int i = 1; true; i++) { // for s
+			// 무한출력
+			System.out.print(i+"회 입력 : ");
+			//무한입력
+			String str = scanner.nextLine();
+			if ( str.equals("end")) {// 만약에 입력이 end이면
+				System.out.printf("안내) 프로그램 종료 합니다. [총 %d회 입력]", i-1);
+				
+				break;
+			}
+			
+		}// for e
 		/* ----------- */
 
 	}

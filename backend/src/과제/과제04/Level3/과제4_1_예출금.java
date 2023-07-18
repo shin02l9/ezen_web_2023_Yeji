@@ -9,11 +9,58 @@ public class 과제4_1_예출금 {
 		int balance = 0; String account = "123-1234"; short password = 1234;
 		
 		while( true ) { // 무한루프 [ 종료조건 : 4 입력시 break; ] 
-			System.out.println("\n\n--------------------");
+			System.out.println("\n\n--------------------------");
 			System.out.println("1.예금 2.출금 3.잔액 4.종료 : ");
-			System.out.println("--------------------");
+			System.out.println("--------------------------");
 			System.out.print(">> 선택 : ");
 			int ch = scanner.nextInt();
+			
+			/* 문제풀이 위치 */
+			// 1. 예금 입금하기 -----------------------------------------------------
+			if ( ch == 1) {
+				System.out.print(">>> 예금할 계좌번호 : "); String a = scanner.next();
+				if ( a.equals("123-1234")){
+					System.out.print(">>> 계좌 비밀번호 : "); short p = scanner.nextShort();
+					System.out.print(">>> 예금할 금액 : "); int b = scanner.nextInt();
+					balance += b;
+					System.out.println(">>> 예금후 잔고 : " + balance);
+					System.out.println(" 입급 완료 되었습니다. ");
+				}else {System.out.println(" 없는 계좌번호 입니다."); }
+			}
+			// 2. 예금 출금하기 -----------------------------------------------------
+			if ( ch == 2) {
+				System.out.print(">>> 출금할 계좌번호 : "); String a = scanner.next();
+				if ( a.equals("123-1234")) {
+					System.out.print(">>> 계좌 비밀번호 : "); short p = scanner.nextShort();
+					if ( p == password ) {
+						System.out.print(">>> 출금할 금액 : "); int b = scanner.nextInt();
+						if( b > balance) {
+							int bShortage = balance-b;
+							System.out.print(">>> 잔액부족 : "+ -bShortage);
+						} else {
+							balance -= b;
+							System.out.print(">>> 출금후 잔고 : " + balance);
+							}
+					} else { System.out.print("해당 계좌의 비밀번호가 다릅니다."); }
+				} else { System.out.print("없는 계좌번호 입니다."); }
+				
+			}
+			// 3. 잔액 확인하기 -----------------------------------------------------
+			if ( ch == 3) {
+				System.out.print(">>> 출금할 계좌번호 : "); String a = scanner.next();
+				if ( a.equals("123-1234")) {
+					System.out.print(">>> 계좌 비밀번호 : "); short p = scanner.nextShort();
+					if ( p == password ) {
+						System.out.print(">>> 예금 잔액 : " + balance);
+					}else { System.out.print("해당 계좌의 비밀번호가 다릅니다."); }
+				}else { System.out.print("없는 계좌번호 입니다."); }
+			}
+			// 4. 종료하기 -----------------------------------------------------
+			if ( ch == 4) {
+				System.out.print(">>> 안녕히 가세요. "); break;
+			}
+			
+			/* ----------- */
 			/*
 			주제 : 예출금 시스템
 				변수 조건 
@@ -38,12 +85,8 @@ public class 과제4_1_예출금 {
 					4. 만약에 종료 기능 
 						1. 시스템이 종료된다. [ 안녕히 가세요. ]출력
 			 */
-			/* 문제풀이 위치 */
-			
-			
-			/* ----------- */
 			
 		
-		} 
+		} // while end
 	} 
 } 

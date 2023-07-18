@@ -15,7 +15,27 @@ public class Level3_3 {
 		int july4 = 11738700;
 		
 		/* 문제풀이 위치 */
+		System.out.println("-------- 7월 매출액 --------");
+		for ( int i = 1; i<=4; i++) {
+			System.out.printf("%d주차 :", i);
+			int j1 = july1/1000000;
+			for( int j = 1; j <= j1; j++) {
+				System.out.printf("■");
+			}
+		}
 		
+
+			
+		
+		//모르겠음 못 풀었음
+		
+		
+		
+//		System.out.println("1주차 : ■■ 353만원");
+//		System.out.println("2주차 : ■■ 353만원");
+//		System.out.println("3주차 : ■■ 353만원");
+//		System.out.println("4주차 : ■■ 353만원");
+
 		/* ----------- */
 	}
 }
