@@ -91,6 +91,36 @@ public class Ex01_반복문 { //class s
 			
 		}// while e
 		
+		// [p. 135] 
+			// 1. for 문에 식별이름 정의 : for 이름: for (){}
+			// 2. break; 
+			///		가장 가까운 반복문 탈출, continue for이름 
+			// 2. break for이름;
+			//		해당 이름의 반복문 탈출
+			// 3. continue; 
+			//		가장 가까운 반복문 증감식/조건식으로 이동
+			// 3. continue for이름;
+			//		해당하는 이름의 반복문 증감식/조건식으로 이동
+			// 이 두가지의 공통점 : 키워드가 발동을 했을때 아래 코드는 실행되지 않는다.
+		대문자for : for ( char upper = 'A'; upper <= 'Z'; upper++) {
+			System.out.print( upper + "");
+			소문자for : for ( char lower = 'a'; lower <= 'z'; lower++) {
+				System.out.println( "\t" +lower);
+				if( lower == 'g') break 대문자for;
+			} // for 2 e
+			System.out.println( );
+		}// for 1 e
+		
+		
+		// [p. 137] 
+		숫자for : for ( int t = 1; t <=10; t++) {
+			if ( t % 2 != 0) {
+				continue 숫자for;
+			} // if end
+			System.out.println( t + "");
+		}
+		
+		
 		
 	} // main e
 	
