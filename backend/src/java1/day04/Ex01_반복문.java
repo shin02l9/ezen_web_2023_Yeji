@@ -1,5 +1,7 @@
 package java1.day04;
 
+import java.util.Scanner;
+
 public class Ex01_반복문 { //class s
 
 	public static void main(String[] args) { // main s
@@ -12,7 +14,6 @@ public class Ex01_반복문 { //class s
 		int sum2 = 0;
 		for (int i = 1; i<=10; i++) {sum2 += i;}
 		System.out.println(sum2);
-		
 		
 		// [p.125] 1~ 10까지 출력
 		//1. for문 없이 한다면
@@ -34,6 +35,63 @@ public class Ex01_반복문 { //class s
 		System.out.println("--------------------------------------");
 		for ( double x = 0.1; x<=1.0; x+=0.1) {System.out.println( x + ""); }
 		
+		// [p.128] 구구단
+		//1. for문 없이
+		System.out.println( "2단" );
+		System.out.println( "2 x 1 = "+(2*1) );
+		System.out.println( "2 x 2 = "+(2*2) );
+		System.out.println( "2 x 3 = "+(2*3) );
+		System.out.println( "2 x 4 = "+(2*4) );
+		System.out.println( "2 x 5 = "+(2*5) );
+		System.out.println( "2 x 6 = "+(2*6) );
+		System.out.println( "2 x 7 = "+(2*7) );
+		System.out.println( "2 x 8 = "+(2*8) );
+		System.out.println( "2 x 9 = "+(2*9) );
+		System.out.println("--------------------------------------");
+		//2. for문 사용하기
+		// for ( int i = 2; i<=9; i++) {System.out.println( "2 x " +i +" = "+(2*i) );}
+		for ( int i = 2; i<=9; i++) {
+			System.out.printf( " \n < %d단 > \n", i );
+			for ( int x = 1; x<=9; x++) {
+				System.out.printf( " %d x %d = %d \n", i,x,i*x );
+			}
+		}
+		
+		
+		// [p.129 vs p.124] 1~10 출력
+		int a = 1;
+		while ( a<=10 ) {System.out.println( a + ""); a++;}
+		int b = 1;
+		int sum5 = 0;
+		while( b <=100) { sum5 += b; System.out.println(sum5); b++;}
+		
+		// [p.131] 무한루프
+		  // 1. while (true) {System.out.println(" 무한반복 ");} ★
+		  // 2. for (;;){System.out.println(" 무한반복 ");}
+		  // 3. while( run ){System.out.println(" 무한반복 ");}
+		Scanner sc = new Scanner(System.in);
+		boolean run = true; // while문 true/ false 저장하는 변수 , on/off
+		int speed = 0;
+		while( run ) { // while s
+			// 무한출력
+			System.out.println(" ------------------------- ");
+			System.out.println(" 1. 증속 | 2. 감속 | 3. 중지 ");
+			System.out.println(" ------------------------- ");
+			System.out.print("  선택 :  ");
+			//무한입력
+			String strNum = sc.nextLine();
+			
+			if ( strNum.equals("1")) {// 만약에 입력이 1이면
+				speed++;
+			} else if ( strNum.equals("2")) {// 만약에 입력이 2이면
+				speed--;
+			} else if ( strNum.equals("3")) {// 만약에 입력이 3이면
+				run = false;
+			}
+			
+		}// while e
+		
+		
 	} // main e
 	
 	
@@ -50,5 +108,17 @@ public class Ex01_반복문 { //class s
 		3. true 이면 실행문 실행
 		4. 초기값이 들어있는 변수에 증감식
 		5. 조건식 판단해서 ~~~~ 2,3,4,2,3,4 반복 !! 
-
+	
+	while 문
+		1.초기값;
+		while (2.조건식;){3.실행문;4.증감식;}
+		- 1, 4번이 필수는 아님!
+		- 조건식 판단해서 true이면 {} 들어감, false {} 건너뜀/종료
+		- true 이면 실행문 실행
+		
+		
+	* 일반적으로 패턴이 있는 경우 for문 사용
+	* 무한루프 만들때는 while 
+		
+		
  */
