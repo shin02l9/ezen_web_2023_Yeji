@@ -14,12 +14,26 @@ public class 조건문풀이과제 { // class s
 		System.out.println( "정수2 입력 :" ); int 정수2 = sc.nextInt();
 		if( 정수1>정수2 ) {
 			System.out.println( "더 큰수 : " + 정수1);
-		} else { System.out.println( "더 큰수 : " + 정수2);}
+		} else if ( 정수1<정수2 ) { 
+			System.out.println( "더 큰수 : " + 정수2);
+		} else {
+			System.out.println( "같은 수 입니다.");
+		}
 
 		
 		
-		// 문제2 : 문제 1번이랑 똑같아요.
+		// 문제2 : 3개의 정수를 입력받아서 더 큰수 출력 [ 경우의수 : 3개(크다,작다,같다=그외) ]
 		/* -------문제2 풀이 ----- */
+		System.out.println( "-------------- 문제2 풀이 --------------" );
+		System.out.println( "정수3 입력 :" ); int 정수3 = sc.nextInt();
+		System.out.println( "정수4 입력 :" ); int 정수4 = sc.nextInt();
+		System.out.println( "정수5 입력 :" ); int 정수5 = sc.nextInt();
+		if (정수3 > 정수4 ) { // 첫번째 값이 두번째 값보다 클때
+			if(정수3 > 정수5 ) { System.out.println( "가장큰수 : " + 정수3);
+			}else  {System.out.println( "가장큰수 : " + 정수5);}
+		}else if(정수4 > 정수5 ) {
+			System.out.println( "가장큰수 : " + 정수4);
+		}
 		
 
 		
@@ -31,23 +45,22 @@ public class 조건문풀이과제 { // class s
 		System.out.println( "비교정수3 입력 :" ); int 비교정수3 = sc.nextInt();
 		
 		if(비교정수1 > 비교정수2){
-			int 임시 = 비교정수1; 
+			int temp = 비교정수1; 
 			비교정수1 = 비교정수2;
-			비교정수2 = 임시;
+			비교정수2 = temp;
 		}
-
 		if(비교정수1 > 비교정수3){ 
-			int 임시 = 비교정수1;
+			int temp = 비교정수1;
 			비교정수1 = 비교정수3;
-			비교정수3 = 임시;
+			비교정수3 = temp;
 		}
 		if(비교정수2 > 비교정수3){ 
-			int 임시 = 비교정수2;
+			int temp = 비교정수2;
 			비교정수2 = 비교정수3;
-			비교정수3 = 임시;
+			비교정수3 = temp;
 		}
 		
-		System.out.printf( " %d > %d > %d \n", 비교정수1, 비교정수2, 비교정수3);
+		System.out.printf( " %3d > %3d > %3d \n", 비교정수1, 비교정수2, 비교정수3);
 		
 		
 		
