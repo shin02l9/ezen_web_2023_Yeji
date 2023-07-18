@@ -13,8 +13,8 @@ public class Level3_6 {
 		
 		/* 문제풀이 위치 */
 		boolean run = true;
-		String 좌석1 = "1"; String 좌석2 = "2"; String 좌석3 = "3";
-		String 좌석4 = "4"; String 좌석5 = "5"; String 좌석6 = "6";
+		int 좌석1 = 0; int 좌석2 = 0; int 좌석3 = 0;
+		int 좌석4 = 0; int 좌석5 = 0; int 좌석6 = 0;
 		while ( run ) { // while s
 			//무한출력
 			System.out.println("------------------------------");
@@ -25,11 +25,68 @@ public class Level3_6 {
 			int num = scanner.nextInt();
 			// 실행 조건
 			if( num == 1 ) {
-				System.out.printf(" [ %s ] [ %s ] [ %s ] \n [ %s ] [ %s ] [ %s ] \n", 좌석1, 좌석2, 좌석3, 좌석4, 좌석5, 좌석6);
-				System.out.print(" 좌석을 선택해주세요. ex) 좌석1 : "); String 선택좌석 = scanner.nextLine();
+				System.out.printf("  좌석1  좌석2  좌석3 \n [ %d ] [ %d ] [ %d ]\n\n  좌석4  좌석5  좌석6 \n [ %d ] [ %d ] [ %d ] \n\n", 좌석1, 좌석2, 좌석3, 좌석4, 좌석5, 좌석6);
+				System.out.print(" 좌석을 선택해주세요. : "); 
+				int 선택좌석 = scanner.nextInt();
+				if ( 선택좌석 <= 6) {
+					if( 선택좌석 == 1) { 
+						if ( 좌석1 == 0) {
+						System.out.print(" 예약 성공 "); 
+						좌석1 = 1; 
+						}
+						else {System.out.print(" 이미선택된 좌석입니다. "); }
+					} 
+					if( 선택좌석 == 2) { 
+						if ( 좌석2 == 0) {
+						System.out.print(" 예약 성공 "); 
+						좌석2 = 1; 
+						}
+						else {System.out.print(" 이미선택된 좌석입니다. "); }
+					} 
+					if( 선택좌석 == 3) { 
+						if ( 좌석3 == 0) {
+						System.out.print(" 예약 성공 "); 
+						좌석3 = 1; 
+						}
+						else {System.out.print(" 이미선택된 좌석입니다. "); }
+					} 
+					if( 선택좌석 == 4) { 
+						if ( 좌석4 == 0) {
+						System.out.print(" 예약 성공 "); 
+						좌석4 = 1; 
+						}
+						else {System.out.print(" 이미선택된 좌석입니다. "); }
+					} 
+					if( 선택좌석 == 5) { 
+						if ( 좌석5 == 0) {
+						System.out.print(" 예약 성공 "); 
+						좌석5 = 1; 
+						}
+						else {System.out.print(" 이미선택된 좌석입니다. "); }
+					} 
+					if( 선택좌석 == 6) { 
+						if ( 좌석6 == 0) {
+						System.out.print(" 예약 성공 "); 
+						좌석6 = 1; 
+						}
+						else {System.out.print(" 이미선택된 좌석입니다. "); }
+					} 
+				} else { System.out.print(" 없는 좌석입니다. ");  }
+			} else if ( num == 2 ) {
+				System.out.print(" 취소할 좌석을 선택해주세요. : "); 
+				int 선택좌석 = scanner.nextInt();
+				if( 선택좌석 == 1) { 좌석1 = 0; }
+				else if ( 선택좌석 == 2) { 좌석2 = 0; }
+				else if ( 선택좌석 == 3) { 좌석3 = 0; }
+				else if ( 선택좌석 == 4) { 좌석4 = 0; }
+				else if ( 선택좌석 == 5) { 좌석5 = 0; }
+				else if ( 선택좌석 == 6) { 좌석6 = 0; }
+				else {System.out.print(" 없는 좌석입니다. "); }
+				System.out.print(" 좌석이 취소되었습니다. ");
+			} else if ( num == 3 ) {
+				//모르겠습니다!!!!!!!!!!!!!!!!!!!!!!!!!!
 			}
 			
-			//모르겠음 못 풀었음
 			
 			
 		} // while e 

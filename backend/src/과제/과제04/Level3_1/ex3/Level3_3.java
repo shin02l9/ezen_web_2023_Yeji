@@ -15,21 +15,64 @@ public class Level3_3 {
 		int july4 = 11738700;
 		
 		/* 문제풀이 위치 */
+		
 		System.out.println("-------- 7월 매출액 --------");
-		for ( int i = 1; i<=4; i++) {
-			System.out.printf("%d주차 :", i);
-			int j1 = july1/1000000;
-			for( int j = 1; j <= j1; j++) {
-				System.out.printf("■");
-			}
+		// -------------------------------------------------------------------
+		int j1 = july1/1000000;
+		System.out.print(" 1주차 : "); 
+		for( int j = 1; j <= j1; j++) {
+			System.out.printf("■");
 		}
+		int j1백만원 = july1/1000000;
+		int j1십만원 = (july1%1000000)/100000;
+		int j1만원 = (july1%100000)/10000;
+		System.out.print(" "+j1백만원+j1십만원+j1만원+"만원\n"); 
+		// -------------------------------------------------------------------
+		int j2 = july2/1000000;
+		System.out.print(" 2주차 : "); 
+		for( int j = 1; j <= j2; j++) {
+			System.out.printf("■");
+		}
+		int j2백만원 = july2/1000000;
+		int j2십만원 = (july2%1000000)/100000;
+		int j2만원 = (july2%100000)/10000;
+		System.out.print(" "+j2백만원+j2십만원+j2만원+"만원\n"); 
+		// -------------------------------------------------------------------
+		int j3 = july3/1000000;
+		System.out.print(" 3주차 : "); 
+		for( int j = 1; j <= j3; j++) {
+			System.out.printf("■");
+		}
+		int j3백만원 = july3/1000000;
+		int j3십만원 = (july3%1000000)/100000;
+		int j3만원 = (july3%100000)/10000;
+		System.out.print(" "+j3백만원+j3십만원+j3만원+"만원\n"); 
+		// -------------------------------------------------------------------
+		int j4 = july4/1000000;
+		System.out.print(" 4주차 : "); 
+		for( int j = 1; j <= j4; j++) {
+			System.out.printf("■");
+		}
+		int j4백만원 = july4/1000000;
+		int j4십만원 = (july4%1000000)/100000;
+		int j4만원 = (july4%100000)/10000;
+		System.out.print(" "+j4백만원+j4십만원+j4만원+"만원\n"); 
+		
+		
+		
+		
+//		for ( int i = 1; i<=4; i++) {
+//			System.out.printf("%d주차 :", i);
+//			int j1 = july1/1000000;
+//			for( int j = 1; j <= j1; j++) {
+//				System.out.printf("■");
+//			}
+//		}
 		
 
 			
 		
 		//모르겠음 못 풀었음
-		
-		
 		
 //		System.out.println("1주차 : ■■ 353만원");
 //		System.out.println("2주차 : ■■ 353만원");
