@@ -44,8 +44,8 @@ public class Ex01_연산자 {
 	    String result2 = ( x >= 10 ) ? "1차 합격" : ( y >= 10 ) ? "2차 합격" : "최종 탈락";
 	      
 	    // 6. 증감연산자
-	    System.out.println(" ++x : " + (++x)); // 해당 명령어에서 x 1증가 선위증가 [ 출력보다 ]
-	    System.out.println(" x-- : " + (x++)); // 해당 명령어에서 x 1증가 후위증가 [ 출력보다 ]
+	    System.out.println(" ++x : " + (++x)); // 해당 명령어에서 x 1증가 선위증가
+	    System.out.println(" x-- : " + (x++)); // 해당 명령어에서 x 1증가 후위증가
 	      
 	    // 7. 연결연산자
 	         // + 연결연산자
