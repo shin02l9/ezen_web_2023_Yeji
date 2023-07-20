@@ -1,7 +1,7 @@
 package 과제.과제05;
 
 import java.util.Scanner;
-public class 과제5_1_키오스크기능추가 { // class s
+public class 과제5_1_키오스크조건변경 { // class s
 
 	public static void main(String[] args) {
 		
