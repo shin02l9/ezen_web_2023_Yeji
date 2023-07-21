@@ -104,5 +104,9 @@ public class Ex01_파일처리 { // class s
 		// String 관광지파일정보 = new String(관광지파일바이트배열 , "UTF-8");	// 문자열 변환시 한글이 존재하면 UTF-8 방식으로 변환 
 		String 관광지파일정보 = new String(관광지파일바이트배열 , "EUC-KR");		// 문자열 변환시 한글이 존재하면 EUC-KR 방식으로 변환 
 		System.out.println( 관광지파일정보 );	// 한글 인코딩(번역) 방법 대표적으로 2가지 : UTF-8 , EUC-KR
+	
+		System.out.println( 관광지파일정보.split("\n")[0]);
+		System.out.println( 관광지파일정보.split("\n")[1].split("\n")[1]);
+	
 	}// main e
 }// class e
