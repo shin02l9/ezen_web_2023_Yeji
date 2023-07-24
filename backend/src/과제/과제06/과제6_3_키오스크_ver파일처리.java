@@ -6,7 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
-public class 과제6_3_키오스크파일처리 { // class s
+public class 과제6_3_키오스크_ver파일처리 { // class s
 
 	public static void main(String[] args) throws IOException {
 		

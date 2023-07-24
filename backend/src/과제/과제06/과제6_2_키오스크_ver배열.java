@@ -2,7 +2,7 @@ package 과제.과제06;
 
 import java.util.Arrays;
 import java.util.Scanner;
-public class 과제6_2_키오스크배열적용 { // class s
+public class 과제6_2_키오스크_ver배열 { // class s
 
 	public static void main(String[] args) {
 		

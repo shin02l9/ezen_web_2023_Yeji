@@ -3,7 +3,7 @@ package 과제.과제04.Level3;
 
 import java.util.Scanner;
 
-public class 과제4_3_키오스크 {
+public class 과제4_3_키오스크_ver변수 {
 	
 	public static void main(String[] args) {
 		
