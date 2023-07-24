@@ -1,6 +1,5 @@
 package 복습.day01;
 
-import java.security.DrbgParameters.NextBytes;
 import java.util.Scanner;
 
 public class part_01 { // class s
@@ -12,7 +11,7 @@ public class part_01 { // class s
 		int 총가격 = 0;
 	    Scanner scanner = new Scanner( System.in );
 	    
-		while( true ) {
+		while( true ) { // while s
 			System.out.println("----------------------- 메뉴 -----------------------");
 			System.out.println("1. 콜라(300) | 2. 환타(200) | 3. 사이다(100) | 4. 결제");
 			System.out.println("---------------------------------------------------");
@@ -61,14 +60,11 @@ public class part_01 { // class s
 					    콜라가격 = 300 ; 환타가격 = 200 ; 사이다가격 = 100 ;
 						총가격 = 0;
 					}
-				}
-			}
-			
-			
-		}
-	    
-	    
-	    
-	    
+				} else if ( ch2 == 2 ) {
+					System.out.println("주문이 취소되었습니다.");
+				} else { System.out.println("올바른 메뉴를 선택해주세요."); }
+			} else { System.out.println("올바른 메뉴를 선택해주세요."); }
+		}// while e
+    
 	}// main e
 } // class e
