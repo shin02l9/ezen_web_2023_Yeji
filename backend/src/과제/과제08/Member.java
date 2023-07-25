@@ -12,6 +12,7 @@ public class Member { // class s
 	int age;
 	
 	//2. 생성자
+		// 기본생성자 자동으로 생성된다.
 	
 	//3. 메소드
 
