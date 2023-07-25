@@ -93,13 +93,13 @@ public class part_02 {//class s
 						환타장바구니 = 0;
 						사이다장바구니 = 0;
 					} else { System.out.println("결제금액이 부족해 주문이 취소됩니다.");  
-							총가격 = 0;
-							콜라장바구니 = 0;
-							환타장바구니 = 0;
-							사이다장바구니 = 0;
-							콜라재고 =  Integer.parseInt(콜라.split(",")[0]); 
-							환타재고 =  Integer.parseInt(환타.split(",")[0]);
-							사이다재고 =  Integer.parseInt(사이다.split(",")[0]); 
+						총가격 = 0;
+						콜라장바구니 = 0;
+						환타장바구니 = 0;
+						사이다장바구니 = 0;
+						콜라재고 =  Integer.parseInt(콜라.split(",")[0]); 
+						환타재고 =  Integer.parseInt(환타.split(",")[0]);
+						사이다재고 =  Integer.parseInt(사이다.split(",")[0]); 
 					}
 				} else if( ch2 == 2 ){
 					System.out.println("주문이 취소됩니다."); 
