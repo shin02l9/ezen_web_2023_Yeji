@@ -53,7 +53,7 @@ public class part_03 {
 			} else if ( ch == 4 ) {
 				System.out.println(" ----------- 장바구니 ----------- ");
 				System.out.println("  ");
-				System.out.println("  "); // 모르겠어영..
+				System.out.println("  "); // 모르겠어요.. 다시 할게요
 				
 				System.out.println( "결제하실 금액은 "+총가격+"원 입니다.");
 				System.out.println("1. 결제 | 2. 취소  >> "); int ch2 = scanner.nextInt();
