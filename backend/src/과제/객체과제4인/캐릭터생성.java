@@ -37,7 +37,6 @@ public class 캐릭터생성 { //class s
 	}	
 	
 	
-	
 	//3. 메소드
 	void 사냥 ( String 몬스터 ) { 
 		if(몬스터.equals("다람쥐")) {
@@ -47,17 +46,11 @@ public class 캐릭터생성 { //class s
 				}
 		}
 
-
-
 	@Override
 	public String toString() {
 		return"닉네임 : "+닉네임+"\n직업 : "+직업+"\n성별 : "+성별+"\n생존여부 : "+생존여부
-				+"\n레벨 : "+레벨+"\n경험치 : "+경험치+"\n힘 : "+힘+"\n지력 : "+지력+"\nhp : "+hp+"\nmp : "+mp+"\nmax레벨 : "
-				+max레벨;
+				+"\n레벨 : "+레벨+"\n경험치 : "+경험치+"\n힘 : "+힘+"\n지력 : "+지력
+				+"\nhp : "+hp+"\nmp : "+mp+"\nmax레벨 : "+max레벨;
 	}
-	
-	
-	
-	
 	
 }//class e

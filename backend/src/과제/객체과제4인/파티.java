@@ -20,7 +20,5 @@ public class 파티 {
 		}if(count==0){System.out.println("파티원모집이 완료되었습니다");}
 	}
 	//3. 메소드
-	
-	
-	
+
 }
