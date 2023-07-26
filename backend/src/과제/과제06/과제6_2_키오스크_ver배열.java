@@ -56,14 +56,12 @@ public class 과제6_2_키오스크_ver배열 { // class s
 				} else if ( ch == 4 ) {
 					System.out.println(Arrays.toString(재고관리)); 
 					System.out.printf( "%10s %10s \n", "수량","가격");
-					
-					
+
 					for( int i =0; i< 재고관리.length; i++) {
 						int basket = Integer.parseInt( 재고관리[i].split(",")[1] );
 						int price = Integer.parseInt( 재고관리[i].split(",")[2] );
 						String name = 재고관리[i].split(",")[3];
 						if( basket > 0 ) {
-							System.out.printf( "%10s %10s %10s \n ", name, basket, basket*price);
 							System.out.printf( "%10s %10s %10s \n ", name, basket, basket*price);
 						}
 					}
