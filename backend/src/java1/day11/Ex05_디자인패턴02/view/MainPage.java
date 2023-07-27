@@ -60,10 +60,29 @@ public class MainPage { // MainPage s
 	}// loginPage e
 	
 	void findIdPage() { // findIdPage s ----------------------------------------------------------------------------
+		//1. 입력받기 -> 각 2개의 값 입력 받기 -> 기존의 데이터와 일치하는지 비교하기 [ R ]
+		System.out.print("\n\n--------- 아이디찾기 ---------\n"); 
+		System.out.print("이름 : "); 		String name = sc.next(); 
+		System.out.print("전화번호 : ");		String phone = sc.next(); 
+		// MemberController에게 전달해야한다.
+		// MemberController클래스내에 메소드를 호출
+		boolean result = MemberController.getInstance().findIdLogic(name, phone);
+		if(result) { System.out.print("안내)) 회원님의 아이디는"+"입니다."); }
+		else { System.out.print("안내)) 일치하는 회원정보가 없습니다."); }
 		
 	} // findIdPage e
 	
 	void findPwPage() { // findPwPage s ----------------------------------------------------------------------------
+		//1. 입력받기 -> 각 2개의 값 입력 받기 -> 기존의 데이터와 일치하는지 비교하기 [ R ]
+		System.out.print("\n\n--------- 비밀번호찾기 ---------\n"); 
+		System.out.print("아이디 : "); 		String id = sc.next(); 
+		System.out.print("전화번호 : ");		String phone = sc.next(); 
+		// MemberController에게 전달해야한다.
+		// MemberController클래스내에 메소드를 호출
+		boolean result = MemberController.getInstance().findPwLogic(id, phone);
+		if(result) { System.out.print("안내)) 회원님의 비밀번호는"+"입니다."); }
+		else { System.out.print("안내)) 일치하는 회원정보가 없습니다."); }
+		
 		
 	} // findPwPage e
 	

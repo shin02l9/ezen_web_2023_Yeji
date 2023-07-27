@@ -42,13 +42,31 @@ public class MemberController { // MemberController s
 	}// loginLogic e
 	
 	//------------------------------------------------------------------------------------------------
-	void findIdLogic() { // findIdLogic s
-		
+	public boolean findIdLogic( String name, String phone ) { // findIdLogic s
+	// 그냥 비교할거라서 객체를 생성할 필요는 없음 !
+		//2. for문 돌려서 배열내에서 찾기
+		for ( int i = 0 ; i <MemberDao.memberList.length; i++) { // for s
+			if(MemberDao.memberList[i] != null && // 비어있는 곳은 비교 x
+					MemberDao.memberList[i].getName().equals(name) &&
+					MemberDao.memberList[i].getPhone().equals(phone) ) {
+				return true;
+			}
+		}  // for e
+		return false;
 	}// findIdLogic e
 	
 	//------------------------------------------------------------------------------------------------
-	void findPwLogic() { // findPwLogic s
-		
+	public boolean findPwLogic( String id, String phone ) { // findPwLogic s
+		// 그냥 비교할거라서 객체를 생성할 필요는 없음 !
+		//2. for문 돌려서 배열내에서 찾기
+		for ( int i = 0 ; i <MemberDao.memberList.length; i++) { // for s
+			if(MemberDao.memberList[i] != null && // 비어있는 곳은 비교 x
+					MemberDao.memberList[i].getId().equals(id) &&
+					MemberDao.memberList[i].getPhone().equals(phone) ) {
+				return true;
+			}
+		}  // for e
+		return false;
 	} // findPwLogic e
 	
 } // MemberController e
