@@ -1,6 +1,6 @@
 package java1.day06;
 
-import java.util.Arrays;
+import java.util.Arrays; 
 
 public class Ex01_배열 { //class s
 	public static void main(String[] args) { // main s

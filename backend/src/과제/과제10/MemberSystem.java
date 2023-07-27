@@ -1,9 +1,12 @@
 package 과제.과제10;
 
 // 목적 : 실행과 동작(컨트롤)의 설계 -> 추후에는 동작 설계도 데이터 설계처럼 따로 다른 클래스에 하는것을 권장
-import java.util.Arrays;
+						// 현재 클래스에서 같은 패키지에 있는 클래스 호출은 생략
+						// java.lang 기본 패키지 이므로 생략 (String, System 등)
+import java.util.Arrays; // 현재 클래스에서 다른 패키지에 있는 클래스 호출 = import
 import java.util.Scanner;
-
+// vs
+//import java.util.*;  // 해당 패키지내 모든 클래스 다 호출함
 
 public class MemberSystem { // class s
 

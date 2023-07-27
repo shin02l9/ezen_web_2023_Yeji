@@ -52,5 +52,9 @@ public class Member { // class s
 					
 		static  : 정적 멤버 : 프로그램 시작 할당 되고 프로그램이 종료될대 [전역/공통/공용/공유]
 					- 클래스를 통해 사용한다. 
-	
+		final	: 수정불가 : 초기화할때 대입만 가능하고 수정 불가능
+		static final : 상수 : 프로그램내에서 1개만 저장 (static) 수정불가능 (final) 합친 키워드
+		
+		
+		
 */
