@@ -18,7 +18,7 @@ public class MemberSystem { // class s
 	
 	public static void main(String[] args) { // main s
 			
-			while(true) { // main s
+			while(true) { // while s
 				// * 확인용
 				//System.out.println( Arrays.toString(memberList)); // 주소값이 출력된다.
 				
@@ -53,10 +53,10 @@ public class MemberSystem { // class s
 				//Member m = new Member();
 				//m.id = id; m.pw = pw; m.name = name; m.phone = phone; m.age = age;
 				// 2안
-				Member m2 = new Member(id, pw, name, phone, age); // 힙주소가 저장되는것
+				Member m = new Member(id, pw, name, phone, age); // 힙주소가 저장되는것
 			//3. 회원의 1개의 객체를 배열에 저장
 			for ( int i = 0; i < memberList.length; i++) { // for s
-				if ( memberList[i] == null ) { memberList[i] = m2; System.out.println("안내)) 회원가입 성공"); break;}
+				if ( memberList[i] == null ) { memberList[i] = m; System.out.println("안내)) 회원가입 성공"); break;}
 			}// for e
 			
 			
