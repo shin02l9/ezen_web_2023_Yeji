@@ -55,8 +55,8 @@ public class MainPage { // MainPage s
 		// MemberController에게 전달해야한다.
 		// MemberController클래스내에 메소드를 호출
 		boolean result = MemberController.getInstance().loginLogic(id, pw);
-		if(result) { System.out.print("안내)) 회원가입 성공"); }
-		else { System.out.print("안내)) 회원가입 실패"); }
+		if(result) { System.out.print("안내)) 로그인 성공"); }
+		else { System.out.print("안내)) 로그인 실패"); }
 	}// loginPage e
 	
 	void findIdPage() { // findIdPage s ----------------------------------------------------------------------------
@@ -66,8 +66,8 @@ public class MainPage { // MainPage s
 		System.out.print("전화번호 : ");		String phone = sc.next(); 
 		// MemberController에게 전달해야한다.
 		// MemberController클래스내에 메소드를 호출
-		boolean result = MemberController.getInstance().findIdLogic(name, phone);
-		if(result) { System.out.print("안내)) 회원님의 아이디는"+"입니다."); }
+		String result = MemberController.getInstance().findIdLogic(name, phone);
+		if(result != null) { System.out.print("안내)) 회원님의 아이디는 "+result+"입니다."); }
 		else { System.out.print("안내)) 일치하는 회원정보가 없습니다."); }
 		
 	} // findIdPage e
@@ -79,8 +79,8 @@ public class MainPage { // MainPage s
 		System.out.print("전화번호 : ");		String phone = sc.next(); 
 		// MemberController에게 전달해야한다.
 		// MemberController클래스내에 메소드를 호출
-		boolean result = MemberController.getInstance().findPwLogic(id, phone);
-		if(result) { System.out.print("안내)) 회원님의 비밀번호는"+"입니다."); }
+		String result = MemberController.getInstance().findPwLogic(id, phone);
+		if(result != null) { System.out.print("안내)) 회원님의 비밀번호는 "+result+"입니다."); }
 		else { System.out.print("안내)) 일치하는 회원정보가 없습니다."); }
 		
 		
