@@ -21,7 +21,7 @@ public class BoardDTO {
 			this.view = view;
 		}
 		//3. (선택) 게시물 등록시 사용되는 생성자
-		public BoardDTO(String content, String writer) {
+		public BoardDTO(String writer, String content) {
 			super();
 			this.content = content;
 			this.writer = writer;

@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import java1.day13.Ex02.controller.BoardController;
 import java1.day13.Ex02.model.DAO.BoardDAO;
+import java1.day13.Ex02.model.DTO.BoardDTO;
 
 public class MainPage { // MainPage s
 	// 싱글톤(공유) O !
@@ -38,36 +39,58 @@ public class MainPage { // MainPage s
 	
 	
 	
-	// 글 등록 페이지 입출력 함수
+	// 글 등록 페이지 입출력 함수 ----------------------------------------------
 	public void writerView() {
 		//1. 작성자와 내용을 입력 받아서 변수에 저장하기
-		System.out.print("방문록 : "); String writer = scanner.nextLine(); 
+		System.out.print("작성자 : "); String writer = scanner.next(); 
 		scanner.nextLine(); // .nextLine(); 앞에 nextInt()가 잇어서 오류가 발생하는 것을 방지함
 		// nextLine 함수 앞뒤로는 다른 next가 있을때 하나의 입력으로 인식이 된다. 그래서 오류처럼 보임. 그럴떄는 의미 없는 nextLine를 한번 더 적어야함.
-		System.out.print("작성자 : "); String content = scanner.next();
+		System.out.print("방문록 : "); String content = scanner.nextLine();
 		//2. 입력받은 변수를 controller에게 전달해야함 !
 		// 현재 모두 JAVA 에서 이루어지고 있으니 메소드 이용한다.
 		// 전달 보내기 == 매개변수 | 전달받기 == 리턴
 		// view에서 controller를 호출할거임 ! 
-		boolean result = BoardController.getInstance().writerLogic( content, writer ); // 문자열2개를 매개변수로 전달하고 boolean 값 하나 리턴 받음
+		boolean result = BoardController.getInstance().writerLogic( writer, content); // 문자열2개를 매개변수로 전달하고 boolean 값 하나 리턴 받음
 		//3. controller에게 전달받은 반환값 제어하기
 		if( result ) { System.out.println("안내)) 글 등록 성공");}
 		else {System.out.println("안내)) 글 등록 실패");}
 	}
-	// 글 출력 페이지 입출력 함수
+	// 글 출력 페이지 입출력 함수 ----------------------------------------------
 	public void printView() {
-		// view에서 controller를 호출할거임 ! 
-		BoardController.getInstance().printLogic();
+		// 1. 보고자하는 게시물의 인덱스 입력받아서 저장
+		System.out.print("출력할 방문록의 인덱스 : "); int index = scanner.nextInt();
+		// 2. view에서 컨트롤에게 입력받은 인덱스 전달보내고 선택한 인덱스의 게시물1개 리턴 받음
+		BoardDTO boardDto= BoardController.getInstance().printLogic(index);
+		BoardDTO result = BoardController.getInstance().printLogic( index );
+		// 3. 전달받은 결과를 출력
+		System.out.println("안내] 검색한 방문록 정보 ");
+		System.out.println( 	"[작성자] : " + result.getWriter() + 
+								" [내용] : "+result.getContent() );	
 	}
-	// 글 수정 페이지 입출력 함수
+	// 글 수정 페이지 입출력 함수 ----------------------------------------------
 	public void updateView() {
-		// view에서 controller를 호출할거임 ! 
-		BoardController.getInstance().updateLogic();
+		//1. 입출력
+		System.out.print("수정할 방문록의 인덱스 : "); int index = scanner.nextInt();
+		scanner.nextLine();
+		System.out.print("수정할 내용 : ");		  String content = scanner.next();
+		System.out.print("수정할 작성자 : "); 		  String writer = scanner.next();
+		//2. 입력받은 변수를 컨트롤에게 전달 보내고 결과를 리턴
+		boolean result = BoardController.getInstance().updateLogic(index, content, writer);
+		//3. 결과에 따른 제어
+		if( result ) { System.out.println("안내] 수정 성공 ");}
+		else { System.out.println("안내] 수정 실패 ");}
 	}
-	// 글 삭제 입출력 함수
+	// 글 삭제 입출력 함수 ----------------------------------------------
 	public void deleteView() {
-		// view에서 controller를 호출할거임 ! 
-		BoardController.getInstance().deleteLogic();
+		
+		// 1. 삭제하는 게시물의 인덱스 입력받아서 저장
+		System.out.print("삭제할 방문록의 인덱스 : "); int index = scanner.nextInt();
+		// 2. view에서 컨트롤에게 입력받은 인덱스 전달보내고 삭제결과 여부 리턴 받음
+		boolean result = BoardController.getInstance().deleteLogic( index );
+		// 3. 리턴 결과에 따른 제어
+		if( result ) { System.out.println("안내] 삭제 성공 ");}
+		else { System.out.println("안내] 삭제 실패 ");}
+		
 	}
 	
 	
