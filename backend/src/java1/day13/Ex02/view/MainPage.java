@@ -3,6 +3,7 @@ package java1.day13.Ex02.view;
 import java.util.Scanner;
 
 import java1.day13.Ex02.controller.BoardController;
+import java1.day13.Ex02.model.DAO.BoardDAO;
 
 public class MainPage { // MainPage s
 	// 싱글톤(공유) O !
@@ -24,6 +25,7 @@ public class MainPage { // MainPage s
 	// 메인페이지 입출력 함수
 	public void mainView() { // mainView s
 		while(true) { // while s
+			System.out.println("안내)) " + BoardDAO.getInstance().boardDTOList);
 			System.out.println("\n\n >>>>>>>>>>>>>> 방문록 글쓰기 <<<<<<<<<<<<<<");
 			System.out.print("1. 글등록 | 2. 글보기 | 3. 글수정 | 4. 글삭제 \n >>선택");
 			int ch = scanner.nextInt();

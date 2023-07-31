@@ -22,7 +22,7 @@ public class BoardController {// BoardController s
 		BoardDTO boardDTO = new BoardDTO(content,writer);
 		//2. 객체를 리스트에 저장
 		BoardDAO.getInstance().boardDTOList.add(boardDTO);
-		return false;
+		return true;
 	}
 	// 글 출력 처리 기능 함수 [R]
 	public void printLogic() {
