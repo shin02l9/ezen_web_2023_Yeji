@@ -1,5 +1,9 @@
 package java1.day13.Ex02.model.DAO;
 
+import java.util.ArrayList;
+
+import java1.day13.Ex02.model.DTO.BoardDTO;
+
 public class BoardDAO {
 	// 싱글톤(공유) O !
 	// 게시물 마다가 아닌 모든~ 게시물에 동일한 기능을 수행한다 ! 그래서 싱글톤을 사용함
@@ -10,5 +14,42 @@ public class BoardDAO {
 	private BoardDAO() {}
 	
 	// ---------------------------------------------------------------
+	// 게시물 여러개 저장하는 곳
+		//1. 배열
+	//public BoardDTO[] boardDTOArray = new BoardDTO[100];
+		//2. 리스트 : 배열의 라이브러리 ! 배열을 쉽게 사용할 수 있도록 *다양한 함수 제공 
+	public ArrayList<BoardDTO> boardDTOList = new ArrayList<>();
+		// ArrayList : 배열처럼 사용 가능한 클래스 객체 선언
+		// <클래스>	 : 클래스 안에 여러개 객체를 저장할 객체의 타입
+	
 
+	
 }
+/*
+
+	- 배열 : 
+	boardDTOArray =  [ boardDTO ] [ boardDTO ] [ boardDTO ]
+	  	   				  1   			2   		 3   
+	  
+	  - 베열 선언하는 방법
+	  		타입명[]배열변수명 = new 타입명[길이]
+	  - 배열에 값 저장하는 방법
+	  	for( int i = 0; 배열명.length; i++ ){
+		  	if( 배열명[i] == null ){ 
+		  		배열명[i] = 객체명;
+		  	}
+	  	}
+	  
+	- 리스트 : 
+		boardDTOList = 
+		-----------------
+		|	BoardDTO	|
+		|	BoardDTO	|
+		|	BoardDTO	|
+		-----------------
+		
+		- 리스트 선언하는 방법
+			ArrayList<타입명> 리스트객체변수명 = new ArrayList<>();
+		- 리스트객체명.add(객체명)  : 해당 객체를 리스트에 저장
+
+*/
