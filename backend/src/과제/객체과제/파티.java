@@ -1,4 +1,4 @@
-package 과제.객체과제4인;
+package 과제.객체과제;
 
 // 목적 : 캐릭터간 상호작용 설계도 (파티)
 public class 파티 {

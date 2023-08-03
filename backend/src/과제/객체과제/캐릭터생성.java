@@ -1,4 +1,4 @@
-package 과제.객체과제4인;
+package 과제.객체과제;
 
 import java.util.Arrays;
 
