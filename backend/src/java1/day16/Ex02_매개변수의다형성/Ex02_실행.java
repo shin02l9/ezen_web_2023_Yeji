@@ -20,10 +20,7 @@ public class Ex02_실행 {
 		Texi texi = new Texi(); 
 			System.out.println("-----------> 3. 택시대입");
 			//driver.driver('안녕', texi);	// 매개변수의 타입 불일치 불가능
-			driver.driver(0, texi); 
-			
-			
-			
-	// 
+			driver.driver(0, texi); 		// 매개변수의 타입 불일치 불가능 [ * 단 부모-자식 관계 일때 가능 ]
+
 	}
 }

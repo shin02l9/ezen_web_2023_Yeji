@@ -2,6 +2,7 @@ package java1.day16.Ex01_필드의다형성;
 
 public class Ex01_실행 {
 	public static void main(String[] args) {
+		
 		//1. Car 객체 생성
 		Car myCar = new Car(); // tire필드에 객체가 없는 상태 
 		System.out.println( myCar.tire );
