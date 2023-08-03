@@ -109,6 +109,36 @@
             6. 논리
 				boolean[1]		: 0 or 1
 */
+/*
+ 		<제약조건>
+ 
+		 1. PK[ 형태 : primary key(PK필드명) ]
+		 	- 기본키[식별키] : 식별가능한 필드, 중복x, nullx ,공백x, 테이블당 1개 이상 권장
+		 		예) 학번, 사번, 주민등록번호, ISBN, 상호코드 등등
+		 2. FK[ 형태 : foreign key( FK필드명 ) references subwayorder( PK필드명 ) ]
+		  	- 외래키[참조키] : 다른테이블에 PK필드를 참조하는 필드
+ 				예) 점수테이블(접수자), 출결(출근시 한번), 각종서류(주민등록번호), 대여(ISBN), 재고관리(상호코드) 등등
+
+			# PK와 FK 필드 선정 
+				PK : 데이터의 중복이 없는 식별 가능한 필드 [ 후보 : mno, mid ]
+					- 번호 형태의 PK 권장하는 이유 : 문자열 데이터 필드보다 메모리 효율적으로 사용가능.
+					테이블1개당 PK필드 1개 이상 권장 O
+					
+				FK : 다른 테이블에 있는 PK필드와 연결
+					1. FK필드명은 PK필드명과 동일하게 사용 
+					2. [필수] FK필드의 타입은 PK필드의 타입과 동일
+					3. [참조하는 테이블]에서 FK필드 
+
+		3. auto_increment	: insert(삽입) 할때 해당 필드를 생략하면 자동번호 부여 [ 자동으로 1씩 증가 ]
+			* auto_increment를 사용 하려면 무조건 PK필드에서 사용 가능
+			
+		4. not null 		: insert(삽입) 할때 해당 필드의 공백 방지
+		5. unique			: insert(삽입) 할때 해당 필드의 값 중복 방지
+
+
+
+
+*/
 
 		#예1 : 데이터베이스(여러개의 테이블(표)들을 저장 할수 있는 공간) 생성
 			create database sqldb1;
@@ -295,29 +325,16 @@
 			);
 
 
-/*
- 
-		 * PK 	: 식별키
-		 * FK	: 참조키 (?)
- 
-
-	PK와 FK 필드 선정 
-		PK : 데이터의 중복이 없는 식별 가능한 필드 [ 후보 : mno, mid ]
-			- 번호 형태의 PK 권장하는 이유 : 문자열 데이터 필드보다 메모리 효율적으로 사용가능.
-			테이블1개당 PK필드 1개 이상 권장 O
-			
-		FK : 다른 테이블에 있는 PK필드와 연결
-			1. FK필드명은 PK필드명과 동일하게 사용 
-			2. [필수] FK필드의 타입은 PK필드의 타입과 동일
-			3. [참조하는 테이블]에서 FK필드 
-
-
-
-
-
-*/
             
-            
+            drop database if exists sqldb3web;
+		    create database sqldb3web;
+		    use sqldb3web;
+		    drop database if exists member1;
+		    create table member1(
+				mno int auto_increment,
+		        primary key(mno)
+		    );
+		    select * from member1;
             
             
             
