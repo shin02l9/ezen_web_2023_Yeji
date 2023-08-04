@@ -1,0 +1,41 @@
+package 과제.과제11.controller;
+
+import 과제.과제11.model.dao.MemberDao;
+import 과제.과제11.model.dto.MemberDto;
+
+public class MemberController {
+	
+	//싱글톤 
+	private static MemberController memberController = new MemberController();
+	public static MemberController getInstance() {return memberController;}
+	public MemberController() {}
+	
+	
+	//2. 회원가입
+	public boolean signupLogic(String id, String pw, String name, String phone) {
+		System.out.println("회원가입 도착");
+		System.out.println(id + pw + name + phone);
+		// 유효성 검사 했다 치고
+		//1. 객체화하기 : 5개 변수들이 이동하면 매개변수의 코드가 길어져서 한곳에 담아서 이동할 것 ! 
+		MemberDto member = new MemberDto(0, id, pw, name, phone);
+		//2. Dao에게 전달하고 결과 받기
+		boolean result = MemberDao.getInstance().signupSQL( member );
+		
+		//3. 결과를 view 에 전달
+		return result;
+		
+	}
+	
+	//3. 로그인
+	public boolean loginLogic(String id, String pw) {
+		System.out.println("로그인 도착");
+		System.out.println(id + pw );
+		// 유효성 검사 했다 치고
+		//1. 매개변수가 2개라서 객체화 굳이 안하고 진행 !
+		//2. 바로 Dao에게 전달하기
+		boolean result = MemberDao.getInstance().loginSQL( id, pw );
+
+		return result;
+		
+	}
+}
