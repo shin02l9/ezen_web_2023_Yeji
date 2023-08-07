@@ -19,22 +19,17 @@ public class MainPage {
 			System.out.println("--------------- 회원제 시스템 ---------------");
 			System.out.println("1. 가입 | 2. 로그인 | 3. ID 찾기 | 4. PW 찾기");
 			System.out.println("------------------------------------------");
-			try{
 			System.out.print(" 선택 >> "); int ch = sc.nextInt();
 			if( ch == 1 ) { joinView(); }
-			if( ch == 2 ) { loingView(); }
+			if( ch == 2 ) { loginView(); }
 			if( ch == 3 ) { FindIdView(); }
-			if( ch == 4 ) { FindPasswordView(); }
-			else { System.out.println(" 없는 메뉴입니다. "); }
-			} catch ( Exception e ){ 
-				System.out.println(" 잘못된 입력입니다. ");
-				sc.next();
-			}
+			if( ch == 4 ) { FindPasswordView(); }	
 		}	
 	}
 	// 회원가입 ------------------------------------------------------------------------
 	public void joinView() {
 		// 입력받고 저장하기
+		System.out.println("--------------- 회원가입 ---------------");
 		System.out.print("아이디 : ");	String id = sc.next();
 		System.out.print("비밀번호 : ");	String pw = sc.next();
 		System.out.print("이름 : ");		String name = sc.next();
@@ -47,19 +42,32 @@ public class MainPage {
 		
 	}
 	// 로그인 ------------------------------------------------------------------------
-	public void loingView() {
-		MemberController.getInstance().loingLogic();
+	public void loginView() {
+		System.out.println("--------------- 로그인 ---------------");
+		System.out.print("아이디 : ");	String id = sc.next();
+		System.out.print("비밀번호 : ");	String pw = sc.next();
+		boolean b =  MemberController.getInstance().loginLogic(id, pw);
+		if( b ) { System.out.println(" 안내)) 로그인 완료 ");}
+		else { System.out.println(" 안내)) 로그인 실패 ");}
 		
 	}
 	// 아이디 찾기 ------------------------------------------------------------------------
 	public void FindIdView() {
-		MemberController.getInstance().FindIdLogic();
-		
+		System.out.println("--------------- 아이디 찾기 ---------------");
+		System.out.print("이름 : ");	String name = sc.next();
+		System.out.print("전화번호 : ");	String phone = sc.next();
+		String b =  MemberController.getInstance().FindIdLogic(name, phone);
+		if( b != null ) { System.out.println(" 안내)) 회원님의 아이디는 "+ b +"입니다.");}
+		else { System.out.println(" 안내)) 알맞은 정보가 아닙니다. ");}
 	}
 	// 비밀번호 찾기 ------------------------------------------------------------------------
 	public void FindPasswordView() {
-		MemberController.getInstance().FindPasswordLogic();
-		
+		System.out.println("--------------- 비밀번호 찾기 ---------------");
+		System.out.print("아이디 : ");	String id = sc.next();
+		System.out.print("전화번호 : ");	String phone = sc.next();
+		String b =  MemberController.getInstance().FindPasswordLogic(id, phone);
+		if( b != null ) { System.out.println(" 안내)) 회원님의 비밀번호는 "+ b +"입니다.");}
+		else { System.out.println(" 안내)) 알맞은 정보가 아닙니다. ");}
 	}
 
 }

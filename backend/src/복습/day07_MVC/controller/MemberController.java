@@ -18,24 +18,40 @@ public class MemberController {
 		for ( int i = 0; i< MemberDao.memberList.length; i++ ) {
 			if( MemberDao.memberList[i] == null ) {
 				MemberDao.memberList[i] = m;
-				break;
+				return true;
 			}
-		}
-		return true;
+		} return false;
 	}
 	// 로그인 ------------------------------------------------------------------------
-	public void loingLogic() {
-		
+	public boolean loginLogic(String id, String pw) {
+		for ( int i = 0; i< MemberDao.memberList.length; i++ ) {
+			
+		// MemberDao.memberList[i].getPw() == pw 이렇게 비교하는건 주소값을 비교해서 오류뜸
+			if( MemberDao.memberList[i] != null &&
+				MemberDao.memberList[i].getId().equals(id)&&
+				MemberDao.memberList[i].getPw().equals(pw) ) {
+				return true;
+			} 
+		} return false;
 	}
 	// 아이디 찾기 ------------------------------------------------------------------------
-	public void FindIdLogic() {
-		
+	public String FindIdLogic(String name, String phone) {
+		for ( int i = 0; i< MemberDao.memberList.length; i++ ) {
+			if( MemberDao.memberList[i] != null &&
+				MemberDao.memberList[i].getName().equals(name) &&
+				MemberDao.memberList[i].getPhone().equals(phone) ) {
+				return MemberDao.memberList[i].getId();
+			}
+		} return "";
 	}
 	// 비밀번호 찾기 ------------------------------------------------------------------------
-	public void FindPasswordLogic() {
-		
+	public String FindPasswordLogic(String id, String phone) {
+		for ( int i = 0; i< MemberDao.memberList.length; i++ ) {
+			if( MemberDao.memberList[i] != null &&
+				MemberDao.memberList[i].getId().equals(id) &&
+				MemberDao.memberList[i].getPhone().equals(phone) ) {
+				return MemberDao.memberList[i].getPw();
+			}
+		} return "";
 	}
-	
-	
-
 }
