@@ -1,13 +1,21 @@
 package 복습.day07_MVC;
 
+import 복습.day07_MVC.view.MainPage;
+
 // 실행 (main 함수 작성)
 public class AppStart {
+	
+	public static void main(String[] args) {
+		
+		// 메인 페이지에 있는 출력 함수 호출
+		MainPage.getInstance().mainPageView();
+	}
 	
 	/* 
 		작업순서
 			1. dto 클래스에 저장할 값들 선언한 후 생성자과 접근하기 위한 메소드 만들기 ㅇ
 			2. dao 클래스에 저장될 값들을 객체로 선언한후 담아둘 배열 만들기 ㅇ
-			3. 프론트 작성
+			3. 프론트 작성 및 함수명 짝 맞추기
 			4. 실행 시킬 (main함수) 클래스에 프론트 호출해두고 수시로 중간 점검하기
 			5. 기능 처리 ( 주요 로직 작성하기 )
 	 */
