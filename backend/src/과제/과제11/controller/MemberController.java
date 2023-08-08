@@ -28,22 +28,32 @@ public class MemberController {
 		boolean result = MemberDao.getInstance().signupSQL( member );
 		
 		//3. 결과를 view 에 전달
-		if( result ) return 1;
+		if( result ) {return 1;}
 		else {return 2;}
 	}
 	
+	
 	//3. 로그인 -------------------------------------------------------------------------------
+	// 로그인 상태 저장
+	private int loginSession = 0; // 0:로그인 안한 상태 , 1이상:로그인된 회원의 번호가 들어있다는 뜻 ! 
+	public int getLoginSession() { return loginSession;}
+	// 로그인 처리
 	public boolean loginLogic(String id, String pw) {
 		System.out.println("로그인 도착");
 		System.out.println(id + pw );
-		// 유효성 검사 했다 치고
+		// 유효성 검사
+			
 		//1. 매개변수가 2개라서 객체화 굳이 안하고 진행 !
 		//2. 바로 Dao에게 전달하기
-		boolean result = MemberDao.getInstance().loginSQL( id, pw );
+		int result = MemberDao.getInstance().loginSQL( id, pw );
 
-		return result;
-		
+		// 로그인 성공 했을때 기록하기
+		if( result >= 1 ) { this.loginSession = result; return true; }
+		else { return false; }	
 	}
+	// 로그아웃
+	public void logout() { this.loginSession = 0; }
+	
 	
 	//4. 아이디찾기 -------------------------------------------------------------------------------
 	public String findById(String name, String phone) {

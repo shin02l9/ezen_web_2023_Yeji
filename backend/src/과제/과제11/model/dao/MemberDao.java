@@ -52,7 +52,7 @@ public class MemberDao extends Dao {
 	}
 	
 	//3. 로그인 SQL -------------------------------------------------------------------------------
-	public boolean loginSQL(String id, String pw) {
+	public int loginSQL(String id, String pw) {
 		try {	
 			System.out.println("loginSQLDao 도착");
 			
@@ -67,10 +67,10 @@ public class MemberDao extends Dao {
 			rs = ps.executeQuery();
 			//5. SQL 실행결과 조작 [ rs.next() : 결과중 다음 레코드 객체 호출 ]
 			if( rs.next() ) { // 로그인은 레코드가 1개라서 if 사용함 회원정보 모두 불러올때는 while 문 사용해야함.
-				return true; //
+				return rs.getInt(1); //
 			}
 		} catch ( Exception e ) { System.out.println(e); }
-		return false; 
+		return 0; 
 	}
 	
 	//4. 아이디찾기 SQL -------------------------------------------------------------------------------
