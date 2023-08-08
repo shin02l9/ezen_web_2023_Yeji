@@ -121,7 +121,49 @@ public class MemberDao extends Dao {
 		return null;
 	}
 	
+	//6. 회원정보페이지 SQL -------------------------------------------------------------------------------
+	public MemberDto info( int mno ){
+		try {
+			String sql ="select * from member where mno = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt( 1 , mno ); 
+			rs = ps.executeQuery();
+			if( rs.next() ) { 
+				// 현재 레코드 함수를 DTO로 만들기
+				MemberDto dto = new MemberDto(
+						rs.getInt(1), rs.getString(2),
+						rs.getString(3), rs.getString(4),
+						rs.getString(5) );
+				return dto;
+			} 
+		} catch ( Exception e ) {System.out.println(e);}
+		return null;
+	}
+	
+	//7. 비밀번호 수정 페이지 --------------------------------------------------------
+	public boolean infoUpdate( String newPw, int mno ) {
+		try {
+			String sql = "update member set mpw = ? where mno = ? ";	// 1.SQL작성한다.
+			ps = conn.prepareStatement(sql); // 2.작성한 SQL 조작할 객체
+			ps.setString( 1 , newPw ); ps.setInt( 2, mno); // 3. SQL 조작 
+			int row = ps.executeUpdate(); // 4.SQL실행 [ 업데이트한 레코드 개수 반환 ]
+			if( row == 1 ) return true; // 성공 
+		}catch (Exception e) {System.out.println(e);}
+		return false; // 실패 
 
+	}
+
+	//7. 회원탈퇴 페이지 --------------------------------------------------------
+	public boolean infoDelete( int mno ) {
+		try {
+			String sql = "delete from member where mno = ? ";
+			ps = conn.prepareStatement(sql);
+			ps.setInt( 1 , mno); 
+			int row = ps.executeUpdate();	// [ 삭제한 레코드 개수 반환 ] 
+			if( row == 1 ) return true;
+		}catch (Exception e) {System.out.println(e);}
+		return false; // 실패 
+	}
 }
 
 

@@ -68,6 +68,27 @@ public class MemberController {
 
 		return MemberDao.getInstance().findById( id, phone );
 	}
+	
+	//6. 회원정보페이지 -------------------------------------------------------------------------------
+	public MemberDto info(  ) {
+		// 현재 로그인 된 회원번호 [loginSession]은 view 에서 전달 하지 않고
+		// 현재 [MemberController]클래스에 저장 되어있으므로 바로 전달
+		// 현재 로그인된 회원 번호로 회원 정보 요청하기
+
+		return MemberDao.getInstance().info( this.loginSession );
+	}
+	
+	//7. 비밀번호 수정 페이지 --------------------------------------------------------
+	public boolean infoUpdate( String newPw ) {
+		
+		return MemberDao.getInstance().infoUpdate(newPw, loginSession);
+	}
+	
+	//7. 회원탈퇴 페이지 --------------------------------------------------------
+	public boolean infoDelete() {
+		
+		return MemberController.getInstance().infoDelete();
+	}
 }
 
 
