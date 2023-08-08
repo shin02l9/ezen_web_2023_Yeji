@@ -50,11 +50,13 @@ public class MainPage {
 		System.out.print("전화번호[-포함] : ");	String phone = sc.next();
 		
 		// 입력값을 컨트롤에게 전달하고 결과 받기
-		boolean result =  MemberController.getInstance().signupLogic(id, pw, name, phone);
+		int result =  MemberController.getInstance().signupLogic(id, pw, name, phone);
 		
 		//결과를 출력
-		if( result ) { System.out.println("안내] 회원가입 성공");}
-		else { System.out.println("경고] 회원가입 실패");}
+		if( result == 1 ) { System.out.println("안내] 회원가입 성공");}
+		else if( result == 2 ) { System.out.println("경고] 회원가입 실패 관리자에게 문의");}
+		else if( result == 3 ) { System.out.println("경고] 회원가입 실패 아이디 중복");}
+		else if( result == 4 ){ System.out.println("경고] 회원가입 실패 전화번호 중복");}
 	
 	}
 	

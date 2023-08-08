@@ -11,6 +11,18 @@ public class MemberDao extends Dao {
 		private static MemberDao  memberDao = new MemberDao();
 		public static MemberDao getInstance() {return memberDao;}
 		public MemberDao() {}
+		
+	//1. 회원정보 체크 SQL 
+	public boolean inFoCheck( String 검색할필드명, String 검색할값 ) {
+		try {
+			String sql = "select *	from member where "+검색할필드명+" = ?;";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, 검색할값);
+			rs = ps.executeQuery();
+			if( rs.next() ) { return true; }
+		}catch ( Exception e ) {System.out.println( e );}
+		return false;
+	}
 	
 
 	
