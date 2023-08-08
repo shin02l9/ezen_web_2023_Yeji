@@ -11,7 +11,7 @@ public class MemberController {
 	public MemberController() {}
 	
 	
-	//2. 회원가입
+	//2. 회원가입 -------------------------------------------------------------------------------
 	public boolean signupLogic(String id, String pw, String name, String phone) {
 		System.out.println("회원가입 도착");
 		System.out.println(id + pw + name + phone);
@@ -26,7 +26,7 @@ public class MemberController {
 		
 	}
 	
-	//3. 로그인
+	//3. 로그인 -------------------------------------------------------------------------------
 	public boolean loginLogic(String id, String pw) {
 		System.out.println("로그인 도착");
 		System.out.println(id + pw );
@@ -38,4 +38,40 @@ public class MemberController {
 		return result;
 		
 	}
+	
+	//4. 아이디찾기 -------------------------------------------------------------------------------
+	public String findById(String name, String phone) {
+		System.out.println("입력받은 값 : "+ name +","+ phone);
+		
+		return MemberDao.getInstance().findById( name, phone );
+	}
+	
+	//5. 비밀번호찾기 -------------------------------------------------------------------------------
+	public String findByPw(String id, String phone) {
+		System.out.println("입력받은 값 : "+ id +","+ phone);
+
+		return MemberDao.getInstance().findById( id, phone );
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

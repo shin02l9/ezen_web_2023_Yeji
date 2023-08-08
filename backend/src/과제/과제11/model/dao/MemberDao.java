@@ -14,7 +14,7 @@ public class MemberDao extends Dao {
 	
 
 	
-	//2. 회원가입 SQL
+	//2. 회원가입 SQL -------------------------------------------------------------------------------
 	public boolean signupSQL( MemberDto member ) {
 		try {
 			System.out.println("signupSQLDao 도착");
@@ -39,7 +39,7 @@ public class MemberDao extends Dao {
 		return false;
 	}
 	
-	//3. 로그인 SQL
+	//3. 로그인 SQL -------------------------------------------------------------------------------
 	public boolean loginSQL(String id, String pw) {
 		try {	
 			System.out.println("loginSQLDao 도착");
@@ -61,5 +61,76 @@ public class MemberDao extends Dao {
 		return false; 
 	}
 	
+	//4. 아이디찾기 SQL -------------------------------------------------------------------------------
+	public String findById(String name, String phone) {
+		System.out.println("findById 도착");
+		try {	
+			// 1. SQL 작성한다.
+			String sql = "select mid from member where mname=? and mphone=?;";
+			// 2. 작성된 SQL을 조작할 객체를 연동객체를 통해 반환 한다.
+			conn.prepareStatement(sql);
+			// 3. SQL 조작한다.
+			ps.setString(1, name );
+			ps.setString(2, phone );
+				// select mid from member where mname = 입력된name and mphone = 입력된phone;
+			// 4. 실행
+				// SQL 실행할때 주로 사용하는 
+				// select : executeQuery()
+				// insert,update,delete = executeUpdate()
+			// 5. SQL 결과를 조작할 ResultSet 객체를 executeQuery 메소드부터 반환
+			rs = ps.executeQuery();
+			// 6. SQL 결과 조작 
+				// rs.next() : 검색된 여럿 레코드중 다음레코드 위치 이동 ]
+				// rs.get타입( 검색필드순서번호 )
+					// rs.getString(검색필드순서번호) : 현재 위치한 레코드의 필드값 문자열 호출 
+					// rs.getInt(검색필드순서번호) 		: 현재 위치한 레코드의 필드값 정수 호출 
+			if( rs.next() ) {
+				return rs.getString(1); // ()안에는 검색된 필드의 순서 번호 ! 
+			}
+
+		} catch ( Exception e ) { System.out.println(e); }
+
+		return null;
+	}
+	
+	//5. 비밀번호찾기 SQL -------------------------------------------------------------------------------
+	public String findByPw(String id, String phone) {
+		System.out.println("findByPw 도착");
+		try {
+			String sql = "select mpw from member where mid = ? and mphone = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString( 1 , id ); 
+			ps.setString( 2 , phone );
+			rs = ps.executeQuery();
+			if( rs.next() ) { 
+				return rs.getString( 1 ); 
+			} 
+		}catch (Exception e) { System.out.println(e); }
+		return null;
+	}
+	
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
