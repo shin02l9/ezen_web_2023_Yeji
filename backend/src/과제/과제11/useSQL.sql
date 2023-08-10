@@ -6,7 +6,7 @@ create database sqldb4web;
 # 테이블과 비슷하게 memberDTo 클래스 설계 
 
 use sqldb4web;
-drop database if exists membertable;
+drop database if exists member;
 create table membertable(
 	mno int not null unique auto_increment,
 	mid varchar(15) not null unique,
@@ -31,3 +31,22 @@ create table board(
     #foreign key ( mno ) references membertable( mno ) on delete set null, # 회원탈퇴 PK 삭제 -> FK값을 null로
     #foreign key ( mno ) references membertable( mno ) on delete no action # 아무런 변화 없는 상태
 );
+
+# 3번 게시물 조회 
+select* from borad where bno = 3;
+
+# 3번 게시물을 조회하는데 member 테이블에 있는 mid 추가적으로 조회
+	# 1단계 : 조인부터 하기  / mid는 다른 테이블에 존재하므로 
+    select * from board natural join member;
+	# 2단계 : 하나의 쿼리문에 테이블이 다수일때 별칭 권장
+    select * from board b natural join member m;
+    # 3단계 : 조건 ! where을 먼저 써야 한다.
+    select * from board b natural join member m where b.bno = 3;
+    # 4단계 : 정렬판단하기 ! [ 현재는 1개 조회 라서 무의미 ]
+    select * from board b natural join member m where b.bno = 3 order by b.bdate desc;
+    # 5단계 : 검색 레코드 개수 제한 ! [ 현재는 1개 조회 라서 무의미 ]
+    select * from board b natural join member m where b.bno = 3 order by b.bdate desc limit 3;
+    # 6단계 : 검색 레코드에 표시할 필드명 선택하기 
+    select b.*, m.mid from board b natural join member m where b.bno = 3;
+    # 7단계 : JAVA 매개변수 변환
+    # select b.*, m.mid from board b natural join member m where b.bno = ?;
