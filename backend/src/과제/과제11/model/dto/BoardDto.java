@@ -31,8 +31,15 @@ public class BoardDto {
 		super();
 	}
 	
-	
-	
+	public BoardDto(String btitle, String bcontent, int mno) {
+		super();
+		this.btitle = btitle;
+		this.bcontent = bcontent;
+		this.mno = mno;
+	}
+	public BoardDto(String string, String string2, String string3, String string4, int int1, int int2, Object mid2) {
+		// TODO Auto-generated constructor stub
+	}
 	//3. 메소드 : getter, setter, toString
 	public int getBno() {
 		return bno;
