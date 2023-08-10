@@ -34,7 +34,7 @@ public class BoardController {
 	
 	//7. boardView   : 개별 게시물 출력 페이지 ------------------------------------------------
 	public BoardDto boardView( int bno ) {
-		
+		BoardDao.getInstance().boardViewCount(bno);
 		return BoardDao.getInstance().boardView(bno);
 	}
 	

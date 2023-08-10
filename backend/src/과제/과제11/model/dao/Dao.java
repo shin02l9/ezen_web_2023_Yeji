@@ -9,9 +9,9 @@ public class Dao { // 각종 Dao의 클래스를 대표하는 부모클래스
 	
 	//1. 필드
 	// [ 모두 상단에 import java.sql 이어야함 ]
-	public Connection conn;		 // DB연동객체
-	public PreparedStatement ps; // 연도된 DB 조작 객체
-	public ResultSet rs;		 // SQL 조작 결과를 가져오는 객체
+	public Connection conn;		 // DB연동객체 -> 일단 연동을 하고 !!!!!!!!
+	public PreparedStatement ps; // 연동된 DB 조작 객체	-> 그것 조작한 다음 !!!!!
+	public ResultSet rs;		 // SQL 조작 결과를 가져오는 -> 객체 결과 받아 !!!!
 	//2. 생성자 : 객체 생성시 초기화 담당 
 		// 기본생성자에 DB연동 코드 작성 *DAO객체 생성시 바로 DB연동
 	public Dao() {
@@ -26,8 +26,7 @@ public class Dao { // 각종 Dao의 클래스를 대표하는 부모클래스
 		}
 		
 	}
-	
-	
+
 	//3. 메소드
 	
 }

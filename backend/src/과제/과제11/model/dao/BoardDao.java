@@ -12,7 +12,7 @@ public class BoardDao extends Dao {
 	public static BoardDao getInstance(){return boardDao;}
 	private BoardDao() {}
 	
-	//5. boardWhite  : 게시물 쓰기 페이지 --------------------------
+	//5. boardWhite  : 게시물 쓰기 페이지 -----------------------------------------------
 	public boolean boardWhite(BoardDto boardDto) {
 		try {
 			//1. SQL 을 작성한다.
@@ -31,7 +31,7 @@ public class BoardDao extends Dao {
 		
 		return false;
 	}
-	//6. boardPrint  : 모든 게시물 출력 페이지 ----------------------
+	//6. boardPrint  : 모든 게시물 출력 페이지 -------------------------------------------
 	public ArrayList<BoardDto> boardPrint(){
 	//public BoardDto[] boardPrint() {
 		
@@ -42,8 +42,8 @@ public class BoardDao extends Dao {
 			String sql = "select b.* , m.mid from member m natural join board b order by b.bdate desc;"; // 최신순으로 모든 레코드 호출
 			// 2.
 			ps = conn.prepareStatement(sql);
-			// 3. SQL 매개변수 없어서 생략
-			// 4. 검색결과의 레코드를 여러개 조작하기 위해 result
+			// 3. SQL 매개변수 없어서 set~ 생략
+			// 4. 검색결과의 레코드를 여러개 조작하기 위해 resultSet 객체 반환 
 			rs = ps.executeQuery();
 			// 5. 여러개 레코드 조회
 			while( rs.next() ){ // 마지막 레코드까지 하나씩 이동
@@ -72,10 +72,10 @@ public class BoardDao extends Dao {
 		} catch ( Exception e ) {}
 		
 		return list;
-		
-		
 	}
-	//7. boardView   : 개별 게시물 출력 페이지 ----------------------
+	
+
+	//7. boardView   : 개별 게시물 출력 페이지 -------------------------------------------
 	public BoardDto boardView( int bno ) {
 		
 		try {
@@ -89,12 +89,29 @@ public class BoardDao extends Dao {
 				BoardDto dto = new BoardDto(
 				rs.getInt(1),rs.getString(2),rs.getString(3),
 				rs.getString(4),rs.getInt(5),rs.getInt(6),rs.getString(7));	
+				//boardViewCount(bno);
 				return dto;
 			}
 		}catch ( Exception e ) {System.out.println(e);}
 
 		return null;	
 	}
+	//6-1. 조회수 증가 함수 ------------------------------------------
+		public void boardViewCount(int bno) {
+			try {
+				// 1. SQL 을 작성한다.
+				// update 테이블명 set 필드명 = 수정값 where 조건절 
+				String sql = "update board set bview = bview + 1 where bno = ?;";
+				// 2. 작성한 SQL을 조작할 인터페이스 PS객체 반환한다.
+				ps = conn.prepareStatement(sql);
+				// 3. SQL에 매개변수 대입 (조작)
+				ps.setInt( 1,  bno ); // 1번째 레코드, 필드명 -> 필드명 bno의 첫번쨰 레코드 자리를 뜻함
+				// 4. 업데이트 쿼리를 실행한다.
+				ps.executeUpdate();
+			}catch ( Exception e ) {System.out.println(e);}
+		}
+	
+
 	//8. boardUpdate : 게시물 수정 -------------------------------
 	public void boardUpdate() {}
 	//9. boardDelete : 게시물 삭제 -------------------------------

@@ -115,7 +115,7 @@ public class LoginPage {
 		//1. 여러개의 게시물을 요청해서 반환된 결과
 		ArrayList<BoardDto> r = BoardController.getInstance().boardPrint();
 		//2. 출력 
-		System.out.println(r.get(1).getBcontent());
+	
 		System.out.printf("%-3s %-4s %-19s %-10s %s \n" , "no" , "view" , "date" , "mid" , "title");
 		for ( int i = 0; i <r.size(); i++) {
 			BoardDto dto = r.get(i);
