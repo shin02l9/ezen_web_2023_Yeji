@@ -24,8 +24,8 @@ public class LoginPage {
 			
 			boardPrint();
 			
-			System.out.println("\n ---------- 회원제 커뮤니티 ----------");
-			System.out.print("1. 로그아웃 | 2. 회원정보 | 3. 글쓰기 | 4. 글조회\n 메뉴선택 >>"); 
+			System.out.println("\n -------------------------- 회원제 커뮤니티 --------------------------");
+			System.out.print("1. 로그아웃 | 2. 회원정보 | 3. 게시글쓰기 | 4. 게시글조회 | 5. 쪽지함\n 메뉴선택 >>"); 
 			try {
 				int ch = sc.nextInt();
 				if( ch == 1 ) { // 로그아웃
