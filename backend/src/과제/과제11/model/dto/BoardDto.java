@@ -9,11 +9,17 @@ public class BoardDto {
 	private String bdate;		
 	private int bview; 
 	private int mno; 
+	private String mname;
 	
 	// 화면에는 회원 번호가 아니라 회원명으로 출력 
 	private String mid;
 	
-	
+	private int msgno;
+	private String toM;
+	private String msgtitle;
+	private String msgcontent; 		
+	private String msgdate; 
+
 	
 	
 	//2. 생성자 : 빈생성자와 풀생성자 모두 꺼내기
@@ -46,6 +52,27 @@ public class BoardDto {
 	}
 	public BoardDto(String string, String string2, String string3, String string4, int int1, int int2, Object mid2) {
 		// TODO Auto-generated constructor stub
+	}
+	
+	
+	public BoardDto(int mno, String toM, String msgtitle, String msgcontent) {
+		super();
+		this.mno = mno;
+		this.toM = toM;
+		this.msgtitle = msgtitle;
+		this.msgcontent = msgcontent;
+	}
+
+	
+	public BoardDto(int msgno, String toM, String msgtitle, String msgcontent, String msgdate, int mno, String mname) {
+		super();
+		this.msgno = msgno;
+		this.toM = toM;
+		this.msgtitle = msgtitle;
+		this.msgcontent = msgcontent;
+		this.msgdate = msgdate;
+		this.mno = mno;
+		this.mname = mname;
 	}
 	//3. 메소드 : getter, setter, toString
 	public int getBno() {
@@ -90,11 +117,51 @@ public class BoardDto {
 	public void setMid(String mid) {
 		this.mid = mid;
 	}
+
+	
+	public BoardDto(String mname) {
+		super();
+		this.mname = mname;
+	}
+	public String getToM() {
+		return toM;
+	}
+	public void setToM(String toM) {
+		this.toM = toM;
+	}
+	public int getMsgno() {
+		return msgno;
+	}
+	public void setMsgno(int msgno) {
+		this.msgno = msgno;
+	}
+	public String getMsgtitle() {
+		return msgtitle;
+	}
+	public void setMsgtitle(String msgtitle) {
+		this.msgtitle = msgtitle;
+	}
+	public String getMsgcontent() {
+		return msgcontent;
+	}
+	public void setMsgcontent(String msgcontent) {
+		this.msgcontent = msgcontent;
+	}
+	public String getMsgdate() {
+		return msgdate;
+	}
+	public void setMsgdate(String msgdate) {
+		this.msgdate = msgdate;
+	}
 	@Override
 	public String toString() {
 		return "BoardDto [bno=" + bno + ", btitle=" + btitle + ", bcontent=" + bcontent + ", bdate=" + bdate
-				+ ", bview=" + bview + ", mno=" + mno + ", mid=" + mid + "]";
+				+ ", bview=" + bview + ", mno=" + mno + ", mid=" + mid + ", msgno=" + msgno + ", toM=" + toM
+				+ ", msgtitle=" + msgtitle + ", msgcontent=" + msgcontent + ", msgdate=" + msgdate + "]";
 	}
+	
+
+	
 	
 
 	

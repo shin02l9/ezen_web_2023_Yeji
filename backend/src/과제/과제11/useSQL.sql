@@ -32,6 +32,18 @@ create table board(
     #foreign key ( mno ) references membertable( mno ) on delete no action # 아무런 변화 없는 상태
 );
 
+# 쪽지함
+drop table if exists message;
+create table message(
+	msgno int not null unique auto_increment,
+    toM varchar(10) not null,
+	msgtitle varchar(10) not null,			
+    msgcontent longtext,		
+    msgdate datetime default now(),
+    mno int,
+    foreign key ( mno ) references member( mno )
+); select *from message;
+
 # 3번 게시물 조회 
 select* from borad where bno = 3;
 

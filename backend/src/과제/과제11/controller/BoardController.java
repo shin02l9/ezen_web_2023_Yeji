@@ -54,9 +54,23 @@ public class BoardController {
 		if( r ) {return 1;}
 		else {return 2;}
 	}
+	
+	//-------------------------------------------------------------------------------------------
+	// 쪽지함 추가
+	public boolean message( String toM, String msgTitle, String msgCon ) {
+		// 유효성 검사
+		if( msgTitle.length() == 0 || msgTitle.length() >= 10 ) {return false;}
+		//2. Dto 생성자 이용해 객체화 [ 쪽지 작성자 회원번호 , 받는사람, 제목, 내용 ]
+		BoardDto boardDto = new BoardDto(MemberController.getInstance().getLoginSession(),toM,msgTitle,msgCon); 
+		//3. Dao 에게 전달하기
+		return BoardDao.getInstance().message(boardDto);
+	}
+	
+	public ArrayList<BoardDto> messagePrint() {
+
+		return BoardDao.getInstance().messagePrint();
+	}
 }
-
-
 
 
 

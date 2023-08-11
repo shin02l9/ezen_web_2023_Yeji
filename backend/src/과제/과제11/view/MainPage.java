@@ -32,7 +32,7 @@ public class MainPage {
 				
 			}
 			catch ( Exception e ) { 
-				System.out.println("경고] 잘못된 메뉴입니다.");
+				System.err.println("경고] 잘못된 메뉴입니다.");
 				sc = new Scanner (System.in); // 입력객체의 메모리를 새롭게 만들어주기
 				// 왜? 초기화 안하면 입력된 값이 객체 내 계속 있기 때문에 오류가 계속 발생된다.
 			}			
@@ -54,9 +54,9 @@ public class MainPage {
 		
 		//결과를 출력
 		if( result == 1 ) { System.out.println("안내] 회원가입 성공");}
-		else if( result == 2 ) { System.out.println("경고] 회원가입 실패 관리자에게 문의");}
-		else if( result == 3 ) { System.out.println("경고] 회원가입 실패 아이디 중복");}
-		else if( result == 4 ){ System.out.println("경고] 회원가입 실패 전화번호 중복");}
+		else if( result == 2 ) { System.err.println("경고] 회원가입 실패 관리자에게 문의");}
+		else if( result == 3 ) { System.err.println("경고] 회원가입 실패 아이디 중복");}
+		else if( result == 4 ){ System.err.println("경고] 회원가입 실패 전화번호 중복");}
 	
 	}
 	
@@ -71,7 +71,7 @@ public class MainPage {
 			System.out.println("안내] 로그인 성공");
 			LoginPage.getInstance().loginMenu();
 		}
-		else { System.out.println("경고] 로그인 실패");}
+		else { System.err.println("경고] 로그인 실패");}
 	}
 	
 	//4. 아이디찾기 -------------------------------------------------------------------------------
@@ -83,7 +83,7 @@ public class MainPage {
 		String r = MemberController.getInstance().findById(name, phone);
 				
 		if( r != null ) { System.out.println("안내] 회원님의 아이디는 "+r+"입니다.");}
-		else { System.out.println("경고] 해당 정보가 없습니다.");}
+		else { System.err.println("경고] 해당 정보가 없습니다.");}
 	}
 	
 	//5. 비밀번호찾기 -------------------------------------------------------------------------------
@@ -95,7 +95,7 @@ public class MainPage {
 		String r = MemberController.getInstance().findByPw(id, phone);
 		
 		if( r != null ) { System.out.println("안내] 회원님의 비밀번호는 "+r+"입니다.");}
-		else { System.out.println("경고] 해당 정보가 없습니다.");}
+		else { System.err.println("경고] 해당 정보가 없습니다.");}
 	}
 
 

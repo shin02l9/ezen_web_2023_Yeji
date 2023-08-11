@@ -22,8 +22,6 @@ public class LoginPage {
 	public void loginMenu() {
 		while (MemberController.getInstance().getLoginSession() != 0 ) {
 			
-			boardPrint();
-			
 			System.out.println("\n -------------------------- 회원제 커뮤니티 --------------------------");
 			System.out.print("1. 로그아웃 | 2. 회원정보 | 3. 게시글쓰기 | 4. 게시글조회 | 5. 쪽지함\n 메뉴선택 >>"); 
 			try {
@@ -35,6 +33,7 @@ public class LoginPage {
 				if( ch == 2 ) { info();}
 				if( ch == 3 ) { boardWhite();}
 				if( ch == 4 ) { boardView();}
+				if( ch == 5 ) { message();}
 			}
 			catch ( Exception e ) { 
 				System.err.println("경고] 잘못된 메뉴입니다.");
@@ -149,6 +148,8 @@ public class LoginPage {
 		if( ch == 3 ) { boardDelete(bno, r.getMno()); }
 		
 	}
+	
+	
 	//8. boardUpdate : 게시물 수정 -------------------------------
 	// 로그인 된 사람과 작성자가 일치할 경우 가능하도록 하기
 	public void boardUpdate( int bno, int mno ) {
@@ -181,6 +182,54 @@ public class LoginPage {
 		else if( r == 2 ) {System.out.println(" 안내) 글 삭제 실패 : 관리자 오류 ");}
 		else if( r == 3 ) {System.err.println(" 경고] 본인 글만 삭제 가능합니다.");}
 	}
+	
+	//-------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------
+	// 쪽지함 추가
+	public void message() {
+		System.out.println("------ [쪽지] -------");
+		System.out.print("1. 확인하기 | 2. 쪽지보내기 \n  메뉴선택 >>"); int ch = sc.nextInt();
+		messagePrint();
+		if( ch == 1 ) {
+			System.out.print("확인할쪽지번호입력 : ");
+			int msgNo = sc.nextInt();
+			messageView(msgNo);
+			
+		} else if( ch == 2 ) {
+			System.out.print("받는사람 : "); 	String to = sc.next();
+			System.out.print("제목 : "); 	String msgTitle = sc.next();
+			System.out.print("내용 : "); 	String msgCon = sc.next();
+			boolean r = BoardController.getInstance().message(to,msgTitle,msgCon);
+			
+			if (r) { System.out.println(" 안내) 쪽지 보내기 성공");}
+			else {System.err.println(" 안내) 쪽지 보내기 실패");}
+		}
+	}
+	public void messagePrint() {
+
+		//1. 여러개의 게시물을 요청해서 반환된 결과
+		ArrayList<BoardDto> r = BoardController.getInstance().messagePrint();
+		//2. 출력 
+		System.out.println("---------------------------------------------");
+		System.out.printf("%-3s %-10s %-5s %-11s \n" , "번호" , "제목" , "보낸사람" , "보낸일시");
+		System.out.println("---------------------------------------------");
+		for ( int i = 0; i <r.size(); i++) {
+			BoardDto dto = r.get(i);
+			System.out.printf("%-3s %-10s %-5s %-11s \n",
+					dto.getMsgno() , dto.getMsgtitle() , dto.getMno(), dto.getMsgdate());
+			System.out.println("---------------------------------------------");
+		}
+	}
+	
+	
+	public void messageView( int msgNo ) {
+		// 상세보기 아직 못함
+		
+		
+	}
+	
+	//-------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------
 	
 	
 }

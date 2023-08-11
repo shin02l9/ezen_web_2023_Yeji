@@ -141,9 +141,45 @@ public class BoardDao extends Dao {
 	}
 	
 	
+	//-------------------------------------------------------------------------------------------
+	// 쪽지함 추가
+	public boolean message(BoardDto boardDto) {
+		try {
+			
+			//1. SQL 을 작성한다.
+			String sql = "insert into message( tom, msgtitle , msgcontent , mno ) values( ? , ? , ? , ? )";
+			//2. 작성한 SQL을 조작할 인터페이스 PS객체 반환한다.
+			ps = conn.prepareStatement(sql);
+			//3. SQL에 매개변수 대입 (조작)
+			ps.setInt( 4, boardDto.getMno());
+			ps.setString( 1, boardDto.getToM());
+			ps.setString( 2, boardDto.getMsgtitle());
+			ps.setString( 3, boardDto.getMsgcontent());
+			//4. SQL 실행 / 실행 후 저장된 레코드 개수 반환
+			int row = ps.executeUpdate();
+			//5. 만약에 저장된 레코드 수가 1개이면 
+			if( row == 1 ) return true;
+		}catch ( Exception e) {System.out.println(e);}
+
+		return false;
+	}
 	
-	
-	
+	public ArrayList<BoardDto> messagePrint() {
+		
+		ArrayList<BoardDto> list = new ArrayList<>();
+			try { 
+				String sql = "select me.* , m.mname from member m natural join message me order by msgdate desc;"; 
+				ps = conn.prepareStatement(sql);
+				rs = ps.executeQuery();
+				while( rs.next() ){ // 마지막 레코드까지 하나씩 이동
+					BoardDto dto = new BoardDto(
+							rs.getInt(1),rs.getString(2),rs.getString(3),
+							rs.getString(4),rs.getString(5),rs.getInt(6),getString(7));
+					list.add(dto);
+				} // while e
+			} catch ( Exception e ) {}
+			return list;	
+	}
 	
 }
 
