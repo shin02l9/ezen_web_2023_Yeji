@@ -2,6 +2,7 @@ package 과제.과제11.model.dao;
 
 import java.util.ArrayList;
 
+import 과제.과제11.controller.MemberController;
 import 과제.과제11.model.dto.BoardDto;
 
 public class BoardDao extends Dao {
@@ -113,9 +114,31 @@ public class BoardDao extends Dao {
 	
 
 	//8. boardUpdate : 게시물 수정 -------------------------------
-	public void boardUpdate() {}
+	public boolean boardUpdate(BoardDto boardDto) {
+		try {
+			String sql = "update board set btitle = ?, bcontent = ? where bno = ?;";
+			ps = conn.prepareStatement(sql);
+			ps.setInt( 3,  boardDto.getBno() );
+			ps.setString( 1,  boardDto.getBtitle() );
+			ps.setString( 2,  boardDto.getBcontent() );
+			int row = ps.executeUpdate(); // executeUpdate은 수정된 개수를 인트로 반환해줌 !!! 그래서 아래에 if문으로 1인지 판단하는것
+			//select -> rs = ps.executeQuery() / insert, update, delete -> int row = ps.executeUpdate()
+			if( row == 1 ) return true;
+		}catch (Exception e) {System.out.println(e);}
+		return false;
+	}
+	
 	//9. boardDelete : 게시물 삭제 -------------------------------
-	public void boardDelete() {}
+	public boolean boardDelete(int bno) {
+		try {
+			String sql = "delete from board where bno = ?;";
+			ps = conn.prepareStatement(sql);
+			ps.setInt( 1, bno);
+			int row = ps.executeUpdate();
+			if( row == 1 ) return true;
+		}catch (Exception e) {System.out.println(e);}
+		return false;
+	}
 	
 }
 

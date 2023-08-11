@@ -37,7 +37,7 @@ public class LoginPage {
 				if( ch == 4 ) { boardView();}
 			}
 			catch ( Exception e ) { 
-				System.out.println("경고] 잘못된 메뉴입니다.");
+				System.err.println("경고] 잘못된 메뉴입니다.");
 				sc = new Scanner (System.in); // 입력객체의 메모리를 새롭게 만들어주기
 				// 왜? 초기화 안하면 입력된 값이 객체 내 계속 있기 때문에 오류가 계속 발생된다.
 			}			
@@ -133,7 +133,7 @@ public class LoginPage {
 		System.out.println("------ 게시물 상세보기 -------");
 		// 1. 보고자 하는 게시물의 식별번호인 게시물 번호 입력 받기 
 		System.out.print("게시물번호 : "); int bno = sc.nextInt();
-		// 2. 전달하기 ;
+		// 2. 전달하기
 		BoardDto r = BoardController.getInstance().boardView(bno);
 		// 3. 출력하기
 		System.out.printf("bno : %3s | view : %3s | mid : %5s | date : %19s \n", 
@@ -144,20 +144,42 @@ public class LoginPage {
 		// 4. 추가메뉴
 		System.out.print("1. 뒤로가기 | 2. 수정하기 | 3. 삭제하기  \n 선택 >>");
 		int ch = sc.nextInt();
-		if( ch == 1 ) {}
-		if( ch == 2 ) { boardUpdate(); }
-		if( ch == 3 ) { boardDelete(); }
+		if( ch == 1 ) { loginMenu(); }
+		if( ch == 2 ) { boardUpdate(bno, r.getMno()); }
+		if( ch == 3 ) { boardDelete(bno, r.getMno()); }
 		
 	}
 	//8. boardUpdate : 게시물 수정 -------------------------------
-	public void boardUpdate() {
+	// 로그인 된 사람과 작성자가 일치할 경우 가능하도록 하기
+	public void boardUpdate( int bno, int mno ) {
+		System.out.println("------ 게시물 수정하기 -------");
+		sc.nextInt();
+		// 1. 수정하고자 하는 게시물의 번호와 제목 내용 입력 받기
+		System.out.print("수정할제목 : "); String btitle = sc.next();
+		System.out.print("수정할내용 : "); String bcontent = sc.next();
+		// 2. 전달하기 
+		int r = BoardController.getInstance().boardUpdate(bno,mno,btitle,bcontent);
+		if( r == 1 ) {System.out.println(" 안내) 글 수정 성공");}
+		else if( r == 2 ) {System.out.println(" 안내) 글 수정 실패 : 관리자 오류 ");}
+		else if( r == 3 ) {System.err.println(" 경고] 본인 글만 수정 가능합니다.");}
+		else if( r == 4 ) {System.err.println(" 경고] 수정할 제목을 1~50글자 사이로 입력해 주세요.");}
+
 		
+//		// 3. 추가메뉴
+//		System.out.print("1. 취소하기 | 2. 수정하기   \n 선택 >>");
+//		int ch = sc.nextInt();
+//		if( ch == 1 ) { loginMenu(); }
+//		if( ch == 2 ) {  }
 		
 	}
 	//9. boardDelete : 게시물 삭제 -------------------------------
-	public void boardDelete() {
+	// 로그인 된 사람과 작성자가 일치할 경우 가능하도록 하기
+	public void boardDelete( int bno, int mno) {
 		
-		
+		int r = BoardController.getInstance().boardDelete(bno,mno);
+		if( r == 1 ) {System.out.println(" 안내) 글 삭제 성공");}
+		else if( r == 2 ) {System.out.println(" 안내) 글 삭제 실패 : 관리자 오류 ");}
+		else if( r == 3 ) {System.err.println(" 경고] 본인 글만 삭제 가능합니다.");}
 	}
 	
 	

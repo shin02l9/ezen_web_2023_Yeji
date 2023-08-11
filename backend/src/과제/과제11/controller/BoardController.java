@@ -39,9 +39,21 @@ public class BoardController {
 	}
 	
 	//8. boardUpdate : 게시물 수정 ---------------------------------------------------------
-	public void boardUpdate() {}
+	public int boardUpdate(int bno, int mno, String btitle, String bcontent) {
+		if( mno == MemberController.getInstance().getLoginSession()) { return 1; }
+		if( btitle.length() < 1 || btitle.length() > 50) { return 4; }
+		boolean r =  BoardDao.getInstance().boardUpdate( new BoardDto(bno, bcontent, bcontent) );
+		if( r ) {return 1;}
+		else {return 2;}
+	}
 	//9. boardDelete : 게시물 삭제 ---------------------------------------------------------
-	public void boardDelete() {}
+	public int boardDelete(int bno, int mno) {
+		if( mno != MemberController.getInstance().getLoginSession()) { return 3; }
+		
+		boolean r = BoardDao.getInstance().boardDelete(bno);
+		if( r ) {return 1;}
+		else {return 2;}
+	}
 }
 
 

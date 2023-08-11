@@ -37,6 +37,13 @@ public class BoardDto {
 		this.bcontent = bcontent;
 		this.mno = mno;
 	}
+
+	public BoardDto(int bno, String btitle, String bcontent) {
+		super();
+		this.bno = bno;
+		this.btitle = btitle;
+		this.bcontent = bcontent;
+	}
 	public BoardDto(String string, String string2, String string3, String string4, int int1, int int2, Object mid2) {
 		// TODO Auto-generated constructor stub
 	}
