@@ -4,7 +4,7 @@ public class Account {
 	// 필드
 	private long balance; // 잔고
 	// 생성자
-	public Account();
+	public Account() {}
 	// 메소드
 	public long getBalance() { return balance; }
 	// 예금 메소드
