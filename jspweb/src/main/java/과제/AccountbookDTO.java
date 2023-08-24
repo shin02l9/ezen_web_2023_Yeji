@@ -28,6 +28,9 @@ public class AccountbookDTO {
 	}
 	
 	
+	public AccountbookDTO(int bno, String content2, String price2) {
+		// TODO Auto-generated constructor stub
+	}
 	//메소드
 	public int getNo() {
 		return no;

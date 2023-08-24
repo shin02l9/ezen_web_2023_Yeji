@@ -68,16 +68,33 @@ public class VisitlogDAO extends DAO{
 	
 	
 	// U (수정) -------------------------------------------------------------------------------
-	public boolean vupdateSQL(int vno, String vcontent) {
-		
-		return false;
+	public boolean vupdateSQL(int vno, String vcontent, String vpwd) {
+		try {
+			String sql = "update visitlog set vcontent = ? where vno = ? and vpwd = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt( 2 , vno); 
+			ps.setString( 1 , vcontent ); 
+			ps.setString( 3 , vpwd );
+			int row = ps.executeUpdate();
+			if( row == 1 ) return true ;
+			return false; 
+		}catch (Exception e) { System.out.println(e); }
+		return false; 
 		
 	}
 	
 	// D (삭제) -------------------------------------------------------------------------------
-	public boolean vdeleteSQL(int vno) {
-		
-		return false;
+	public boolean vdeleteSQL(int vno, String vpwd) {
+		try {
+			String sql = "delete from visitlog where vno = ? and vpwd = ?"; // 1. SQL 작성 
+			ps = conn.prepareStatement(sql);	
+			ps.setInt( 1 , vno ); 
+			ps.setString( 2 , vpwd );
+			int row = ps.executeUpdate();	
+			if( row == 1 ) return true;		
+			return false; 
+		}catch (Exception e) {System.out.println(e);}
+		return false; 
 		
 	}
 }

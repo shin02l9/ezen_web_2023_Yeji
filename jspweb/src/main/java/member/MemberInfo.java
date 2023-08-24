@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.dao.MemberDAO;
+import model.dto.MemberDTO;
+
 /**
  * Servlet implementation class MemberInfo
  */
@@ -30,12 +33,25 @@ public class MemberInfo extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		// 요청하기
+		String mid = request.getParameter("mid");
+		String mpw = request.getParameter("mpw");
+		String memail = request.getParameter("memail");
+		String mimg = request.getParameter("mimg");
+			System.out.println(mid);
+			System.out.println(mpw);
+			System.out.println(memail);
+			System.out.println(mimg);
+		
+		// 받은 값 객체로 만들어서 DAO 에게 전달하고 결과 반환 받기 
+		MemberDTO dto = new MemberDTO(mid,mpw,memail,mimg);
+		boolean r = MemberDAO.getInstance().signupSQL(dto);
+		
+		// 응답하기
+		response.getWriter().print(r);
+		
 	}
 
 	/**

@@ -14,7 +14,8 @@
 	
 	
 	<div><!-- 회원가입 전체 구역 -->
-		아이디 : 			<input class="mid" type="text">  <br/>
+		아이디 : 			<input onkeydown="idkeydown()" class="mid" type="text">  <br/>
+		<span class="idcheckbox"> </span>
 		비밀번호 : 		<input class="mpw" type="password">  <br/>
 		비밀번호확인 : 	<input class="mpwconfirm" type="password">  <br/>
 		이메일 : 			<input class="memail" type="text">  <br/>
@@ -26,7 +27,7 @@
 	
 	
 	
-	
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>	
 <script src="signup.js" type="text/javascript"></script>
 </body>
 </html>

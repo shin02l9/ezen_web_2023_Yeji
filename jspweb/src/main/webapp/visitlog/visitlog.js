@@ -2,7 +2,7 @@
 console.log(' visitlog JS 실행')
 
 // C (저장)
-function vwrite(){
+function vwrite(){ //-----------------------------------------------
 	//1. HTML input 태그 호출
 	let vwriterInput = document.querySelector('.vwriter');
 	let vpwdInput = document.querySelector('.vpwd');
@@ -23,33 +23,40 @@ function vwrite(){
 	console.log('vdata : '+ vdata);
 	
 	//3. 유효성 검사
-	
-	//4. AJAX (HTML에 JQUERY 라이브러리 필수로 호출 해야한다.)
-	$.ajax({
-		url :"/jspweb/VisitlogController",
-		method : "post",
-		data : vdata,
-		success : function f(r){ 
-			//5. 결과에 따른 코드
-			console.log("ajax통신성공! post 결과 : "+r)
-			if( r == true ){
-				alert('등록 성공');
-				// 공백 초기화
-				vwriterInput.value = '';
-				vpwdInput.value = '';
-				vcontentInput.value = '';
-			} else {
-				alert('등록 실패');
-			}
-			},				
-	});
+	if( vwriterInput.value == null || 
+		vpwdInput.value == null || 
+		vcontentInput.value == null){
+		alert('[ 공백을 모두 입력해 주세요. ]');
+	} else {
+		//4. AJAX (HTML에 JQUERY 라이브러리 필수로 호출 해야한다.)
+		$.ajax({
+			url :"/jspweb/VisitlogController",
+			method : "post",
+			data : vdata,
+			success : function f(r){ 
+				//5. 결과에 따른 코드
+				console.log("ajax통신성공! post 결과 : "+r)
+				if( r == true ){
+					alert('[ 등록 성공 ]');
+					vread();
+					// 공백 초기화
+					vwriterInput.value = '';
+					vpwdInput.value = '';
+					vcontentInput.value = '';
+				} else {
+					alert('[ 등록 실패 ]');
+				}
+			}				
+		});
 
-	
+	}
+
+
 }// vwrite e
 
 // R (호출)
 vread();
-function vread(){
+function vread(){ //-----------------------------------------------
 	$.ajax({
 		url :"/jspweb/VisitlogController",
 		method : "get",
@@ -72,8 +79,8 @@ function vread(){
 									</div>
 									<div class="visitbox_center">${r[i].vcontent}</div>
 									<div class="visitbox_bottom">
-										<button>수정</button>
-										<button>삭제</button>
+										<button onclick="vupdate()" >수정</button>
+										<button onclick="vdelete()" >삭제</button>
 									</div>
 								</div>`
 				  }
@@ -85,15 +92,38 @@ function vread(){
 }// vread e
 
 
-
-
-
 // U (수정)
-function vupdate(){
-	
+function vupdate( vno ){ //-----------------------------------------------
+	// 1. 수정할 내용 입력 
+	let vcontent =	prompt('수정할 방문록내용 : ');					// alert() : 확인알림창  confirm(); : 확인/취소알림창 prompt() : 알림창에서 입력받기 ;
+	// 2. 비밀번호가 일치할 경우에 수정하므로 확인용 비밀번호 입력받기
+	let vpwd = prompt("방문록비밀번호 : ");
+	// 수정 준비물 : vno(누구를) , vcontent(어떤내용으로) , vpwd(조건용:비밀번호일치여부)
+	$.ajax({
+		url : "/jspweb/VisitLogController" , // 통신할 백엔드(컨트롤러 서블릿 주소)
+		method : "put" ,
+		data : { vno : vno , vcontent : vcontent ,  vpwd : vpwd } ,
+		success : function f(r){ console.log("doPut통신성공"); 
+			if( r == true ){ alert('수정성공'); vread(); }
+			else{ alert('[수정실패] 비밀번호가 일치하지 않습니다. '); }
+		} ,
+		error  : function f(r){ console.log(r); } 
+	})
 }// vupdate e
 
 // D (삭제)
-function vdelete(){
-	
+function vdelete( vno ){ //-----------------------------------------------
+	// 1. 비밀번호가 일치할 경우에 수정하므로 확인용 비밀번호 입력받기
+	let vpwd = prompt("방문록비밀번호 : ");
+	// 삭제 준비물 : vno(누구를) , vpwd(조건용:비밀번호일치여부)
+	$.ajax({
+		url : "/jspweb/VisitLogController" , 
+		method : "delete" ,
+		data : { vno : vno ,  vpwd : vpwd } ,
+		success : function f(r){ console.log("doDelete통신성공"); 
+			if( r == true ){ alert('삭제성공'); vread(); }
+			else{ alert('[삭제실패] 비밀번호가 일치하지 않습니다. '); }
+		} ,
+		error  : function f(r){ console.log(r); } 
+	})
 }// vdelete e

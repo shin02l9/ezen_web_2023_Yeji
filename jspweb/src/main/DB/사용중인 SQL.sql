@@ -12,16 +12,23 @@ drop table if exists visitlogTable;
     vdatetime	datetime default now(),		# 자동날짜 시간등록
 	primary key( vno )  					# <<PK>>
  ); 
- 
- 
- 
-use jspweb;
+
 
 drop table if exists accountbook;
 create table accountbook(  
-	bco int auto_increment, 			
-	bcontent varchar(15),
-	bprice varchar(15),
+	bco int auto_increment, 			# 식별번호 자동부여
+	bcontent varchar(15) not null,		
+	bprice varchar(15) not null,
     bdate datetime default now(),
     primary key( bco )
+);
+
+drop table if exists membertable;
+create table membertable(  
+	mco int auto_increment, 			# 식별번호 자동부여
+	mid varchar(50) not null unique,	# 회원아이디 공백불가능, 중복불가능
+    mpwd varchar(20) not null,			# 회원비밀번호 공백불가능
+    memail varchar(50) not null unique,	# 회원이메일 공백불가능
+    mimg longtext ,						# 회원이메일 공백가능
+	primary key( mco )
 );

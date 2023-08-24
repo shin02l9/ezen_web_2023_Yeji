@@ -28,6 +28,15 @@ public class VisitlogDTO {
 		this.vpwd = vpwd;
 		this.vcontent = vcontent;
 	}
+
+	
+	public VisitlogDTO(int vno, String vpwd, String vcontent) {
+		super();
+		this.vno = vno;
+		this.vpwd = vpwd;
+		this.vcontent = vcontent;
+	}
+	
 	
 	
 	// 메소드
