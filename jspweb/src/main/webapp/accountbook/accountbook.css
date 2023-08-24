@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+body {background-color: #E9E9E9;}
+
+.inputBox, .printBox {
+   margin: 20px;
+   padding: 20px;
+   text-align: center;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   background-color: rgba(255, 255, 255, 0.1);
+}
+
+.content, .price, .date {
+   color: #565254;
+   margin: 0 auto;
+   
+}
+
+.content h4, .price h4, .date h4 {
+   color: #565254;
+   margin: 0 auto;
+   padding-right: 28%;
+   padding-bottom: 3px;
+}
+
+input[type="text"], input[type="datetime-local"] {
+   width: 30%;
+   padding: 10px;
+   margin-bottom: 10px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   background-color: #F4F4F4;
+}
+
+.btnC {
+    padding: 5px 10px;
+    width: 50px; height: 35px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #939195;
+	color: white;
+	font-weight: bold; 
+}
+
+.btnU, .btnD{
+	padding: 5px 10px;
+    border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	background-color: #939195;
+	color: white;
+	font-weight: bold; 
+}
+
+.btnC:hover, .btnU:hover, .btnD:hover{
+	background-color: #848286;
+}
+
+.printTable {
+   width: 50%;
+   border-collapse: collapse;
+   margin-top: 20px;
+   margin: 0 auto;
+}
+
+.title th {
+   background-color: #444;
+   padding: 10px;
+   text-align: center;
+   color: white;
+}
+
+.printValue th {
+   padding: 10px;
+   text-align: center;
+}
+

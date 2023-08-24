@@ -11,6 +11,9 @@
 </head>
 <body>
 
+	<!-- JSP 안에 다른 JSP를 포함하기 -->
+	<%@include file="/header.jsp" %>
+
 	<div class="wrap"> <!-- 전체구역 -->
 		<h1> 방문록 </h1>
 		<!-- CRUD 기반의 비회원 게시판 구현 -->
@@ -35,7 +38,8 @@
 	</div>
 	
 
-
+	<!-- JSP 안에 다른 JSP를 포함하기 -->
+	<%@include file="/footer.jsp" %>
 
 
 	<!-- 최신 JQUERY 라이브러리 호출 -->

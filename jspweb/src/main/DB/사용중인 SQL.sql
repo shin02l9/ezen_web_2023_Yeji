@@ -12,3 +12,16 @@ drop table if exists visitlogTable;
     vdatetime	datetime default now(),		# 자동날짜 시간등록
 	primary key( vno )  					# <<PK>>
  ); 
+ 
+ 
+ 
+use jspweb;
+
+drop table if exists accountbook;
+create table accountbook(  
+	bco int auto_increment, 			
+	bcontent varchar(15),
+	bprice varchar(15),
+    bdate datetime default now(),
+    primary key( bco )
+);
