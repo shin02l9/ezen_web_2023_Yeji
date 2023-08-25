@@ -32,3 +32,12 @@ create table membertable(
     mimg longtext ,						# 회원이메일 공백가능
 	primary key( mco )
 );
+
+drop table if exists slibrary;
+create table slibrary(  
+    sno int auto_increment,
+    sname varchar(5),
+    sphone varchar(13),
+    sstatus tinyint,
+    primary key( sno )
+);
