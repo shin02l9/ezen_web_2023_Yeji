@@ -18,8 +18,7 @@ public class Ex_04예외정의 {
 		}catch ( 잔고부족예외 e ) {
 			System.out.println( e );
 		}
-		
-		
+
 	}
 	
 }
