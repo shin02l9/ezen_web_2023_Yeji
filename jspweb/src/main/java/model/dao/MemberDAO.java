@@ -12,7 +12,7 @@ public class MemberDAO extends DAO{
 	// 1. 회원가입
 	public boolean signupSQL( MemberDTO dto ) {
 		try {
-			String sql = "insert into membertable(mid, mpwd, memail, mimg) value(?,?,?,?);";
+			String sql = "insert into membertable(mid, mpwd, memail, mimg) value(?,?,?,?)";
 			ps = conn.prepareStatement(sql);
 			ps.setString( 1, dto.getMid());
 			ps.setString( 2, dto.getMpwd());
@@ -26,7 +26,18 @@ public class MemberDAO extends DAO{
 	}
 	
 	// 2. 로그인
-	
+	public boolean loginSQL( String mid,  String mpwd ) {
+		try {
+			String sql = "select * from membertable where mid = ? and mpwd = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString( 1, mid);
+			ps.setString( 2, mpwd);
+			rs = ps.executeQuery();
+			if( rs.next() ) { return true; }
+		} catch ( Exception e ) {System.err.println(e);}
+		return false;
+		
+	}
 	// 3. 아이디찾기
 	
 	// 4. 비밀번호찾기

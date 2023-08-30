@@ -10,7 +10,7 @@
 <body>
 
 	<!-- JSP 안에 다른 JSP를 포함하기 -->
-	<%-- <%@include file="/jspweb/header.jsp" %> --%>
+	<%@include file="/header.jsp" %>
 
 	<div class="wrap"> <!-- 전체 레이아웃 -->
 	

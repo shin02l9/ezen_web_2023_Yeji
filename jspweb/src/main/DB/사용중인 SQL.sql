@@ -41,3 +41,14 @@ create table slibrary(
     sstatus tinyint,
     primary key( sno )
 );
+
+drop table if exists hrm;
+create table hrm(  
+	hno int auto_increment, 
+	himg longtext,
+    hname char(5),
+    hphone varchar(30),
+    hposition char(5),
+    hdate datetime default now(),
+	primary key( hno )
+);

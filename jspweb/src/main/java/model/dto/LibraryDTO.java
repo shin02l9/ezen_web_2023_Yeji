@@ -3,31 +3,41 @@ package model.dto;
 public class LibraryDTO {
 	
 	
-    private int sno;
-    private String sname;
-    private String sphone;
-    private  int sstatus;
+	private int sno;
+	private String sname;
+	private String sphone;
+	private int sstatus;
+	private String sstatusName;
 	
-    
-    public LibraryDTO(int sno, String sname, String sphone, int sstatus) {
+	public LibraryDTO() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public LibraryDTO(int sno, String sname, String sphone, int sstatus, String sstatusName) {
 		super();
 		this.sno = sno;
 		this.sname = sname;
 		this.sphone = sphone;
 		this.sstatus = sstatus;
+		this.sstatusName = sstatusName;
 	}
-	
 
-    public LibraryDTO(int sno, String sname, String sphone) {
+	
+	public LibraryDTO(int sno, String sname, String sphone, String sstatusName) {
 		super();
 		this.sno = sno;
 		this.sname = sname;
 		this.sphone = sphone;
+		this.sstatusName = sstatusName;
 	}
 
-
-	public LibraryDTO() {
+	
+	
+	public LibraryDTO(int sno, String sname, String sphone) {
 		super();
+		this.sno = sno;
+		this.sname = sname;
+		this.sphone = sphone;
 	}
 
 	public int getSno() {
@@ -62,12 +72,19 @@ public class LibraryDTO {
 		this.sstatus = sstatus;
 	}
 
-	@Override
-	public String toString() {
-		return "LibraryDTO [sno=" + sno + ", sname=" + sname + ", sphone=" + sphone + ", sstatus=" + sstatus + "]";
+	public String getSstatusName() {
+		return sstatusName;
 	}
 
-	
-    
+	public void setSstatusName(String sstatusName) {
+		this.sstatusName = sstatusName;
+	}
+
+	@Override
+	public String toString() {
+		return "libraryDto [sno=" + sno + ", sname=" + sname + ", sphone=" + sphone + ", sstatus=" + sstatus
+				+ ", sstatusName=" + sstatusName + "]";
+	}
+
 
 }
