@@ -5,19 +5,37 @@
 <head>
 <meta charset="UTF-8">
 <title> 헤더 </title>
+<link href="css/header.css" rel="stylesheet">
 </head>
 <body>
 
 	<!-- 헤더 -->
-	<h3> 헤더 </h3>
 	
-	<div>
-		<ul>
-			<li> <a href="/jspweb/index.jsp"> 홈으로 </a></li>
+	<div id="header">
+		<div class="mainlogo">
+			<!-- 로고 -->
+			<a href="/jspweb/index.jsp">
+				<img alt="" src="/jspweb/img/logo.PNG"/>
+			</a>
+		</div>
+		<ul class="mainmenu">
 			<li> <a href="/jspweb/visitlog/visitlog.jsp"> 방문록 </a></li>
 			<li> <a href="/jspweb/accountbook/accountbook.jsp"> 가계부 </a></li>
-			<li> <a href="/jspweb/member/signup.jsp"> 회원가입 </a></li>
+			<li> <a href="3"> 기능1 </a></li>
+			<li> <a href="3"> 기능2 </a></li>
+			<li> <a href="3"> 기능3 </a></li>
+			<li> <a href="#"> 과제1:가계부 </a> </li>
+			<li> <a href="#"> 과제2:독서관열람실 </a> </li>
 		</ul>
+		<ul class="submenu"> 
+			<li> <a href="/jspweb/member/signup.jsp"> 회원가입 </a></li>
+			<li> <a href="3"> 로그인 </a></li>
+			<li> <a href="3"> 로그아웃 </a></li>
+			<li> <a href="3"> 마이페이지 </a></li>
+			<li> <img class="hmimg" src="/jspweb/member/img/default.webp"/></li>
+		</ul>
+		
+
 	</div>
 	
 	

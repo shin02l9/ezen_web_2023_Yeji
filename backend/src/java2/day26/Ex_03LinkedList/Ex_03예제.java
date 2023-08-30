@@ -11,7 +11,7 @@ public class Ex_03예제 {
 		List<String> list1 = new ArrayList<>();
 			// ArrayList	    vs		 LinkedList
 			// 사용방법이 동일하지만 내부구조 설계가 다르다. 속도의 차이???
-			// 배열[에 객체저장]	vs 		객체를 체인처럼 연결
+			// 배열에 객체저장		vs 		객체를 체인처럼 연결
 			// .add( 객제 ) : 마지막 인덱스에 객체 추가
 			// .add( 인덱스, 객체 ) : 해당 인덱스에 객체 추가
 			// 리스트 내 중간에 데이터를 삽입/삭제하는 게 많으면 ArrayList은 비효율적이다.
