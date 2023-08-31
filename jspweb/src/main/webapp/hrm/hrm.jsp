@@ -25,13 +25,13 @@
 					<!-- 등록된 사진을 미리보기 할 사진 태그 -->
 					
 				<div class="intitie"> 직원명 </div> 
-				<input  class="hname" type="text"> <br/>
+				<input  name="hname" class="hname" type="text"> <br/>
 				
 				<div class="intitie"> 직원전화번호 </div> 
-				<input  class="hphone" type="text" > <br/>
+				<input  name="hphone" class="hphone" type="text" > <br/>
 				
 				<div class="intitie"> 직급 </div> 
-				  <select>
+				  <select name="hposition">
 				  	<option> 사장 </option>
 				  	<option> 부장 </option>
 				  	<option> 팀장 </option>

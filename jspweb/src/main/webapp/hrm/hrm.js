@@ -30,9 +30,9 @@ function register(){
 			// 3. AJAX 에게 첨부파일[대용량] 전송 하기 
 				// 2. 첨부파일 있을때. [ 기존 json형식의 전송x form객체 전송 타입으로 변환 ]
 				$.ajax({
-					url : "" , 
+					url : "/jspweb/HrmController" , 
 					method: "post" ,			// 첨부파일 form 전송은 무조건 post 방식 
-					data : registerData ,			// FormData 객체를 전송 
+					data : registerData ,		// FormData 객체를 전송 
 					contentType : false ,
 					processData : false ,
 					success : r => { 

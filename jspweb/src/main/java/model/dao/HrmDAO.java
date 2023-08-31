@@ -1,6 +1,6 @@
 package model.dao;
 
-import model.dto.MemberDTO;
+import model.dto.HrmDTO;
 
 public class HrmDAO extends DAO{
 
@@ -10,14 +10,14 @@ public class HrmDAO extends DAO{
 	private HrmDAO() {}	
 
 	// 직원 등록 SQL ------------------------------------------------------------
-	public boolean registerSQL( HrmDAO dto ) {
+	public boolean registerSQL( HrmDTO dto ) {
 		try {
 			String sql = "insert into hrm(himg, hname, hphone, hposition) value(?,?,?,?)";
 			ps = conn.prepareStatement(sql);
-			ps.setString( 1, dto.());
-			ps.setString( 2, dto.());
-			ps.setString( 3, dto.());
-			ps.setString( 4, dto.());
+			ps.setString( 1, dto.getHimg());
+			ps.setString( 2, dto.getHname());
+			ps.setString( 3, dto.getHphone());
+			ps.setString( 4, dto.getHposition());
 			int row = ps.executeUpdate();
 			if( row == 1) { return true; }
 		} catch ( Exception e ) {System.err.println(e);}
