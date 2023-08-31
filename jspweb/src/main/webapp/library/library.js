@@ -1,21 +1,19 @@
-
 outputbox();
 let sno = 0;
 
 
 function seat(i){
-   sno = i;
-   
+   sno = i; 
 }
 //좌석 출력하기
 function outputbox(){
-
+	console.log('outputbox() 실행')
 	$.ajax({
 	url : "/jspweb/AdmissionLibrary",
 	method : "get",
 	data : "" ,
 	success : function f(r){
-		
+		console.log( '통신 후 열람실 값 '+r)
 		let output = document.querySelector('.outputbox')
 		
 		let html = ``;
@@ -147,5 +145,3 @@ function D(){
    });
    
 }// D() end
-
-

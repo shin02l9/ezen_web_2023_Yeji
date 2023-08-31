@@ -1,1 +1,12 @@
 @charset "UTF-8";
+
+
+.webcontainer{
+	display: flex;
+	justify-content: space-evenly;
+	margin-top: 50px;
+}
+
+.employeeImg{
+	width: 50px;
+}

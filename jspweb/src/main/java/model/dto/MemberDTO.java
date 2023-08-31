@@ -2,19 +2,38 @@ package model.dto;
 
 public class MemberDTO {
 	// 필드
-	private int mco;
+	private int mno;
 	private String mid;
 	private String mpwd;
 	private String memail;
 	private String mimg;
 	
+	// 로그인정보 저장을 위한 DB없는 필드
+	private String loginDatetime;
+	
+	// --* 로그인 객체를 만들 생성자 [ 패스워드 제외 ]
+	public MemberDTO(String loginDatetime, int mno, String mid, String memail, String mimg) {
+		super();
+		this.mno = mno;
+		this.mid = mid;
+		this.memail = memail;
+		this.mimg = mimg;
+		this.loginDatetime = loginDatetime;
+	}
+	
+	
+	
+	
+	
+	
 	// 생성자
 	public MemberDTO() {
 		super();
 	}
-	public MemberDTO(int mco, String mid, String mpwd, String memail, String mimg) {
+	
+	public MemberDTO(int mno, String mid, String mpwd, String memail, String mimg) {
 		super();
-		this.mco = mco;
+		this.mno = mno;
 		this.mid = mid;
 		this.mpwd = mpwd;
 		this.memail = memail;
@@ -31,11 +50,11 @@ public class MemberDTO {
 	
 	
 	// 메소드
-	public int getMco() {
-		return mco;
+	public int getMno() {
+		return mno;
 	}
-	public void setMco(int mco) {
-		this.mco = mco;
+	public void setMno(int mno) {
+		this.mno = mno;
 	}
 	public String getMid() {
 		return mid;
@@ -61,9 +80,20 @@ public class MemberDTO {
 	public void setMimg(String mimg) {
 		this.mimg = mimg;
 	}
+	public String getLoginDatetime() {
+		return loginDatetime;
+	}
+	public void setLoginDatetime(String loginDatetime) {
+		this.loginDatetime = loginDatetime;
+	}
+
+
 	@Override
 	public String toString() {
-		return "MemberDAO [mco=" + mco + ", mid=" + mid + ", mpwd=" + mpwd + ", memail=" + memail + ", mimg=" + mimg
-				+ "]";
+		return "MemberDTO [mno=" + mno + ", mid=" + mid + ", mpwd=" + mpwd + ", memail=" + memail + ", mimg=" + mimg
+				+ ", loginDatetime=" + loginDatetime + "]";
 	}
+	
+
+	
 }

@@ -11,6 +11,8 @@
 
 	<!-- JSP 안에 다른 JSP를 포함하기 -->
 	<%@include file="/header.jsp" %>
+	
+	
  	<div class="wrap"> <!-- 전체레이아웃 -->
    
       <div class="inputboxTop"> <!-- 입력칸 -->

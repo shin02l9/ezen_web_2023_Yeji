@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -95,26 +96,101 @@ public class MemberInfo extends HttpServlet {
 	}
 	*/
 	
-	// 2. 
+	// 2. 회원정보 호출 / 로그아웃(세션초기화)호출
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		// 1. 요청한다. [x]
+		String type = request.getParameter("type");
+			// 만약에
+			if( type.equals("info") ) {
+				//* 세션에 저장된 로그인 객체를 꺼내기
+				// 1. 세션을 호출한다. [ 세션타입은 Object ]
+			Object session = request.getSession().getAttribute("logindto");
+					// 2. 타입변환한다.
+			MemberDTO logindto = (MemberDTO)session;
+			
+				// dto는 js가 이해할수 없는 언어이므로 js가 이해할수 있게 js언어로 변환 [jackson 라이브러리]
+			ObjectMapper mapper = new ObjectMapper();
+			String json = mapper.writeValueAsString(logindto);
+			
+			response.setContentType("application/json;charset=UTF-8");
+	   		response.getWriter().print(json);
+
+				
+			} else if ( type.equals("logout") ) {
+				//* 세션에 저장된 로그인 객체를 없애기/초기화/삭제
+				// 방법1 : (세션에 모든 속성) 초기화 하는 함수
+				request.getSession().invalidate(); // 이건 로그인 정보 뿐만 아닐 모두 삭제...
+				// 방법2 : (세션의 특정 속성) 초기화, JVM CG( 쓰레기 수집기 = 해당객체를 아무도 참조하고 있지 않으면 삭제)
+				request.getSession().setAttribute("logindto", null);
+			}
+		// 2. 유효성/객체화 [x]
+		// 3. DAO처리 [x]
+		// 4. 응답한다.
+		
+
 	}
 
 
 
-	/**
-	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
-	 */
+	// 3. 회원수정 
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		System.out.println("회원 수정하기 로직 입장");
+		// ------------------------ 파일 업로드 -------------------------------------
+		// multipart / form-data 전송 요청 // cos,jar [ MultipartRequest 클래스제공 ]
+		MultipartRequest Multi = new MultipartRequest(
+					request , 		
+					request.getServletContext().getRealPath("/member/img") , 
+					1024*1024*10,	
+					"UTF-8" , 	
+					new DefaultFileRenamePolicy()
+				);
+		// ------------------------ DB 처리 -------------------------------------
+		// * form 전송일때는 input의 데이터 호출시
+		// 일반 : Multi.getParameter("input name");
+		// 첨부 :Multi.getFilesystemName("input name");
+		String mimg = Multi.getFilesystemName("mimg");
+		System.out.println(mimg);
+		// DAO 처리 [ 로그인된 회원번호, 수정할 값 ]
+		Object session = request.getSession().getAttribute("logindto");
+		MemberDTO logindto = (MemberDTO)session;
+		int loginMno = logindto.getMno();
+		System.out.println(loginMno);
+		
+		
+		// 만약에 수정할 첨부파일이 없다면 기존꺼 그대로 넣어야 함!
+		if( mimg == null ) {
+			mimg = logindto.getMimg(); // 세션에 있는 이미지 그대로 사용하기
+			
+		}
+
+		boolean r = MemberDAO.getInstance().updateSQL(loginMno,mimg);
+		System.out.println(r);
+		// 4. 응답한다.
+		response.setContentType("application/json;charset=UTF-8");
+   		response.getWriter().print(r);
+		
 	}
 
-	/**
-	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
-	 */
+	// 4. 회원 탈퇴
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		// 1. 요청한다.
+		String mpwd = request.getParameter("mpwd");
+		// 2. 유효성검사/객체화
+		// 3. DAO 처리 | 로그인된 회원정보[pk], 입력받은 패스워드[mpwd] 
+			// 1. 현재 로그인된 회원정보 => 세션
+				//1. 세션 호출
+		Object session = request.getSession().getAttribute("logindto");
+				//2. 타입 변환
+		MemberDTO logindto = (MemberDTO)session;
+				//3. 로그인객체안에 회원번호만 호출
+		int loginMno = logindto.getMno();
+			//2. DAO에게 전달
+		boolean r = MemberDAO.getInstance().deleteInfoSQL(loginMno,mpwd);
+		
+		// 4. 응답한다.
+		response.setContentType("application/json;charset=UTF-8");
+   		response.getWriter().print(r);
 	}
 
 }

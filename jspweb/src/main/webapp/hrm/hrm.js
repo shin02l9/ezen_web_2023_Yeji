@@ -1,5 +1,8 @@
 console.log(' hrm JS 연결')
 
+
+printTable();
+
 // 첨부파일에 등록된 사진을 HTML 표시하기 < 등록 사진을 미리보기 기능 >
 function preimg( o ){
 	let file = new FileReader(); 
@@ -38,7 +41,7 @@ function register(){
 					success : r => { 
 						if(r){
 							alert('직원등록 성공')
-							location.href = '/jspweb/member/login.jsp';
+							printTable();
 						} else { 
 							alert('직원등록 실패')
 						}
@@ -49,3 +52,27 @@ function register(){
 		console.log('정상적으로 입력 안된 내용이 있습니다.');
 	}
 } // f end 
+
+function printTable(){
+	console.log('printTable() 실행')
+	$.ajax( { 
+       url : "/jspweb/HrmController",
+       data : {},  
+       method : "get",
+       success : r =>{
+      		let html = ``;
+      		for(let i =0; i < r.length; i++){
+				  html += 
+				  `<tr>
+						<td><img class="employeeImg" src="/jspweb/hrm/img/${r[i].himg}"></td>
+						<td>${r[i].hname}</td>
+						<td>${r[i].hphone}</td>
+						<td>${r[i].hposition}</td>
+						<td>${r[i].hdate}</td>
+				  </tr>`;
+			  }
+			  document.querySelector('.tableB').innerHTML = html;	
+		},
+       	error : e=>{console.log(e)}
+     });
+}

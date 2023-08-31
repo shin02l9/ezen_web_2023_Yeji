@@ -24,14 +24,12 @@
 			<li> <a href="3"> 기능2 </a></li>
 			<li> <a href="3"> 기능3 </a></li>
 			<li> <a href="/jspweb/accountbook/accountbook.jsp"> 과제1:가계부 </a> </li>
-			<li> <a href="#"> 과제2:독서관열람실 </a> </li>
+			<li> <a href="/jspweb/library/library.jsp"> 과제2:열람실 </a> </li>
+			<li> <a href="/jspweb/hrm/hrm.jsp"> 과제3:직원등록 </a> </li>
+			
 		</ul>
 		<ul class="submenu"> 
-			<li> <a href="/jspweb/member/signup.jsp"> 회원가입 </a></li>
-			<li> <a href="/jspweb/member/login.jsp"> 로그인 </a></li>
-			<li> <a href="3"> 로그아웃 </a></li>
-			<li> <a href="3"> 마이페이지 </a></li>
-			<li> <img class="hmimg" src="/jspweb/member/img/default.webp"/></li>
+			<!-- innerHTML -->	
 		</ul>
 		
 
@@ -49,6 +47,6 @@
 	
 	<!-- 최신 제이쿼리 -->
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-
+	<script src="/jspweb/js/header.js" type="text/javascript"></script>
 </body>
 </html>
