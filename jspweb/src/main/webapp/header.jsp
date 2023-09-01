@@ -20,7 +20,7 @@
 		</div>
 		<ul class="mainmenu">
 			<li> <a href="/jspweb/visitlog/visitlog.jsp"> 방문록 </a></li>
-			<li> <a href="3"> 기능1 </a></li>
+			<li> <a href="/jspweb/board/list.jsp"> 게시판 </a></li>
 			<li> <a href="3"> 기능2 </a></li>
 			<li> <a href="3"> 기능3 </a></li>
 			<li> <a href="/jspweb/accountbook/accountbook.jsp"> 과제1:가계부 </a> </li>

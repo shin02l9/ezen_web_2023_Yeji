@@ -1,6 +1,9 @@
 
 console.log('header js 실행')
 
+
+let loginstate = false; // 로그인 상태 저장 
+
 //1. 현재 로그인 된 회원정보 요청
 getMemberInfo();
 function getMemberInfo(){
@@ -10,16 +13,18 @@ function getMemberInfo(){
 		method : "get",
 		data : { type: "info" } ,
 		success : function f(r){
-			console.log(r)
+			console.log(" 현재 로그인중인 회원정보 : "+r)
 			
 			let submenu = document.querySelector('.submenu');
 			let HTML = ``;
 			if(r==null){ // 비로그인
+			loginstate = false;
 				HTML += `
 				<li> <a href="/jspweb/member/signup.jsp"> 회원가입 </a></li>
 				<li> <a href="/jspweb/member/login.jsp"> 로그인 </a></li>
 				`;
 			} else{ // 로그인
+				loginstate = true;
 				HTML += `
 				<li> ${r.mid} 님 </li>
 				<li> <img class="hmimg" src="/jspweb/member/img/${r.mimg}"/></li>
