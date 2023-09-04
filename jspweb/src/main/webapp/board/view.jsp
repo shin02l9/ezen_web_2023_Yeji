@@ -15,14 +15,9 @@
 	<div class="webcontainer"> 
 		<h3> 글 상세 페이지 </h3>
 		<div class="boardBox">
-			부가정보1 : <div> 카테고리명, 조회수, 작성일 </div>
-			부가정보2 : <div> 작성자, 프로필사진 </div>
-			제목 : <div> 제목자리 </div>
-			내용 : <div> 내용자리 </div>
-			첨부파일 : <div> 첨부파일 </div>
-
-			<a href="list.jsp"><button type="button"> 목록보기 </button> </a>
+			<!-- innerHTML -->
 		</div>
+		<a href="list.jsp"><button type="button"> 목록보기 </button> </a>
 	</div>
 	
 	

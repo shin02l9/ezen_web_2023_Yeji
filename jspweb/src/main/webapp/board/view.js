@@ -29,7 +29,8 @@ function getBoard(){
 		method : "get",
 		data : { type : 2, bno : bno } ,
 		success : function f(r){
-			console.log("getBoard() 통신성공"+r) 
+			console.log(r) 
+				console.log("ishost : "+ r.host)
 			// 출력할 내용 구성
 			let boardBox = document.querySelector('.boardBox');
 			let HTML = `부가정보1 : <div> 
@@ -44,25 +45,48 @@ function getBoard(){
 						제목 : <div> ${r.btitle} </div>
 						내용 : <div> ${r.bcontent} </div>
 						첨부파일 : <div> ${r.bfile} </div>
-						<button type="button"> 수정 </button>
-						<button type="button"> 삭제 </button>
-						<a href="list.jsp"><button type="button"> 목록보기 </button> </a>`;
-			boardBox.innerHTML = HTML;			
-			
-			
-			if ( r.ishost ){
-				HTML += `<button type="button"> 수정 </button>
-						 <button type="button"> 삭제 </button>`;
+						`;		
+			if ( r.host ){
+				HTML += `<button onclick="onUpdate(${bno})" type="button"> 수정 </button>
+						 <button onclick="onDelete(${bno})" type="button"> 삭제 </button>`;
 			}
-			
-			
-			
-			
+			boardBox.innerHTML = HTML;	
 		} ,
 		error : function f(e){
 			console.log("getBoard() 통신실패"+e)
+		}
+	})
+}
+
+
+// 2. 게시물 삭제
+function onDelete( bno ){
+
+	$.ajax({
+		url : "/jspweb/BoardInfoController",
+		method : "delete",
+		data : { bno : bno } ,
+		success : function f(r){
+			console.log("onDelete() 통신성공"+r)
+			if( r ){
+				alert('게시물 삭제 성공')
+				location.href = `/jspweb/board/list.jsp`;
+			} else {
+				alert('게시물 삭제 실패')
+			}
 			
+		} ,
+		error : function f(e){
+			console.log("onDelete() 통신실패"+e)
 		}
 	})
 	
+}
+
+
+
+// 3. 게시물 수정
+function onUpdate( bno ){
+	location.href = `/jspweb/board/update.jsp?bno=${bno}`;
+
 }

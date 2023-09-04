@@ -28,7 +28,7 @@ public class BoardInfoController extends HttpServlet {
         super();
     }
     
-    // 1. type = 1 : 전체 조회, type = 2 : 개별 조회
+    // 1. 글 조회 | type = 1 : 전체 조회, type = 2 : 개별 조회
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println(" 글조회 컨트롤러 입장 ");
 		// 1. 요청
@@ -78,7 +78,7 @@ public class BoardInfoController extends HttpServlet {
 		
 	}
 
-	// 2. 글쓰기
+	// 2. 글 쓰기
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println(" 글쓰기 컨트롤러 입장 ");
 		
@@ -100,7 +100,10 @@ public class BoardInfoController extends HttpServlet {
 		int mno = ((MemberDTO)request.getSession().getAttribute("logindto")).getMno();
 		int bcno = Integer.parseInt(multi.getParameter("bcno"));	
 		
-		// 3. 유효성검사, 객체화
+		// 3. 유효성검사, 객체화 , 타입분류로 DAO 로직 나누기
+		
+		
+		
 		BoardDTO boardDTO = new BoardDTO(btitle, bcontent, bfile, mno, bcno);
 		System.out.println( "글쓰기 boardDTO : " + boardDTO);
 		
@@ -113,14 +116,54 @@ public class BoardInfoController extends HttpServlet {
 		
 	}
 
-
+	// 3. 글 수정
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		System.out.println(" 글수정 컨트롤러 입장 ");
+		// 1. 수정할 첨부파일 업로드
+		MultipartRequest multi = new MultipartRequest(
+				request, // 요청 방식
+				request.getServletContext().getRealPath("/board/upload"), // 저장경로
+				1024*1024*1024, // 업로드 허용용량
+				"UTF-8",	// 인코딩 타입
+				new DefaultFileRenamePolicy() // 만약에 업로드파일명이 서버내에 존재하면 자동으로 파일면 뒤에 숫자 붙이기
+				);
+		System.out.println("[경로 확인해보기] : "+ request.getServletContext().getRealPath("/board/upload"));
+		// 2. 수정할 데이터 요청
+		int bcno = Integer.parseInt(multi.getParameter("bcno"));
+		String btitle = multi.getParameter("btitle");
+		String bcontent = multi.getParameter("bcontent");
+		String bfile = multi.getFilesystemName("bfile");
+		
+		// 2. 수정할 게시물의 식별키 
+		int bno = Integer.parseInt(multi.getParameter("bno"));
+		BoardDTO boardDTO = new BoardDTO(bno,btitle,bcontent,bfile,bcno);
+		System.out.println("수정 DTO : "+boardDTO);
+		// * 만약에 새로운 첨부파일이 없으면 기존 첨부파일 그대로 사용하기
+		if( boardDTO.getBfile() == null ) {
+			boardDTO.setBfile(BoardDAO.getInstance().getBoard(bno).getBfile());
+		}
+		
+		// DAO 처리하기
+		boolean r = BoardDAO.getInstance().onUpdate(boardDTO);
+		System.out.println( "onUpdate() r : "+r);
+		// 응답하기
+		response.setContentType("application/json;charset=UTF-8");
+   		response.getWriter().print(r);
+		
 	}
+	
 
-
+	// 4. 글 삭제
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		System.out.println( " 글삭제 컨트롤러 입장 ");
+		// 요청받기
+		int bno = Integer.parseInt(request.getParameter("bno"));
+		// DAO 처리하기
+		boolean r = BoardDAO.getInstance().onDelete(bno);
+		System.out.println( "삭제 r : "+r);
+		// 응답하기
+		response.setContentType("application/json;charset=UTF-8");
+   		response.getWriter().print(r);
 	}
 
 }

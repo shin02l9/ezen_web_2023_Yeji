@@ -66,6 +66,14 @@ public class BoardDTO {
 	}
 	
 	
+	public BoardDTO(int bno, String btitle, String bcontent, String bfile, int bcno) {
+		super();
+		this.bno = bno;
+		this.btitle = btitle;
+		this.bcontent = bcontent;
+		this.bfile = bfile;
+		this.bcno = bcno;
+	}
 	//메소드
 	public int getBno() {
 		return bno;

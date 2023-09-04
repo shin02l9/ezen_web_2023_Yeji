@@ -86,7 +86,38 @@ public class BoardDAO extends DAO{
 	
 	
 	// 4. 게시물 수정
+	public boolean onUpdate( BoardDTO boardDTO ) {
+		try {
+			String sql = "update board "
+					+ "		set btitle = ?, bcontent = ?, bfile = ?,  bcno = ? "
+					+ "     where bno = ?;";
+			ps = conn.prepareStatement(sql);
+			ps.setString( 1, boardDTO.getBtitle() );
+			ps.setString( 2, boardDTO.getBcontent() );
+			ps.setString( 3, boardDTO.getBfile() );
+			ps.setInt( 4, boardDTO.getBcno() );
+			ps.setInt( 5, boardDTO.getBno() );
+			int row = ps.executeUpdate();
+			System.out.println( "row : "+row);
+			if( row == 1 ) { return true; }
+		} catch (Exception e) {System.err.println(e);}
+		return false;
+
+	}
+	
 	// 5. 게시물 삭제
+	public boolean onDelete( int bno ) {
+		try {
+			String sql = "delete from board where bno = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt( 1, bno );
+			int row = ps.executeUpdate();
+			System.out.println( "row : "+row);
+			if( row == 1 ) { return true; }
+		} catch (Exception e) {System.err.println(e);}
+		return false;
+	}
+	
 	// 6. 조회수 증가
 	public boolean view( int bno ) {
 		try {
@@ -94,7 +125,7 @@ public class BoardDAO extends DAO{
 			ps = conn.prepareStatement(sql);
 			ps.setInt( 1, bno );
 			int row = ps.executeUpdate();
-			if( row == 1 ) { return true;  }
+			if( row == 1 ) { return true; }
 		} catch (Exception e) {System.err.println(e);}
 		return false;
 	}
