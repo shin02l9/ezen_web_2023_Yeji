@@ -1,12 +1,17 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.catalina.startup.ClassLoaderFactory.Repository;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -22,9 +27,22 @@ public class BoardInfoController extends HttpServlet {
     public BoardInfoController() {
         super();
     }
-
+    
+    // 1.  전체 조회, 개별 조회
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		System.out.println(" 글조회 컨트롤러 입장 ");
+		// 1. 요청
+		// 2. 유효성검사
+		// 3. DAO
+		ArrayList<BoardDTO> r = BoardDAO.getInstance().getList();
+		System.out.println("글조회 BoardDTO : "+r);
+			// 매핑해야한다. JAVA 객체를 JS 형식으로 변환해주는 것 
+			ObjectMapper mapper = new ObjectMapper();
+			String json = mapper.writeValueAsString(r);
+		// 4. 응답
+		response.setContentType("application/json;charset=UTF-8");
+   		response.getWriter().print(json);
+		
 	}
 
 	// 2. 글쓰기
@@ -51,7 +69,7 @@ public class BoardInfoController extends HttpServlet {
 		
 		// 3. 유효성검사, 객체화
 		BoardDTO boardDTO = new BoardDTO(btitle, bcontent, bfile, mno, bcno);
-		System.out.println( "boardDTO : " + boardDTO);
+		System.out.println( "글쓰기 boardDTO : " + boardDTO);
 		
 		// 4. Dao 처리
 		boolean r = BoardDAO.getInstance().bwrite(boardDTO);

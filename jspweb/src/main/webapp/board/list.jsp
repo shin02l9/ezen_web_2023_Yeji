@@ -14,15 +14,18 @@
 	<div class="webcontainer"> 
 		<h3> 글 목록 </h3>
 		
+		<table class="boardTable" >
+			<!-- innerHTML -->
+		</table>
+		
+		
+		
+		
+		
+		
 		<button onclick="onWrite()" type="button"> 글쓰기 </button>
 		
 	</div>
-	
-	
-	
-	
-	
-	
 	
 	
 	

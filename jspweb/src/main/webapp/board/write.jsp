@@ -18,10 +18,10 @@
 						<option value="1"> 공지사항 </option>
 						<option value="2"> 자유게시판 </option>
 						<option value="3"> 노하우 </option>
-					 </select>
-			제목 : <input type="text" name="btitle" class="btitle">
-			내용 : <textarea name="bcontent" class="bcontent" rows=" " cols=""></textarea>
-			첨부파일 : <input type="file" name="bfile" class="bfile">
+					 </select> <br/>
+			제목 : <input type="text" name="btitle" class="btitle"> <br/>
+			내용 : <textarea name="bcontent" class="bcontent" rows=" " cols=""></textarea> <br/>
+			첨부파일 : <input type="file" name="bfile" class="bfile"> <br/> 
 			<button onclick="bwrite()" type="button"> 글등록 </button>
 			<a href="list.jsp"> 목록보기 </a>
 			<button type="reset"> 다시쓰기 </button>

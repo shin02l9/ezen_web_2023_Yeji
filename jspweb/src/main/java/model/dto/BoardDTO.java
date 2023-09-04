@@ -13,6 +13,7 @@ public class BoardDTO {
     // - 게시물에 추가적으로 표시할 필드들 
     private String mid; // 작성자 회원아이디 [ 사용자는 게시물 조회시 작성자회원번호 보단 작성자아이디 원하는 경우 다수 ]
     private String bcname; // 카테고리명 [ 사용자는 게시물 조회시 카테고리번호 보단 카테고리이름 원하는 경우 다수 ]
+    private String mimg; // 작성자의 프로필
     // 생성자
 	public BoardDTO(int bno, String btitle, String bcontent, String bfile, String bdate, int bview, int mno, int bcno,
 			String mid, String bcname) {
@@ -40,10 +41,33 @@ public class BoardDTO {
 		this.bcno = bcno;
 	}
 	
+	// 글생성시에 사용하는 생성자
+	public BoardDTO(int bno, String btitle, String bcontent, String bfile, String bdate, int bview, int mno, int bcno,
+			String mid, String mimg, String bcname) {
+		super();
+		this.bno = bno;
+		this.btitle = btitle;
+		this.bcontent = bcontent;
+		this.bfile = bfile;
+		this.bdate = bdate;
+		this.bview = bview;
+		this.mno = mno;
+		this.bcno = bcno;
+		this.mid = mid;
+		this.mimg = mimg;
+		this.bcname = bcname;
+	}
+	
 	
 	//메소드
 	public int getBno() {
 		return bno;
+	}
+	public String getMimg() {
+		return mimg;
+	}
+	public void setMimg(String mimg) {
+		this.mimg = mimg;
 	}
 	public void setBno(int bno) {
 		this.bno = bno;
@@ -106,8 +130,12 @@ public class BoardDTO {
 	public String toString() {
 		return "BoardDTO [bno=" + bno + ", btitle=" + btitle + ", bcontent=" + bcontent + ", bfile=" + bfile
 				+ ", bdate=" + bdate + ", bview=" + bview + ", mno=" + mno + ", bcno=" + bcno + ", mid=" + mid
-				+ ", bcname=" + bcname + "]";
+				+ ", bcname=" + bcname + ", mimg=" + mimg + "]";
 	}
+
+	
+	
+	
    
 	
 	

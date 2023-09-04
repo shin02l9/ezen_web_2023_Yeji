@@ -11,7 +11,53 @@ function onWrite(){
 }
 
 
-//2. 글쓰기 
+// 2. 모든글 조회
+getlist();
+function getlist(){
+	$.ajax({
+		url : "/jspweb/BoardInfoController",
+		method : "get",
+		data : {} ,
+		success : function f(r){
+			console.log("getlist() 통신성공"+r) 
+			if ( r != null ){
+				// 출력할 내용 구성
+				let boardTable = document.querySelector('.boardTable');
+				let HTML = `<tr>
+								<th> 번호 </th>
+								<th> 카테고리 </th>
+								<th> 제목 </th>
+								<th> 작성자 </th>
+								<th> 조회수 </th>
+								<th> 작성일 </th>
+							</tr>`;
+				// 반복해서 HTML 출력하기
+				// 배열명.forEach( 변수명아무거나 => { 실행 코드 }) 
+
+				r.forEach( b => {
+					HTML += `<tr>
+								<th> ${b.bno} </th>
+								<th> ${b.bcno} </th>
+								<th> ${b.btitle} </th>
+								<th> ${b.mid} / <img class="hmimg" src="/jspweb/member/img/${b.mimg}"/></th> 
+								<th> ${b.bview} </th>
+								<th> ${b.bdate} </th>
+							</tr>`;
+					console.log('b.mimg : '+b.mimg)
+				})
+				boardTable.innerHTML = HTML;
+			}
+		} ,
+		error : function f(r){}
+	})
+}
+
+
+
+
+
+// ------------------------------------------------------------------
+//1. 글쓰기 
 function bwrite(){
 	console.log('글쓰기 bwrite() 실행')
 	//1. form 가져오기
@@ -26,7 +72,7 @@ function bwrite(){
 		contentType : false ,
 		processData : false ,
 		success : r => { 
-			console.log("통신성공"+r) 
+			console.log("bwrite() 통신성공"+r) 
 			alert(' 글 등록 성공 ')
 			location.href="/jspweb/board/list.jsp";
 			} ,
