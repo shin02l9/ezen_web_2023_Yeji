@@ -48,7 +48,7 @@
 	
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>	
 <script src="signup.js" type="text/javascript"></script>
-<script src="../js/info.js" type="text/javascript"></script>
+<script src="info.js" type="text/javascript"></script>
 
 	<!-- JSP 안에 다른 JSP를 포함하기 -->
 	<%@include file="../footer.jsp" %>

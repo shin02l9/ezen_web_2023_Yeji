@@ -14,6 +14,13 @@ public class BoardDTO {
     private String mid; // 작성자 회원아이디 [ 사용자는 게시물 조회시 작성자회원번호 보단 작성자아이디 원하는 경우 다수 ]
     private String bcname; // 카테고리명 [ 사용자는 게시물 조회시 카테고리번호 보단 카테고리이름 원하는 경우 다수 ]
     private String mimg; // 작성자의 프로필
+    
+    // 본인 글 여부 체크할 변수 ( 조회대상자와 작성대상자가 일치하는지 여부 ! )
+    private boolean ishost;
+    
+    
+    
+    
     // 생성자
 	public BoardDTO(int bno, String btitle, String bcontent, String bfile, String bdate, int bview, int mno, int bcno,
 			String mid, String bcname) {
@@ -125,6 +132,13 @@ public class BoardDTO {
 	}
 	public void setBcname(String bcname) {
 		this.bcname = bcname;
+	}
+	
+	public boolean isHost() {
+		return ishost;
+	}
+	public void setHost(boolean ishost) {
+		this.ishost = ishost;
 	}
 	@Override
 	public String toString() {

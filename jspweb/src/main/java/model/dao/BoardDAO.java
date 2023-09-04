@@ -52,17 +52,53 @@ public class BoardDAO extends DAO{
 			} return list;
 		} catch ( Exception e ) {System.err.println(e);}
 		return null;
+	}
+	
+	// 3. 개별글 출력
+	public BoardDTO getBoard( int bno ){
+		view(bno); // 조회수 증가 함수 호출 
+		try {
+			String sql = "select b.*, m.mid, m.mimg, bc.bcname "
+					+ "from board b "
+					+ "natural join membertable m "
+					+ "natural join bcategory bc "
+					+ "where bno = ? ";
+			ps = conn.prepareStatement(sql);
+			ps.setInt( 1, bno );
+			rs = ps.executeQuery();
+			if( rs.next() ) {
+				BoardDTO boardDTO = new BoardDTO(
+						rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getInt(6), rs.getInt(7), rs.getInt(8),
+						rs.getString(9), rs.getString(10), rs.getString(11)
+						);
+				return boardDTO;
+			}
 
+			
+		}catch (Exception e) {System.err.println(e);}
 		
-		
-		
+		return null;
 	}
 	
 	
 	
-	// 3. 개별글 출력
+	
+	
 	// 4. 게시물 수정
 	// 5. 게시물 삭제
 	// 6. 조회수 증가
+	public boolean view( int bno ) {
+		try {
+			String sql = "update board set bview = bview+1 where bno = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt( 1, bno );
+			int row = ps.executeUpdate();
+			if( row == 1 ) { return true;  }
+		} catch (Exception e) {System.err.println(e);}
+		return false;
+	}
+	
+	
 
 }

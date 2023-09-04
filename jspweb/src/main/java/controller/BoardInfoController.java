@@ -28,20 +28,53 @@ public class BoardInfoController extends HttpServlet {
         super();
     }
     
-    // 1.  전체 조회, 개별 조회
+    // 1. type = 1 : 전체 조회, type = 2 : 개별 조회
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println(" 글조회 컨트롤러 입장 ");
 		// 1. 요청
-		// 2. 유효성검사
-		// 3. DAO
-		ArrayList<BoardDTO> r = BoardDAO.getInstance().getList();
-		System.out.println("글조회 BoardDTO : "+r);
-			// 매핑해야한다. JAVA 객체를 JS 형식으로 변환해주는 것 
-			ObjectMapper mapper = new ObjectMapper();
-			String json = mapper.writeValueAsString(r);
+		int type = Integer.parseInt(request.getParameter("type"));
+		
+		ObjectMapper mapper = new ObjectMapper();
+		String json = null;
+
+		// 2. type 분류하여 로직 처리
+		if( type == 1 ) { // 전체 조회
+			// 3. DAO
+			ArrayList<BoardDTO> r = BoardDAO.getInstance().getList();
+			System.out.println("글 전체 조회 BoardDTO : "+r);
+				// 매핑해야한다. JAVA 객체를 JS 형식으로 변환해주는 것 
+				json = mapper.writeValueAsString(r);
+	   		
+		} else if( type == 2 ) { // 개별 조회 
+			int bno = Integer.parseInt(request.getParameter("bno"));
+			// 3. DAO
+			BoardDTO r = BoardDAO.getInstance().getBoard(bno);
+			
+				// 만약에!! ( 로그인 혹은 비로그인 ) 요청한 사람과 게시물 작성한 사람과 동일 ??
+				// 로그인 정보 세션 불러와서 사용할 것
+			Object object = request.getSession().getAttribute("logindto");
+			
+			// 비 로그인 상태 --------------------
+			if ( object == null ) { r.setHost(false); }
+				
+			// 로그인 상태 ----------------------
+			else { 
+				MemberDTO login = (MemberDTO)object;
+				// 내가 쓴글
+				if( login.getMno() == r.getMno() ) { r.setHost(true); }
+				// 남이 쓴글
+				else { r.setHost(false); }
+			}
+			
+			
+			System.out.println("글 개별 조회 BoardDTO : "+r);
+				// 매핑해야한다. JAVA 객체를 JS 형식으로 변환해주는 것 
+				json = mapper.writeValueAsString(r);
+		}
 		// 4. 응답
 		response.setContentType("application/json;charset=UTF-8");
    		response.getWriter().print(json);
+
 		
 	}
 
