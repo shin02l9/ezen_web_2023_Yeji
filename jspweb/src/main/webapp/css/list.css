@@ -1,1 +1,168 @@
 @charset "UTF-8";
+
+
+/* 1. 테이블 ------------------------------------------------- */
+/* 1-1. 테이블 전체 구역 */
+.boardTable{
+	width: 100%;
+	margin-top: 30px;
+}
+/* 1-2 테이블 내용물 */
+.boardTable th, .boardTable td{
+	/* border: 1px solid black; */
+	text-align: center;
+	padding: 13px 0px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.boardTable th{
+	background-color: #4F7336;
+	color: white;
+	height: 50px; 
+}
+
+/* 1-3 작성자 이미지 */
+.blistimg{
+	width: 20px !important;
+	height: 20px !important;
+	vertical-align: middle;
+}
+
+/* 1-4 테이블의 각 열 길이 설정 */
+.boardTable th:nth-child(1){ width: 5%; } /* 1열 */
+.boardTable th:nth-child(2){ width: 7%; } /* 2열 */
+.boardTable th:nth-child(3){ width: 45%; } /* 3열 */
+.boardTable th:nth-child(4){ width: 15%; } /* 4열 */
+.boardTable th:nth-child(5){ width: 8%; } /* 5열 */
+.boardTable th:nth-child(6){ width: 20%; } /* 6열 */
+
+
+/* 1-5. 홀수짝수 행 구분 */
+.boardTable tr:nth-child(odd){
+	background-color: #EDF4E8;
+}
+.boardTable tr:nth-child(even){
+	background-color: #C0D9AE;
+}
+
+/* 1-6. 마우스를 올렸을때 */
+.boardTable tr:hover{
+	background-color: #D5D5D5;
+}
+
+
+/* 2. 상단구역 ------------------------------------------------- */
+/* 2-1. 제목 */
+.boardtop{
+	text-align: center;
+	margin: 10px 0px;
+}
+
+/* 2-2. 상단 부가버튼 구역 */
+.boardtopetc{
+	display: flex;
+	justify-content: space-between;
+}
+
+.boardtopetc span{
+	margin-left: 20px
+}
+
+.listsize{
+	width: 65px !important;
+}
+
+/* 2-3. 모든 버튼들 */
+.bbtn, .keyword{
+	border: 2px solid #4F7336;
+	background-color: white;
+	border-radius: 5px; 
+	padding: 5px 10px;
+	width: 110px; height: 40px;
+	margin: 10px 0px 0px 10px;
+	font-weight: bold;
+	font-size: 15px;
+	cursor: pointer;
+}
+
+.bbtn:hover, .keyword:hover{
+	background-color: #CBE0BC;
+}
+
+
+
+/* 3. 하단구역 ------------------------------------------------- */
+/* 3-1. 하단 전체 레이아웃 */
+.boardbottom{
+	border-top: 1px solid #e8e8e8;
+	margin: 30px 0px;
+	text-align: center; vertical-align: middle;
+}
+.pagebox{
+	padding-top: 15px;
+}
+
+/* 3-2. 페이지 버튼 */
+.pagebox button{
+	border: none;
+	background-color: transparent; /* 투명색 */
+	font-weight: bold;
+	font-size: 13px; padding: 0px 5px; 
+	cursor: pointer;
+}
+
+/* 3-3. 검색인풋창 */
+.keyword{
+	width: 250px !important;
+}
+
+/* 3-4. 선택된 페이징 버튼 */
+.selectpage{
+	border: 2px solid #4F7336 !important;
+	border-radius: 50% !important;
+	width: 25px; height: 25px;
+	/* background-color: #CBE0BC !important; */
+}
+
+
+
+
+
+/* 
+
+	하위 요소를 인덱스로 식별이 가능하다. 
+		- 목적 : 동일한 식별자가 여러개 일때 사용하기 위해 [ * 중복 식별자를 식별 ]
+		- 인덱스 1부터 시작함 !
+		- 상위요소 하위요소:nth-child(인덱스)
+			- form input:nth-child(1)
+				: form 태그 하위 요소의 첫번째 input 요소 식별
+			- form input:nth-child(3)
+				: form 태그 하위 요소의 세번째 input 요소 식별
+				
+			상위요소 하위요소:nth-child(odd)	: 형제목록중 홀수번째 요소 식별
+			상위요소 하위요소:nth-child(even)	: 형제목록중 짝수번째 요소 식별
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

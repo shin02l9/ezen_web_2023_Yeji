@@ -18,6 +18,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import model.dao.BoardDAO;
 import model.dto.BoardDTO;
 import model.dto.MemberDTO;
+import model.dto.PageDTO;
 
 @WebServlet("/BoardInfoController")
 public class BoardInfoController extends HttpServlet {
@@ -39,12 +40,34 @@ public class BoardInfoController extends HttpServlet {
 
 		// 2. type 분류하여 로직 처리
 		if( type == 1 ) { // 전체 조회
+			// ------- 1. 카테고리 ------------------------------
+			int bcno = Integer.parseInt(request.getParameter("bcno"));
+			// ------- 2. 한 페이지에 최대 출력 게시물 수 -----------
+			int listsize = Integer.parseInt(request.getParameter("listsize"));
+			// ------- 3. 페이징 처리 ---------------------------
+			int page = Integer.parseInt(request.getParameter("page"));
+			
+			// ------- 4. 페이징 버튼 출력 -----------------------
+				// 1. 마지막 페이지번호/총페이지수 = 전체 게시물 수 / 페이지별 최대 게시물 수 (listsize)
+				// 전체 게시물 수 
+			int totalsize = BoardDAO.getInstance().totalsize(bcno);
+				// 전체 페이지 수 
+			int totalpage = totalsize%listsize == 0 ? // 만약에 나머지가 없으면
+							totalsize/listsize : 	  // 몫만 넣고
+							(totalsize/listsize)+1;	  // 아니면 나머지를 위한 페이지도 출력해야하니까 +1 해야함
+					
+			
 			// 3. DAO
-			ArrayList<BoardDTO> r = BoardDAO.getInstance().getList();
-			System.out.println("글 전체 조회 BoardDTO : "+r);
+			ArrayList<BoardDTO> r = BoardDAO.getInstance().getList(bcno, listsize, page);
+			
+			// 4. PageDTO로 추가 구성하기 
+			PageDTO pageDTO = new PageDTO(page, listsize, totalsize, totalpage, r);
+			
+
+			System.out.println("글 전체 조회 BoardDTO : "+pageDTO);
 				// 매핑해야한다. JAVA 객체를 JS 형식으로 변환해주는 것 
-				json = mapper.writeValueAsString(r);
-	   		
+				json = mapper.writeValueAsString(pageDTO);
+				
 		} else if( type == 2 ) { // 개별 조회 
 			int bno = Integer.parseInt(request.getParameter("bno"));
 			// 3. DAO
@@ -74,7 +97,6 @@ public class BoardInfoController extends HttpServlet {
 		// 4. 응답
 		response.setContentType("application/json;charset=UTF-8");
    		response.getWriter().print(json);
-
 		
 	}
 
@@ -150,8 +172,7 @@ public class BoardInfoController extends HttpServlet {
 		response.setContentType("application/json;charset=UTF-8");
    		response.getWriter().print(r);
 		
-	}
-	
+	}	
 
 	// 4. 글 삭제
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

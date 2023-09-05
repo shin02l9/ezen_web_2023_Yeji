@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>list</title>
+<title>write</title>
 <link href="../css/list.css" rel="stylesheet">
 </head>
 <body>
