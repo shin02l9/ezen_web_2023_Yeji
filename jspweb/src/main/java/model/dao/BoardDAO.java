@@ -24,14 +24,23 @@ public class BoardDAO extends DAO{
 			if( row == 1 ) { return true; }
 		} catch ( Exception e ) {System.err.println(e);}
 		return false;
-
 	}
 	
 	// 2-2. 게시물 수 출력 -------------------------------------------------------------------
-	public int totalsize( int bcno ) {
+	public int totalsize( int bcno, String key, String keyword) {
 		try {
-			String sql = "select count(*) from board b";
+			// 앞부분 공통 SQL문
+			String sql = "select count(*) from board b natural join membertable m";
+			// 조건 1. 만약에 카테고리가 선택되어서 전체보기가 아니면 ! SQL문 추가
 			if( bcno != 0 ) { sql += " where b.bcno = "+bcno; }
+			// 조건 2. 만약에 검색이 있다? 없다?
+				// 빈 문자열이 아니면 ! 검색이 있다 ! SQL문 추가
+			if( !key.isEmpty() && !keyword.isEmpty() ) { 
+				// 만약에 카테고리내 검색이면 where문이 두개가 중복되서 문제가 생긴다.
+				if( bcno != 0 ) { sql += " and ";} 
+				else { sql += " where "; }
+				sql += " " + key + " like '%" + keyword + "%'";
+			}
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			if( rs.next() ) { return rs.getInt(1); }
@@ -40,20 +49,30 @@ public class BoardDAO extends DAO{
 	}
 	
 	// 2. 모든글 출력 -------------------------------------------------------------------
-	public ArrayList<BoardDTO> getList(int bcno, int listsize, int page){
+	public ArrayList<BoardDTO> getList(int bcno, int listsize, int page, String key, String keyword){
+		
 		System.out.println("글 출력하기 SQL 입장");
 		// 게시물 레코드 정보 담아둘 리스트 선언
 		ArrayList<BoardDTO> list = new ArrayList<>();
 		
-		try {
+		try { // 앞부분 공통 SQL문
 			String sql = "select b.*, m.mid, m.mimg, bc.bcname"
 					+ "	from board b "
 					+ "		natural join bcategory bc "
 					+ "		natural join membertable m ";
 			
-			// 카테고리가 선택되어서 전체보기가 아니면 !
+			// 조건 1. 만약에 카테고리가 선택되어서 전체보기가 아니면 ! SQL문 추가
 			if( bcno != 0 ) { sql += " where b.bcno = "+bcno; }
 			
+			// 조건 2. 만약에 검색이 있다? 없다?
+				// 빈 문자열이 아니면 ! 검색이 있다 ! SQL문 추가
+			if( !key.isEmpty() && !keyword.isEmpty() ) { 
+				// 만약에 카테고리내 검색이면 where문이 두개가 중복되서 문제가 생긴다.
+				if( bcno != 0 ) { sql += " and ";} 
+				else { sql += " where "; }
+				sql += " " + key + " like '%" + keyword + "%'";
+			}
+				// 뒷부분 공통 SQL문 추가
 				sql += " 	order by b.bdate desc limit ?, ?;";
 				
 				ps = conn.prepareStatement(sql);

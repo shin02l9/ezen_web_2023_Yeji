@@ -33,22 +33,22 @@ function getBoard(){
 				console.log("ishost : "+ r.host)
 			// 출력할 내용 구성
 			let boardBox = document.querySelector('.boardBox');
-			let HTML = `부가정보1 : <div> 
-									${r.bcname}, 
-									${r.bview}, 
-									${r.bdate} 
-								  </div>
-						부가정보2 : <div> 
-									${r.mid}, 
-									${r.mimg} 
-								  </div>
-						제목 : <div> ${r.btitle} </div>
-						내용 : <div> ${r.bcontent} </div>
-						첨부파일 : <div> ${r.bfile} </div>
+			let HTML = `<div class="bInfo1"> 
+							${r.bcname}, 
+							${r.bview}, 
+							${r.bdate} 
+						</div>
+						<div class="bInfo2"> 
+							${r.mid}, 
+							${r.mimg} 
+						</div>
+						제목 : <div class="btitle"> ${r.btitle} </div>
+						내용 : <div class="bcontent"> ${r.bcontent} </div>
+						첨부파일 : <div> <a href="/jspweb/"> <img class="bfileImg" src="$/jspweb/board/upload/${r.bfile}"/> </a> </div>
 						`;		
 			if ( r.host ){
-				HTML += `<button onclick="onUpdate(${bno})" type="button"> 수정 </button>
-						 <button onclick="onDelete(${bno})" type="button"> 삭제 </button>`;
+				HTML += `<button class="onUpdatebtn" onclick="onUpdate(${bno})" type="button"> 수정 </button>
+						 <button class="onUpdatebtn" onclick="onDelete(${bno})" type="button"> 삭제 </button>`;
 			}
 			boardBox.innerHTML = HTML;	
 		} ,

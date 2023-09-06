@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>view</title>
-<link href="../css/list.css" rel="stylesheet">
+<link href="../css/view.css" rel="stylesheet">
 </head>
 <body>
 

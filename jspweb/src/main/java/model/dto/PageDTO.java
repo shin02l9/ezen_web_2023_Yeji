@@ -16,22 +16,32 @@ public class PageDTO {
 	private int totalsize;
 	// 전체 페이지 수 
 	private int totalpage;
+	// 페이지 버튼 시작번호
+	private int startbtn;
+	// 페이지 버튼 끝번호
+	private int endbtn;
 	
 	// 게시물 리스트 
 	ArrayList<BoardDTO> boardlist;
 
-	
-	
+
 	public PageDTO() {
 		super();
 	}
 
-	public PageDTO(int page, int listsize, int totalsize, int totalpage, ArrayList<BoardDTO> boardlist) {
+	
+	
+	
+	
+	public PageDTO(int page, int listsize, int totalsize, int totalpage, int startbtn, int endbtn,
+			ArrayList<BoardDTO> boardlist) {
 		super();
 		this.page = page;
 		this.listsize = listsize;
 		this.totalsize = totalsize;
 		this.totalpage = totalpage;
+		this.startbtn = startbtn;
+		this.endbtn = endbtn;
 		this.boardlist = boardlist;
 	}
 
@@ -75,11 +85,31 @@ public class PageDTO {
 		this.boardlist = boardlist;
 	}
 
+	
+	public int getStartbtn() {
+		return startbtn;
+	}
+
+	public void setStartbtn(int startbtn) {
+		this.startbtn = startbtn;
+	}
+
+	public int getEndbtn() {
+		return endbtn;
+	}
+
+	public void setEndbtn(int endbtn) {
+		this.endbtn = endbtn;
+	}
+
 	@Override
 	public String toString() {
 		return "PageDTO [page=" + page + ", listsize=" + listsize + ", totalsize=" + totalsize + ", totalpage="
-				+ totalpage + ", boardlist=" + boardlist + "]\n";
+				+ totalpage + ", startbtn=" + startbtn + ", endbtn=" + endbtn + ", boardlist=" + boardlist + "]";
 	}
+
+	
+	
 	
 	
 

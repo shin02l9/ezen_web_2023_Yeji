@@ -2,6 +2,7 @@ console.log('list JS 실행')
 
 // 1. 글쓰기 버튼을 클릭하면
 function onWrite(){
+	keywordDelete();
 	if(loginstate){
 		location.href="write.jsp";
 	} else {
@@ -10,16 +11,50 @@ function onWrite(){
 	}
 }
 
+
 /* 게시물 조회 조건을 담았다 뻈다 하며 사용할 객체 */
-let pageObject = { type : 1, bcno : 0, listsize : 10, page : 1}
+let pageObject = { 
+		type : 1, 
+		bcno : 0, 
+		listsize : 10, 
+		page : 1,
+		key : '',
+		keyword : ''
+		}
 	 // type 1 : 전체 , type 2 : 개별조회
 	 // bcno 	 : 조회할 카테고리 번호 [ 기본값은 전체보기 ]
 	 // listsize : 하나의 페이지에 게시물 최대 표시할 수 
 	 // page	 : 조회할 페이지 번호 
 
+// 5. 검색버튼을 클릭 했을때
+function onSearch (){
+	pageObject.key = document.querySelector('.key').value;
+	pageObject.keyword = document.querySelector('.keyword').value;
+	console.log('검색 클릭시 key : '+pageObject.key)
+	console.log('검색 클릭시 keyword : '+pageObject.keyword)
+	getlist(1);
+	// 검색 끝난 후에 검색창 공백으로 바꾸기
+	document.querySelector('.keyword').value = '';
+}
+
+// 5-1. 검색창에서 엔터키를 눌렀을때
+function enter(){
+	if( event.keyCode == 13 ){
+		onSearch();
+		return;
+	}
+}
+
+// 5-2. 검색된 값 초기화하기
+function keywordDelete(){
+	pageObject.key = '';
+	pageObject.keyword = '';
+}
+
 
 // 3. 카테고리 버튼을 클릭했을때
 function oncategory( bcno ){
+	keywordDelete();
 	console.log('클릭된 카테고리 넘버 : '+bcno)
 	pageObject.bcno = bcno; // 조회 조건객체내 카테고리번호를 선택한 번호로 변경하기
 	getlist(1); // 조건에 변경되었기 때문에 다시 출력
@@ -83,7 +118,7 @@ function getlist( page ){
 				HTML += `<button class="" onclick="getlist(${page <= 1 ? page : page-1})" type="button"> ◀ </button>`;
 					// 페이징 버튼
 					
-				for( let i = 1; i <= r.totalpage; i++ ){
+				for( let i = r.startbtn; i <= r.endbtn; i++ ){
 					// 만약에 현재 페이지와 i번째 페이지와 일치하면 class="selectpage" 추가해주기
 					/*if( page == i ){
 						HTML += `<button onclick="getlist(${i})" class="selectpage" type="button"> ${i} </button>`;
@@ -101,7 +136,11 @@ function getlist( page ){
 				
 				// -------------- 총 게시물 수 출력 --------------
 				let totalsize = document.querySelector('.totalsize');
-				totalsize.innerHTML = `총 게시물 수 : ${r.totalsize}`;
+				if( pageObject.key != '' && pageObject.keyword != '' ){
+					totalsize.innerHTML = `검색된 게시물 수 : ${r.totalsize}`;
+				} else {
+					totalsize.innerHTML = `총 게시물 수 : ${r.totalsize}`;
+				}
 				
 			} 
 		}
@@ -124,28 +163,3 @@ function getlist( page ){
 
 
 // ------------------------------------------------------------------
-// 1. 글쓰기 
-function bwrite(){
-	console.log('글쓰기 bwrite() 실행')
-	//1. form 가져오기
-	let form = document.querySelectorAll('.writeForm')[0];
-	//2. form 객체화하기
-	let formData = new FormData(form);
-	//3. ajax으로 대용량 form 전송하기
-	$.ajax({
-		url : "/jspweb/BoardInfoController" ,
-		method: "post" ,
-		data : formData ,
-		contentType : false ,
-		processData : false ,
-		success : r => { 
-			console.log("bwrite() 통신성공"+r) 
-			alert(' 글 등록 성공 ')
-			location.href="/jspweb/board/list.jsp";
-			} ,
-		error : e => { 
-			console.log("통신실패"+e) 
-			alert(' 글 등록 실패 ')
-			} ,
-	})
-}
