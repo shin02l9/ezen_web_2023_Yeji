@@ -138,16 +138,69 @@ function(r) {
  
 
  
+/*
 
+	객체내 속성 호출
+		객체명.속성명
+		객체명['속성명'] : 속성명에 특수문자가 들어가는 경우 사용하는 방법
+		
+	- for 문 
+		- 배열명 : arrayList
+		
+		1. 	인덱스 0부터 배열의 길이만큼 반복  
+			for( let i = 0 ; i<arrayList.length ; i++ ){ } 
+		
+		2.  배열의 첫번재 인덱스 부터 마지막인덱스까지 반복 
+			for( let 인덱스변수 in arrayList ){ } 
+		
+		3.  배열의 첫번째 데이터 부터 마지막 데이터까지 반복 
+			for( let 반복변수 of arrayList ){ }
+		
+		4. 	배열의 반복변수or인덱스를 첫번째부터 마지막 반복 	[ 반환return값 x ]
+			arrayList.forEach( (반복변수)=>{ } )
+			arrayList.forEach( (반복변수,인덱스변수)=>{ } )
+			arrayList.forEach( (반복변수,인덱스변수,배열 )=>{ } )
+			
+		5.  배열의 반복변수or인덱스를 첫번째부터 마지막 반복 	[ 반환값return o ] => 새로운 배열에 저장할수 있다.! 
+			arrayList.map( (반복변수) =>{ } )
+			arrayList.map( (반복변수,인덱스변수) =>{ } )
+			arrayList.map( (반복변수,인덱스변수, 배열 )=>{ } )
+			
+			let returnArrays = arrayList.map( (반복변수,인덱스변수)=>{ return } )
+			
+		6. filter
+
+*/
 
  
+ let arrayList = [ 'a', 'b', 'c', 'd']
+console.log('----------------------------')
+ for( let i = 0; i<arrayList.length; i++ ){
+	 console.log(i + arrayList[i])
+ }
+console.log('-----------in---------------')
+ for( let data2 in arrayList) {
+	  console.log(data2)
+ }
+console.log('-----------of---------------')
+ for( let data3 of arrayList) {
+	  console.log(data3)
+ }
+console.log('--------forEach------------')
+ arrayList.forEach ( (data4) => { console.log(data4) }) 
+console.log('---------forEach--------------')
+ arrayList.forEach ( (data5, index ) => { console.log(data5+index) }) 
  
- 
- 
- 
- 
- 
- 
+console.log("---------map1-----------");
+arrayList.map( (data5) => { console.log( data5 ); } );
+
+console.log("---------map2-----------");
+let newArrayList = arrayList.map( (data5) => { return data5+"map"; } );
+let newArrayList2 = arrayList.forEach( (data5) => { return data5+"map"; } ); // [ x ] 
+
+console.log( arrayList );
+console.log( newArrayList );
+console.log( newArrayList2 );
  
  
  
