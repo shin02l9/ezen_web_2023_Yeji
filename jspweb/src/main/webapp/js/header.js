@@ -3,6 +3,7 @@ console.log('header js 실행')
 
 
 let loginstate = false; // 로그인 상태 저장 
+let loginmid = '';
 
 //1. 현재 로그인 된 회원정보 요청
 getMemberInfo();
@@ -11,26 +12,28 @@ function getMemberInfo(){
 	$.ajax({
 		url : "/jspweb/MemberInfo",
 		method : "get",
+		async : false, /* 비동기화 : true, 동기화 : false 설정하는 속성*/
 		data : { type: "info" } ,
 		success : function f(r){
-			console.log(" 현재 로그인중인 회원정보 : "+r)
+			//console.log(" 현재 로그인중인 회원정보 : "+r)
 			
 			let submenu = document.querySelector('.submenu');
 			let HTML = ``;
 			if(r==null){ // 비로그인
-			loginstate = false;
+			loginstate = false; loginmid = '';
 				HTML += `
 				<li> <a href="/jspweb/member/signup.jsp"> 회원가입 </a></li>
 				<li> <a href="/jspweb/member/login.jsp"> 로그인 </a></li>
 				`;
 			} else{ // 로그인
-				loginstate = true;
+				loginstate = true; loginmid = r.mid;
 				HTML += `
 				<li> ${r.mid} 님 </li>
 				<li> <img class="hmimg" src="/jspweb/member/img/${r.mimg}"/></li>
 				<li> <a href="/jspweb/member/info.jsp"> 마이페이지 </a></li>
 				<li> <a onclick="logout()" href="#"> 로그아웃 </a></li>
 				`;	
+				
 			}
 			submenu.innerHTML = HTML;
 		} ,

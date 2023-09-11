@@ -1,1 +1,108 @@
 @charset "UTF-8";
+
+/* *{ border: 1px solid black;} */
+
+.chatbox{
+	width: 40%; margin: 20px auto;
+	background-color: #BACEE0;
+	border-radius: 10px;
+	box-shadow: 3px 3px 20px #9D9D9D;
+}
+
+.chatcontent{
+	height: 600px; padding: 10px;
+	overflow-y: scroll; /* 만약에 내용이 많으면 스크롤 추가하기 */
+}
+
+.chatbottom{
+	display: flex;
+	height: 50px;
+}
+
+.inputcontent{
+	width: 80%;
+	border: none;
+	padding: 10px;
+	resize: none;
+	border: 1px solid #e8e8e8;
+}
+
+.sendbtn{
+	width: 20%;
+	border: none;
+	border-radius: 5px;
+	background-color: #D3D3D3;
+}
+
+/* ---------------------------------------------------- */
+
+/* 보냈을때 */
+.Rcont{
+	display: flex; justify-content: flex-end;
+	margin: 10px 0px;
+}
+
+.Rcont .subcont{
+	justify-content: flex-end;
+}
+
+/* 받았을때 */
+.Lcont{
+	display: flex; justify-content: flex-start;
+	margin: 10px 0px;
+}
+
+.Lcont .content{
+	background-color: white !important;
+}
+
+.subcont{ display: flex; align-items: flex-end; margin-top: 5px;}
+
+.content{
+	background-color:#FFEB33;
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+	max-width: 80%;
+}
+
+.date{
+	font-size: 8px; margin: 0px 5px;
+}
+
+.alarm{
+	width: 70%; margin: 20px auto; padding: 5px;
+	text-align: center; 
+	background-color: #B1C3D5;
+	border: none;
+	border-radius: 50px;
+}
+
+.pimg{
+	width: 35px; height: 35px;
+	border-radius: 50px;
+	margin-right: 8px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
