@@ -48,13 +48,28 @@ public class ServerSocket {
 	// 3. 클라이언트 소켓과 서버소켓이 연결이 끊겼을때 
 	@OnClose
 	public void onClose(Session session){
+		System.out.println("@OnClose 들어왔음"); // 안들어옴 여기에 
+		String r = "false";
 		// 접속목록에서 세션을 제거해야함.
+		
 		for( ClientDTO clientDTO : clientList ) {
 			if( clientDTO.getSession() == session ) {
+				String mid = clientDTO.getMid();
 				clientList.remove(clientDTO);
+				r = "true"; 
+				try {
+					String msg = "{\"mid\":\"null\",\"msg\":\"{\\\"type\\\":\\\"alarm\\\",\\\"content\\\":\\\""+mid+"님이 퇴장하셨습니다.\\\"}\",\"datetinme\":\" 오후 03:14 \"}";
+					
+					OnMessage( session , msg );
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				break;
 			}
+			
 		}
+		
 	}
 	
 	
@@ -87,6 +102,9 @@ public class ServerSocket {
 		// 매핑해주기
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonmsg= mapper.writeValueAsString(dto);
+		
+		System.out.println("jsonmsg");
+		System.out.println(jsonmsg);
 		
 		// 받은 메세지를 접속된 회원들에게 모두 전송해야한다.
 		for( ClientDTO clientDTO : clientList ) {

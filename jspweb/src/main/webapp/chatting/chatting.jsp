@@ -34,6 +34,9 @@
 					</div>
 				알림
 					<div class="alarm"> 김근배님이 입장하셨습니다. </div>
+				document.querySelector('.chatcontent').innerHTML
+				= `<div class="alarm"> 님이 입장하셨습니다. </div>`;
+				
 				받았을때 왼쪽
 					<div class="Lcont"> 
 						<img class="pimg" src="/jspweb/member/img/default.webp" >

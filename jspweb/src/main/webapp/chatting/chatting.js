@@ -12,7 +12,11 @@ let clientSocket = new WebSocket(`ws://192.168.17.80/jspweb/serversocket/${login
 	// 서버소켓 URL에 매개변수 전달하기 [ 주로 식별자 전달 ] 
 	// --- 메소드 4가지 메소드 자동으로 실행 
 		// 1. (자동실행) 클라이언트소켓이 정상적으로 서버소켓 접속했을때
-	clientSocket.onopen = e => { console.log('서버와 접속성공'); } ;
+	clientSocket.onopen = e => { 
+		let msg = { type : 'alarm', content : `${loginmid}님이 입장하셨습니다.` }
+		clientSocket.send( JSON.stringify(msg) );
+		console.log('서버와 접속성공'); 
+		} ;
 		// 2. (자동실행) 클라이언트소켓이 서버소켓과 연결에서 오류가 발생했을때.
 	clientSocket.onerror = e => { console.log('서버와 오류발생:'+e ); };
 		// 3. (자동실행) 클라이언트소켓이 서버소켓과 연결이 끊겼을때.
@@ -50,29 +54,31 @@ function enter(){
 
 // 4. 메세지를 받았을때 
 function onMsg( e ){
-	console.log( e ); // e : 메시지 받았을때 발생한 이벤트 정보가 들어있는 객체
-	console.log( e.data ); // .data 속성에 전달받은 메시지 내용 
-	console.log( loginmid ); 
-	
+	console.log( e.data );
+	// 받아온 문자열을 객체로 바꿈
 	let msgBox = JSON.parse( e.data );
-	
 	console.log('msgBox : ')
 	console.log(msgBox)
-	
-	// 1. 특정 문자열 찾아서 1개 치환/바꾸기/교체 
-	let content = msgBox.msg.replace( '\n' , '<br>' );	// replace( '변경할문자열|정규표현식' , '새로운문자' );
-	console.log( content );
-	// 2. 특정 문자열 찾아서 찾은 문자열 모두 치환/바꾸기/교체 => java : .replaceAll();   js : 정규표현식 
-	content  = msgBox.msg.replace( /\n/g , '<br>');	// /g : 동일한 패턴의 모든 문자찾기[전체]
-	
-	console.log( 'content : '+content );
-	
-	msgBox.msg = JSON.parse( content );
+	// 그런제 자식 항목까지 바뀌지는 않음 그래서 또 바꿈 
+	msgBox.msg = JSON.parse( msgBox.msg );
 	console.log('msgBox.msg : ')
 	console.log(msgBox.msg)
 	
+	// 공백을 치환함
+	msgBox.msg.content = msgBox.msg.content.replace( /\n/g , '<br>');
+	console.log('msgBox.msg.content : ' );
+	console.log( msgBox.msg.content );
+
+
 	let chat = document.querySelector('.chatcontent')
 	let HTML = ``;
+	
+	// 만약에 일반 메세지가 아니라 알람이면
+	if( msgBox.msg.type == 'alarm' ){
+		HTML = `${typeHTML(msgBox.msg)} `;
+	}
+	// 일반 메세지( 문자, 이모티콘 ) 이면
+	else {
 		if( msgBox.mid == loginmid ){
 				HTML = `<div class="Rcont"> 
 							<div class="subcont">
@@ -80,7 +86,7 @@ function onMsg( e ){
 								${typeHTML(msgBox.msg)}
 							</div>
 						</div>`;
-		}else{ // 2-2 내가 보낸 내용이 아니면
+		} else { // 2-2 내가 보낸 내용이 아니면
 			HTML = `
 					<div class="Lcont"> 
 						<img class="pimg" src="/jspweb/member/img/default.webp" >
@@ -93,6 +99,7 @@ function onMsg( e ){
 						</div>
 					</div>`
 		}
+	}
 	
 	chat.innerHTML += HTML;
 	// ------------------- 스크롤 최하단으로 내리기 ( 스크롤 이벤트 ) --------------- // 
@@ -130,14 +137,13 @@ function getEmo(){
 // 7. 클릭한 이모티콘 서버로 보내기
 function onEmoSend( i ){
 	// 1. 객체 구성
-	let msg = { type : 'emo' , content : i }
+	let msg = { type : 'emo' , content : i+"" }
 	
 	// 2. 보내기
 	clientSocket.send( JSON.stringify(msg) );
 		// JSON 타입을 String 타입으로 변환해준 것임.
 	
 }
-
 
 
 // 8. msg 타입에 따른 HTML 반환 함수
@@ -155,8 +161,11 @@ function typeHTML( msg ){
 		
 		console.log('emo HTML')
 		console.log(HTML)
-		
-		}
+	} 
+	// 3. 알람 타입
+	else if( msg.type == 'alarm'){ 	
+		HTML += `<div class="alarm"> ${msg.content}</div>`; 
+	}
 	
 	return HTML;
 }
