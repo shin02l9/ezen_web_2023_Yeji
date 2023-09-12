@@ -1,10 +1,11 @@
 package controller.chatting;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Vector;
 
-
+import java.util.Date;
 
 import javax.websocket.OnOpen;
 import javax.websocket.OnClose;
@@ -62,13 +63,22 @@ public class ServerSocket {
 	public void OnMessage( Session session, String msg ) throws IOException {
 		System.out.println("보낸 클라이언트 : "+session);
 		System.out.println("보낸 내용 : "+msg);
+		
+		// new Date() : 현재시간/날짜 제공하는 클래스 [ import java.util.Date; ]
+		Date date = new Date(); System.out.println( "현재날짜/시간 : " + date );
+			// 2. SimpleDateFormat : 날짜 포멧(형식)
+		SimpleDateFormat sdf = new SimpleDateFormat(" aa hh:mm ");
+			// y연도 M월 d일 h시m분s초 aa오전오후 
+		String datetime = sdf.format( date ); // 현재시간을 정의한형식으로 변환 
+		
+		
 			// 메세지 보낼 내용 구성
 		MsgDTO dto = null;
 			// 보낸사람 찾기 
 			for( ClientDTO clientDTO : clientList ) {
 				if( clientDTO.getSession() == session ) {
 					// 회원목록중에 보낸세션과 일치하면 보낸사람mid와 내용으로 dto 구성 
-					dto = new MsgDTO( clientDTO.getMid(),  msg); 
+					dto = new MsgDTO( clientDTO.getMid(),  msg , datetime); 
 					break;
 				}
 				

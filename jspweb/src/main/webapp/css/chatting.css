@@ -85,13 +85,26 @@
 }
 
 
+/* -------------------- 이모티콘 구역 -------------------- */
 
+.dropdown{
+	background-color: white;
+}
+.dropdown .emobtn{
+	font-size: 20px;
+	background-color: transparent;
+	border: none; margin: 5px 20px;
+}
 
+/* 드롭다운시 보이는 구역 */
+.emolistbox{
+	width: 300px; height: 200px;
+	overflow-y: scroll;
+}
 
-
-
-
-
+.emolistbox img{ 
+	width: 50px;
+}
 
 
 
