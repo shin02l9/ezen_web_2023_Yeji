@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>library</title>
-<link href="library.css" rel="stylesheet">
+<link href="../library.css" rel="stylesheet">
 </head>
 <body>
 

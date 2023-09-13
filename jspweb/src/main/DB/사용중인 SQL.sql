@@ -83,3 +83,53 @@ create table board(
     		on delete cascade 
     		on update cascade  	-- 카테고리 삭제시 게시물도 삭제 , 카테고리번호 변경시 fk도 같이 변경   [ 제약조건 ]
 );
+
+
+# ------------------- 제품 --------------------------------------
+use jspweb;
+# 1. 제품 카테고리 
+drop table if exists pcategory;
+create table pcategory(
+	pcno int auto_increment unique , 		-- 카테고리번호(PK) 
+    pcname varchar(100) not null ,			-- 카테고리명
+    primary key( pcno )
+); 
+select * from pcategory;
+
+	# 샘플
+insert pcategory(pcname) value ( ' 아우터' );
+insert pcategory(pcname) value ( ' 상의' );
+insert pcategory(pcname) value ( ' 하의' );
+insert pcategory(pcname) value ( ' 신발' );
+insert pcategory(pcname) value ( ' 가방' );
+
+
+# 2. 제품
+drop table if exists product;
+create table product(
+	pno int auto_increment ,			-- 제품번호(PK)
+    pname varchar(100) not null ,			-- 제품명
+    pcontent longtext,						-- 제품설명
+    pprice int unsigned default 0 , 		-- 제품가격
+    pstate tinyint default 0 , 				-- 상태 [ 0:판매중(기본값), 1:거래중, 2:판매대기, 3:판매완료 ]
+    pdate datetime default now(),			-- 날짜 
+    plat varchar(30),	
+    plng varchar(30),
+    pcno int,
+    mno	int,
+    primary key( pno ),
+    foreign key( pcno ) references pcategory( pcno ) on delete set null on update cascade,
+    foreign key( mno ) references membertable( mno ) on delete cascade on update cascade
+);
+select * from product;
+
+# 3. 제품이미지
+drop table if exists productimg;
+create table productimg(
+	pimgno	int auto_increment,
+    pimg  longtext,
+    pno int,
+    primary key( pimgno ),
+    foreign key( pno ) references product( pno ) on delete cascade on update cascade
+);
+select * from productimg;
