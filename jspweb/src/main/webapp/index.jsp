@@ -82,7 +82,7 @@
 
 
 
-
+	<script src="../js/index.js" type="text/javascript"></script>
 	
 	<!-- JSP 안에 다른 JSP를 포함하기 -->
 	<%@include file="/footer.jsp" %>

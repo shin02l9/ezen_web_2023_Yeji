@@ -1,5 +1,6 @@
 package model.dao;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Map;
 import model.dto.ProductDTO;
 
@@ -51,13 +52,37 @@ public class ProductDAO extends DAO{
 	}
 	
 	
-	// 2. 제춤 전체 출력
+	// 2. 제품 전체 출력
+		// 2-1. 메인에 상품 10개 출력
+	public ArrayList< ProductDTO > printNewProduct( int count ){
+		
+		return null;
+	}
+		// 2-2. 카카오 지도로 좌표 범위내 포함된 상품 출력
+	public ArrayList< ProductDTO > printNearbyProduct(String e, String w, String s, String n){
+		
+		return null;
+	}
+		// 2-3. 관리자 입장에서 상품 모두 출력
+	public ArrayList< ProductDTO > printAllProduct( int pno ){
+		
+		return null;
+	}
 	
 	// 3. 제품 개별 출력
+	public ProductDTO printOneProduct(){
+		
+		return null;
+	}
+	
+	
+	
+	
 	
 	// 4. 제품 수정
 	
 	// 5. 제품 삭제 
+	
 	
 	
 	

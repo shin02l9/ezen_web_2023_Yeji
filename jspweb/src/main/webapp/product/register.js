@@ -211,9 +211,6 @@ function fileDelete( i ){
 
 
 
-
-
-
 /*
 // form 태그 없는 경우 ----------------------------------------------------
 function register1(){

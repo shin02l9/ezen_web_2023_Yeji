@@ -3,6 +3,7 @@ package controller.product;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +20,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -147,7 +149,42 @@ public class ProductInfoController extends HttpServlet {
  	}
  	// 2. 제품 조회
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		int type = Integer.parseInt(request.getParameter("type"));
+		System.out.println("type : "+type);
+		String json ="";
+		ObjectMapper mapper = new ObjectMapper();
+		ArrayList< ProductDTO > list = null;
+		
+		
+		if( type == 1 ){ // 메인에 10개의 상품 출력
+			int count = Integer.parseInt(request.getParameter("count"));
+			list = ProductDAO.getinstance().printNewProduct(count);
+			json = mapper.writeValueAsString(list);
+			
+		} else if ( type == 2 ){ // 카카오지도로 좌표 범위내 포함된 상품 출력
+			String east = request.getParameter("east");
+			String west = request.getParameter("west");
+			String south = request.getParameter("south");
+			String north = request.getParameter("north");
+			list = ProductDAO.getinstance().printNearbyProduct(east, west, south, north);
+			json = mapper.writeValueAsString(list);
+			
+		} else if ( type == 3 ){ // 선택된 상품의 개별출력
+			ProductDTO dto = ProductDAO.getinstance().printOneProduct();
+			json = mapper.writeValueAsString(dto);
+			
+		} else if ( type == 4 ){ // 관리자 입장에서 상품 모두 출력
+			int ProductNo = Integer.parseInt(request.getParameter("ProductNo"));
+			list = ProductDAO.getinstance().printAllProduct(ProductNo);
+			json = mapper.writeValueAsString(list);
+		}
+		
+		
+		
+		response.setContentType("application/json; charset=UTF-8");
+		response.getWriter().print(json);
+		
+	
 	}
 	// 3. 제품 수정
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

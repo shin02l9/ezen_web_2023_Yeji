@@ -15,8 +15,8 @@ public class ProductDTO {
 	int pprice;
 	int pstate;
 	String pdate;
-	String plat;
-	String plng;	
+	String plat; 	//위도
+	String plng;	// 경도
 	
 	int mno;
 	
