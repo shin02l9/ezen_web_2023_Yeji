@@ -7,6 +7,7 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
 <title> 대문 </title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<link href="/jspweb/css/index.css" rel="stylesheet">
 </head>
 <body>
 
@@ -48,8 +49,10 @@
 
 	<!------------------------------------------ 카드(BS) 제품 출력을 위한 공간---------------------------------------------->
 	<div class="webcontainer"> 
-		<div class="row row-cols-1 row-cols-md-3 g-4">
-		  <div class="col">
+		<div class="productBox row row-cols-1 row-cols-md-3 g-4">
+		
+		
+<!-- 		  <div class="col">
 		    <div class="card">
 		      <img src="/jspweb/img/C1.gif" class="card-img-top" alt="...">
 		      <div class="card-body">
@@ -58,6 +61,9 @@
 		      </div>
 		    </div>
 		  </div>
+		  
+		  
+		  
 		  <div class="col">
 		    <div class="card">
 		      <img src="/jspweb/img/C2.gif" class="card-img-top" alt="...">
@@ -75,19 +81,21 @@
 		        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
 		      </div>
 		    </div>
-		  </div>
+		  </div> -->
+		  
 		</div>
 	</div>
 
 
 
-
-	<script src="../js/index.js" type="text/javascript"></script>
 	
 	<!-- JSP 안에 다른 JSP를 포함하기 -->
 	<%@include file="/footer.jsp" %>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="/jspweb/js/index.js" type="text/javascript"></script>
 	
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
 
 
 </body>

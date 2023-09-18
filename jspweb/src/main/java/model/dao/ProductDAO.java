@@ -1,7 +1,16 @@
 package model.dao;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import com.mysql.cj.protocol.Resultset;
+import com.mysql.cj.xdevapi.PreparableStatement;
+import com.mysql.cj.xdevapi.Result;
+
 import model.dto.ProductDTO;
 
 public class ProductDAO extends DAO{
@@ -13,7 +22,7 @@ public class ProductDAO extends DAO{
 
 	// 1. 제품 등록
 	public boolean register( ProductDTO dto ) {
-		
+		System.out.println("register DAO 입장");
 		// 1-1 [제품 등록] 
 		try {
 			
@@ -29,7 +38,9 @@ public class ProductDAO extends DAO{
 			ps.setString( 5 , dto.getPlat() );		ps.setString( 6 , dto.getPlng() );
 			ps.setInt( 7 , dto.getMno() );
 			
+			
 			int count = ps.executeUpdate();	// 제품 등록 
+			System.out.println( "count :"+count );
 			
 			rs = ps.getGeneratedKeys(); // 제품 등록시 생성된 식별키[pk -> pno] 반환해서 resultset[ps]에 대입
 			if( rs.next() ) {	// resultset  null ---next()--> 결과레코드1 --next()--> 결과레코드2 
@@ -53,31 +64,88 @@ public class ProductDAO extends DAO{
 	
 	
 	// 2. 제품 전체 출력
-		// 2-1. 메인에 상품 10개 출력
-	public ArrayList< ProductDTO > printNewProduct( int count ){
-		
-		return null;
+	
+		// 0. 이미지 출력하는 함수
+	public Map< Integer , String > getProductImg( int pno ){ // * 이미지테이블에서 현재 레코드의 제품 번호에 해당하는 (여러개)이미지 출력해서 map객체 담기 
+		try {
+			Map< Integer , String > imglist = new HashMap<>(); // 제품별 여러개 이미지 
+			String sql = "select * from productimg where pno = "+pno; 
+			PreparedStatement ps = conn.prepareStatement(sql);// * 다른 함수에서 먼저 사용중인 rs 인터페이스 객체 가 사용중 이므로 [ while ] 중복 사용불가능  // 해결방안 새로운 rs 만들기 ( PreparedStatement , ResultSet 2개 사용 )
+			ResultSet rs =  ps.executeQuery();
+			while(rs.next() ) { imglist.put( rs.getInt("pimgno"), rs.getString("pimg") ); } return imglist;
+		}catch (Exception e) { System.out.println(e); } return null;
 	}
+	
+	// 3. 선택된 제품번호에 해당하는 제품 출력 함수 
+	public ProductDTO findByPno( int pno ){ 
+		try { 
+			String sql ="select * from product p natural join pcategory pc natural join membertable m where p.pno="+pno;
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			if( rs.next() ) {
+				ProductDTO productDto = new ProductDTO(
+						rs.getInt("pcno") , rs.getString("pcname"),rs.getInt("pno"), rs.getString("pname"),
+						rs.getString("pcontent"), rs.getInt("pprice"), rs.getInt("pstate"), rs.getString("pdate"),
+						rs.getString("plat"), rs.getString("plng"),  rs.getInt("mno"), getProductImg( rs.getInt("pno") ), 
+						rs.getString("mid") );
+				return productDto;
+			}
+		} catch (Exception e) { System.out.println(e);} return null; 
+	}
+	
+		// 2-1. 메인에 상품 10개 출력
+	public List<ProductDTO> findByTop( int count ){ 
+		System.out.println("findByTop DAO 입장");
+		List<ProductDTO> list = new ArrayList<>();
+		try { 
+			String sql = "select * from product order by pdate desc limit "+count;
+			ps = conn.prepareStatement(sql); 
+			rs = ps.executeQuery();
+			while( rs.next() ) {  
+				list.add( findByPno( rs.getInt("pno") ) ); 	
+			} System.out.println("list : " + list); 
+			return list;
+		} catch (Exception e) { System.out.println(e); } 
+		return null; 
+	}
+	
+	
 		// 2-2. 카카오 지도로 좌표 범위내 포함된 상품 출력
-	public ArrayList< ProductDTO > printNearbyProduct(String e, String w, String s, String n){
-		
+	public List< ProductDTO > findByLatLng(String e, String w, String s, String n){
+		try {// 동 경도보다 작고 서 경도보다 크고 남 위도보다 작고 북 위도보다 크고 
+			List<ProductDTO> list = new ArrayList<>();
+			String sql = "select * from product where plat <= ? and plat >= ? and plng >= ? and plng <= ?";
+			ps = conn.prepareStatement(sql); 
+			ps.setString(1, e);
+			ps.setString(2, w);
+			ps.setString(3, s);
+			ps.setString(4, n);
+			rs = ps.executeQuery();
+			
+			while( rs.next() ) {  
+				list.add( findByPno( rs.getInt("pno") ) ); 	
+			} 
+			
+			System.out.println("list : "+list);
+			
+			return list;
+		} catch ( Exception ex ) { System.out.println(ex);}
 		return null;
 	}
 		// 2-3. 관리자 입장에서 상품 모두 출력
-	public ArrayList< ProductDTO > printAllProduct( int pno ){
-		
+	public List< ProductDTO > findByAll(){
+		try {
+			List<ProductDTO> list = new ArrayList<>();
+			String sql ="select * from product"; ps = conn.prepareStatement(sql); rs = ps.executeQuery();
+			while( rs.next() ) {  
+				list.add( findByPno( rs.getInt("pno") ) ); 	
+				
+			} return list; 
+			
+		} catch ( Exception e ) { System.out.println(e);}
 		return null;
 	}
-	
-	// 3. 제품 개별 출력
-	public ProductDTO printOneProduct(){
-		
-		return null;
-	}
-	
-	
-	
-	
+
 	
 	// 4. 제품 수정
 	

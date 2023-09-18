@@ -94,7 +94,9 @@ public class ProductInfoController extends HttpServlet {
           
           
        // 제품 등록한 회원번호 [ 서블릿 세션 ] 
-		Object object = request.getSession().getAttribute("loginDto");
+		Object object = request.getSession().getAttribute("logindto");
+		System.out.println("object : ");
+		System.out.println(object);
 		MemberDTO memberDto = (MemberDTO)object;
 		int mno = memberDto.getMno();
        			
@@ -116,7 +118,7 @@ public class ProductInfoController extends HttpServlet {
    			//
    			response.setContentType("application/json;charset=utf-8");
    			response.getWriter().print(result);
-       }catch (Exception e) { }
+       }catch (Exception e) { System.out.println(e );}
  		
  		
  	
@@ -153,12 +155,12 @@ public class ProductInfoController extends HttpServlet {
 		System.out.println("type : "+type);
 		String json ="";
 		ObjectMapper mapper = new ObjectMapper();
-		ArrayList< ProductDTO > list = null;
+		List< ProductDTO > list = null;
 		
 		
 		if( type == 1 ){ // 메인에 10개의 상품 출력
 			int count = Integer.parseInt(request.getParameter("count"));
-			list = ProductDAO.getinstance().printNewProduct(count);
+			list = ProductDAO.getinstance().findByTop(count);
 			json = mapper.writeValueAsString(list);
 			
 		} else if ( type == 2 ){ // 카카오지도로 좌표 범위내 포함된 상품 출력
@@ -166,16 +168,16 @@ public class ProductInfoController extends HttpServlet {
 			String west = request.getParameter("west");
 			String south = request.getParameter("south");
 			String north = request.getParameter("north");
-			list = ProductDAO.getinstance().printNearbyProduct(east, west, south, north);
+			list = ProductDAO.getinstance().findByLatLng(east, west, south, north);
 			json = mapper.writeValueAsString(list);
 			
 		} else if ( type == 3 ){ // 선택된 상품의 개별출력
-			ProductDTO dto = ProductDAO.getinstance().printOneProduct();
+			int pno = Integer.parseInt(request.getParameter("pno"));
+			ProductDTO dto = ProductDAO.getinstance().findByPno(pno);
 			json = mapper.writeValueAsString(dto);
 			
 		} else if ( type == 4 ){ // 관리자 입장에서 상품 모두 출력
-			int ProductNo = Integer.parseInt(request.getParameter("ProductNo"));
-			list = ProductDAO.getinstance().printAllProduct(ProductNo);
+			list = ProductDAO.getinstance().findByAll();
 			json = mapper.writeValueAsString(list);
 		}
 		
